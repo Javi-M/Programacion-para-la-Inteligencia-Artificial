@@ -8,8 +8,12 @@ Se basa, obviamente, en los apuntes originales. Principalmente sigo el orden en 
 que aparece la teoría, pero cambiando las explicaciones a unas más directas y a
 veces con más aclaraciones o profundización.
 
-## Cuestiones
+## Cuestiones a responder
 Cuestiones en general que deben ser respondidas para los conceptos de la asignatura:
 - _¿Cómo afecta esto a los experimentos?_
 - _¿Cómo afecta esto a la generalización, error, velocidad de aprendizaje...?_
 - _¿Cuál es **su ecuación**? ¿Qué es cada componente de la ecuación?_
+
+# Sobre el código
+He decidido que tiene que tener el menor código posible. Ya que lo que sirve es
+experimentar uno mismo haciendo cambios y ver qué ocurre.
