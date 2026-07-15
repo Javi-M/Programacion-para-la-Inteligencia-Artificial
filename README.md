@@ -15,5 +15,6 @@ Cuestiones en general que deben ser respondidas para los conceptos de la asignat
 - _¿Cuál es **su ecuación**? ¿Qué es cada componente de la ecuación?_
 
 # Sobre el código
-He decidido que tiene que tener el menor código posible. Ya que lo que sirve es
-experimentar uno mismo haciendo cambios y ver qué ocurre.
+He decidido que tiene que tener el menor código posible. Ya que lo que sirve es experimentar uno mismo haciendo cambios y ver qué ocurre.
+
+
