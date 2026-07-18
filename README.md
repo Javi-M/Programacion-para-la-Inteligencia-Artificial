@@ -21,10 +21,10 @@ Las preguntas son tanto teóricas como de código.
 Las pregunta las gestiono con Quarto (archivos `.qmnd`) para escribirlas en 
 Markdown y luego reenderizarlo. Algunas tienen solución, y otras no. 
 Si alguien quisiera colaborar daría más detalles de cómo hacer preguntas y 
-reenderizar en cuarto. 
+reenderizar en Quarto. 
 
 # Sobre el código
-Estos apuntes no incluyen soluciones. Primero para evitarme problemas a mí y
+Estos apuntes no incluyen soluciones a prácticas. Primero para evitarme problemas a mí y
 al estudiante que se copie (por el mero hecho de copiar). Pero es que además hay
 que saber en profundidad qué hace cada parte del código, y es uno mismo el que
 debe probar.
