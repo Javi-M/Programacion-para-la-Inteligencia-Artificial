@@ -1,0 +1,6 @@
+---
+title: "Preguntas"
+---
+
+- [Preguntas 1](preguntas_1.qmd)
+- [Preguntas 2](preguntas_2.qmd)

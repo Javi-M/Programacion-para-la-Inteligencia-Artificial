@@ -3,5 +3,8 @@
 # Quarto añade sus archivos en directorios acabados en _files
 Preguntas/**/*_files/
 
+# Archivos html generados
+Preguntas/_site/
+
 /.quarto/
 **/*.quarto_ipynb

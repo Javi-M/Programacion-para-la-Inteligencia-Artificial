@@ -1,0 +1,30 @@
+[
+  {
+    "objectID": "preguntas_1.html",
+    "href": "preguntas_1.html",
+    "title": "Preguntas",
+    "section": "",
+    "text": "Preguntas correspondientes al cuaderno: Manipulación de Datos en PyTorch"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Preguntas",
+    "section": "",
+    "text": "Preguntas 1\nPreguntas 2"
+  },
+  {
+    "objectID": "preguntas_3.html",
+    "href": "preguntas_3.html",
+    "title": "Preguntas",
+    "section": "",
+    "text": "Preguntas correspondientes al cuaderno: Aprendizaje en PyTorch II\n\n\n\n\n\n\n\n\nTODO ¿Qué es un parámetro? ¿Y un hiperparámetro? ¿En qué se diferencian?\n\n\n\n\n\n\nTipSolución"
+  },
+  {
+    "objectID": "preguntas_2.html",
+    "href": "preguntas_2.html",
+    "title": "Preguntas más complejas",
+    "section": "",
+    "text": "Preguntas correspondientes al cuaderno: Aprendizaje en PyTorch I\n\n\n\n\n\n\n\n\n¿Qué significa aprender en el contexto de las redes neuronales?\n\n\n\n\n\n\nTipSolución\n\n\n\n\n\nAjustar los parámetros del modelo para minimizar el error.\n\n\n\n\n\n\n\n\n\n\n\n\n\n¿Cómo añadir ruido gaussiano a un conjunto de datos?\n\n\n\n\n\n\nTipSolución\n\n\n\n\n\nSe puede usar la función torch.randn() o la función torch.normal(), dependiendo de si queremos que sean de la misma distribución normal o no.\n\n\n\n\n\n\n\n\n\n\n\n\n\nEl siguiente fragmento de código falla. ¿Por qué?\nX = torch.tensor([2, 5, 8, 9])\nX_noisy = X + torch.normal(mean=torch.zeros_like(X), std=1)\nX_noisy = torch.normal(mean=X, std=1)\n\n\n\n\n\n\nTipSolución\n\n\n\n\n\nEn la línea 1, se crea un tensor de enteros y sin embargo torch.normal necesita uno de tipo float. Con PyTorch, al igual que con Numpy, hay que estar atento a los tipos.\n\n\n\n\n\n\n\n\n\n\n\n\n\nDar una comparativa entre el error cuadrático y el absoluto. (Ecuaciones, cuál es mejor en qué circunstancia, etc.)\n\n\n\n\n\n\n\n\n\n\n\nPara ajustar una recta (\\(f: \\mathbb R \\to \\mathbb R\\)), ¿cuántos parámetros tendría que ajustar/aprender el modelo?\n\n\n\n\n\n\nTipSolución\n\n\n\n\n\nPara ajustar \\(y = mx +b\\) tiene que ajustar dos parámetros: la pendiente \\(m\\) y la ordenada en el origen \\(b\\).\n\n\n\n\n\n\n\n\n\n\n\n\n\n¿Cómo crearías un tensor de una dimensión de \\(n\\) elementos desde \\(a\\) hasta \\(b\\), con los valores espaciados uniformemente? (Esta es una necesidad recurrente.)\n\n\n\n\n\n\nTipSolución\n\n\n\n\n\nSe podría usar la función torch.linespace().\n\n\n\n\n\n\n\n\n\n\n\n\n\nTODO ¿Qué es el ratio de cambio del error?\n\n\n\n\n\n\n\n\n\n\nTODO ¿Cuándo se dice que un entrenamiento es inestable? Si al entrenar un modelo usamos valores de uno en uno como entrada, o bien varios y sus medias de errores, ¿cuál será probablemente más inestable? ¿Por qué?\n\n\n\n\n\n\nTipSolución\n\n\n\n\n\nUsar un valor en la entrada hace que el ajuste de parámetros sea más sensible al ruido. Se verá más adelante que por otro lado usar por ejemplo todos los valores puede llevar a caer en mínimos locales de los que no se sale.\n\n\n\n\n\n\n\n\nPreguntas más complejas\n\n\n\n\n\n\nTODO ¿Cuáles son las diferencias (los trade-offs) entre usar un batch size pequeño o un batch size más grande?"
+  }
+]

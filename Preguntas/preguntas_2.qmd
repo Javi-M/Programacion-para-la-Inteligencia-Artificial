@@ -1,7 +1,6 @@
 Preguntas correspondientes al cuaderno: _Aprendizaje en PyTorch I_
 
 <!-- Para copiar y pegar para hacer preguntas:
-
 ::: {.callout-note icon="false" appearance="simple"}
 
 ::: {.callout-tip collapse="true" title="Solución"}
@@ -9,7 +8,6 @@ Preguntas correspondientes al cuaderno: _Aprendizaje en PyTorch I_
 :::
 
 :::
-
 -->
 
 ---
