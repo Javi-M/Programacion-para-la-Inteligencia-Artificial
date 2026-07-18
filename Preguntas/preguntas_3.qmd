@@ -1,0 +1,25 @@
+Preguntas correspondientes al cuaderno: _Aprendizaje en PyTorch II_
+
+<!-- Para copiar y pegar para hacer preguntas:
+::: {.callout-note icon="false" appearance="simple"}
+
+::: {.callout-tip collapse="true" title="Solución"}
+
+:::
+
+:::
+-->
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+
+**TODO** ¿Qué es un _parámetro_? ¿Y un _hiperparámetro_? ¿En qué se diferencian?
+
+::: {.callout-tip collapse="true" title="Solución"}
+
+:::
+
+:::
+
+---

@@ -1,0 +1,130 @@
+Preguntas correspondientes al cuaderno: _Aprendizaje en PyTorch I_
+
+<!-- Para copiar y pegar para hacer preguntas:
+
+::: {.callout-note icon="false" appearance="simple"}
+
+::: {.callout-tip collapse="true" title="Solución"}
+
+:::
+
+:::
+
+-->
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+¿Qué significa _aprender_ en el contexto de las redes neuronales?
+
+::: {.callout-tip collapse="true" title="Solución"}
+Ajustar los parámetros del modelo para minimizar el error.
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+¿Cómo añadir ruido gaussiano a un conjunto de datos?
+
+::: {.callout-tip collapse="true" title="Solución"}
+Se puede usar la función `torch.randn()` o la función `torch.normal()`, dependiendo
+de si queremos que sean de la misma distribución normal o no.
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+El siguiente fragmento de código falla. ¿Por qué?
+
+```{.python .number-lines}
+X = torch.tensor([2, 5, 8, 9])
+X_noisy = X + torch.normal(mean=torch.zeros_like(X), std=1)
+X_noisy = torch.normal(mean=X, std=1)
+```
+
+::: {.callout-tip collapse="true" title="Solución"}
+En la línea 1, se crea un tensor de enteros y sin embargo `torch.normal` necesita
+uno de tipo `float`. Con PyTorch, al igual que con Numpy, hay que estar atento
+a los tipos. 
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+
+Dar una comparativa entre el error cuadrático y el absoluto. (Ecuaciones, cuál
+es mejor en qué circunstancia, etc.)
+
+<!-- TODO
+::: {.callout-tip collapse="true" title="Solución"}
+:::
+-->
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+
+Para ajustar una recta ($f: \mathbb R \to \mathbb R$), ¿cuántos parámetros tendría
+que ajustar/aprender el modelo?
+
+::: {.callout-tip collapse="true" title="Solución"}
+Para ajustar $y = mx +b$ tiene que ajustar dos parámetros: la pendiente $m$ y 
+la ordenada en el origen $b$. 
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+
+¿Cómo crearías un tensor de una dimensión de $n$ elementos desde $a$ hasta $b$,
+con los valores espaciados uniformemente? (Esta es una necesidad recurrente.)
+
+::: {.callout-tip collapse="true" title="Solución"}
+Se podría usar la función `torch.linespace()`.
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+
+**TODO** ¿Qué es el _ratio de cambio del error_?
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+
+**TODO** ¿Cuándo se dice que un entrenamiento es _inestable_? Si al entrenar 
+un modelo usamos valores de uno en uno como entrada, o bien varios y sus medias de errores,
+¿cuál será probablemente más inestable? ¿Por qué?
+
+::: {.callout-tip collapse="true" title="Solución"}
+Usar un valor en la entrada hace que el ajuste de parámetros sea más sensible al
+ruido. Se verá más adelante que por otro lado usar por ejemplo todos los valores
+puede llevar a caer en mínimos locales de los que no se sale. 
+:::
+
+:::
+
+---
+
+# Preguntas más complejas
+
+::: {.callout-note icon="false" appearance="simple"}
+
+**TODO** ¿Cuáles son las diferencias (los _trade-offs_) entre usar un _batch size_ pequeño o un _batch size_ más grande?
+
+:::
