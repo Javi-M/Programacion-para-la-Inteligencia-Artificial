@@ -2,6 +2,10 @@ project:
   type: website
   output-dir: ../docs
 
+format:
+ html:
+   mainfont: "Century Schoolbook"
+
 website:
   title: "Preguntas"
   navbar:
@@ -10,3 +14,7 @@ website:
         text: Inicio
       - href: bibliografia.qmd
         text: Bibliografía
+
+theme:
+  light: flatly
+  dark: darkly

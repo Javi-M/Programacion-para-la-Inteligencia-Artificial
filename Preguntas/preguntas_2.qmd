@@ -74,7 +74,7 @@ Para ajustar una recta ($f: \mathbb R \to \mathbb R$), ¿cuántos parámetros te
 que ajustar/aprender el modelo?
 
 ::: {.callout-tip collapse="true" title="Solución"}
-Para ajustar $y = mx +b$ tiene que ajustar dos parámetros: la pendiente $m$ y 
+Para ajustar $y = mx +b$ tiene que ajustar **dos** parámetros: la pendiente $m$ y 
 la ordenada en el origen $b$. 
 :::
 

@@ -47,6 +47,8 @@ $$
     generalizar a **tensores** y ya no sería un producto escalar (sino una 
     **contracción tensorial**, término que no hay que aprender para la asignatura)
 - $b$ es el _sesgo_ o _bias_.
+- $\alpha$ es la función de activación.
+
 :::
 
 :::
@@ -72,11 +74,11 @@ podría ajustar rectas, planos o hiperplanos).
 ---
 
 ::: {.callout-note icon="false" appearance="simple"}
-
 ¿Cuál es la ecuación de la _tangente hiperbólica_? ¿Es derivable en todo su dominio?
 ¿Cuál es su dominio? ¿Y su imagen?
 
 ::: {.callout-tip collapse="true" title="Solución"}
+
 $$
 \tanh (x) = \cfrac{\text e^x - \text e^{-x}}{\text e^x + \text e^{-x}}
 $$
@@ -99,11 +101,51 @@ $x$ tiende a $\infty$ y a $-\infty$.
 ¿Cuál es su dominio? ¿Y su imagen?
 
 ::: {.callout-tip collapse="true" title="Solución"}
+
 $$
-\text{sigmoid}(x) = \cfrac{1}{1 + e^{-x}}
+\text{Sigmoid}(x) = \cfrac{1}{1 + e^{-x}}
+$$
 
 <https://docs.pytorch.org/docs/2.13/generated/torch.nn.Sigmoid.html>
+
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+
+¿Cuál es la ecuación de la _ReLU_? ¿Es derivable en todo su dominio?
+¿Cuál es su dominio? ¿Y su imagen?
+
+¿Cuáles son sus ventajas y diferencias respecto la recta? 
+
+¿El tensor de entrada y de salida tienen mismas dimensiones o distintas?
+
+::: {.callout-tip collapse="true" title="Solución"}
 $$
+\text{ReLU}(x) = (x)^+ = \max(0,x)
+$$
+
+- No es derivable en $x = 0$. En este punto se decide arbitrariamente la derivada.
+- Ventaja: es diferenciable en todo su dominio.
+
+- Se aplica elemento a elemento, por lo que el vector de entrada y de salida
+    tienen las mismas dimensiones (_shape_)
+
+<https://docs.pytorch.org/docs/2.13/generated/torch.nn.ReLU.html>
+
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+
+::: {.callout-tip collapse="true" title="Solución"}
+
 :::
 
 :::
@@ -125,7 +167,6 @@ y = xA^T + b
 $$
 - Esta $y$ no incluye "haber pasado por la función de activación".
 
-
 <https://docs.pytorch.org/docs/2.13/generated/torch.nn.Linear.html>
 :::
 
@@ -133,9 +174,15 @@ $$
 
 ---
 
-Posibles más preguntas:
+
+Posibles preguntas:
 - Para qué viene bien o mal la tangente hiperbólica.
 - Para qué viene bien o mal la sigmoide.
+
+
+# Algunos aspectos clave
+- Las dimensiones de entrada y salida: en cada neurona, función, etc.
+- Dominio, imagen y diferenciabilidad.
 
 
 # Referencias

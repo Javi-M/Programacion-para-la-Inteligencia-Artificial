@@ -27,6 +27,8 @@ reenderizar en Quarto.
 (`cd Preguntas/` y ejecutar `quarto render`, o desde la raíz del repositorio:
 `quarto render Preguntas`)
 
+> Quarto es muy quisquilloso con su sintaxis markdown.
+
 # Sobre el código
 Estos apuntes no incluyen soluciones a prácticas. Primero para evitarme problemas a mí y
 al estudiante que se copie (por el mero hecho de copiar). Pero es que además hay
