@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>preguntas_2 – Preguntas</title>
+<title>Bibliografía – Preguntas</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -23,42 +23,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
 }
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
 }
-</style>
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -106,35 +90,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -160,7 +115,7 @@ window.Quarto = {
 <span class="menu-text">Inicio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./bibliografia.html"> 
+    <a class="nav-link active" href="./bibliografia.html" aria-current="page"> 
 <span class="menu-text">Bibliografía</span></a>
   </li>  
 </ul>
@@ -176,255 +131,39 @@ window.Quarto = {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Bibliografía</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<p>Preguntas correspondientes al cuaderno: <em>Aprendizaje en PyTorch I</em></p>
-<!-- Para copiar y pegar para hacer preguntas:
-::: {.callout-note icon="false" appearance="simple"}
+    
+  
+    
+  </div>
+  
 
-::: {.callout-tip collapse="true" title="Solución"}
 
-:::
+</header>
 
-:::
+
+<!--
+Este documento es solo para que se genere
+bibliografia.html
+y tenerlo como página
 -->
-<hr>
-<div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>¿Qué significa <em>aprender</em> en el contexto de las redes neuronales?</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Solución
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Ajustar los parámetros del modelo para minimizar el error.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<hr>
-<div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>¿Cómo añadir ruido gaussiano a un conjunto de datos?</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Solución
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Se puede usar la función <code>torch.randn()</code> o la función <code>torch.normal()</code>, dependiendo de si queremos que sean de la misma distribución normal o no.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<hr>
-<div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>El siguiente fragmento de código falla. ¿Por qué?</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>X <span class="op">=</span> torch.tensor([<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">9</span>])</span>
-<span id="cb1-2"><a href="#cb1-2"></a>X_noisy <span class="op">=</span> X <span class="op">+</span> torch.normal(mean<span class="op">=</span>torch.zeros_like(X), std<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb1-3"><a href="#cb1-3"></a>X_noisy <span class="op">=</span> torch.normal(mean<span class="op">=</span>X, std<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Solución
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>En la línea 1, se crea un tensor de enteros y sin embargo <code>torch.normal</code> necesita uno de tipo <code>float</code>. Con PyTorch, al igual que con Numpy, hay que estar atento a los tipos.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<hr>
-<div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>Dar una comparativa entre el error cuadrático y el absoluto. (Ecuaciones, cuál es mejor en qué circunstancia, etc.)</p>
-<!-- TODO
-::: {.callout-tip collapse="true" title="Solución"}
-:::
--->
-</div>
-</div>
-</div>
-<hr>
-<div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>Para ajustar una recta (<span class="math inline">\(f: \mathbb R \to \mathbb R\)</span>), ¿cuántos parámetros tendría que ajustar/aprender el modelo?</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Solución
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Para ajustar <span class="math inline">\(y = mx +b\)</span> tiene que ajustar dos parámetros: la pendiente <span class="math inline">\(m\)</span> y la ordenada en el origen <span class="math inline">\(b\)</span>.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<hr>
-<div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>¿Cómo crearías un tensor de una dimensión de <span class="math inline">\(n\)</span> elementos desde <span class="math inline">\(a\)</span> hasta <span class="math inline">\(b\)</span>, con los valores espaciados uniformemente? (Esta es una necesidad recurrente.)</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Solución
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Se podría usar la función <code>torch.linespace()</code>.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<hr>
-<div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p><strong>TODO</strong> ¿Qué es el <em>ratio de cambio del error</em>?</p>
-</div>
-</div>
-</div>
-<hr>
-<div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p><strong>TODO</strong> ¿Cuándo se dice que un entrenamiento es <em>inestable</em>? Si al entrenar un modelo usamos valores de uno en uno como entrada, o bien varios y sus medias de errores, ¿cuál será probablemente más inestable? ¿Por qué?</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Solución
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Usar un valor en la entrada hace que el ajuste de parámetros sea más sensible al ruido. Se verá más adelante que por otro lado usar por ejemplo todos los valores puede llevar a caer en mínimos locales de los que no se sale.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<hr>
-<div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>¿Qué es un <em>step</em> en el proceso de aprendizaje?</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Solución
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Es una iteración/etapa en la que el modelo: ve unos datos de entrada <span class="math inline">\(\rightarrow\)</span> calcula la salida y el error <span class="math inline">\(\rightarrow\)</span> actualiza los parámetros.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<hr>
-<section id="preguntas-más-complejas" class="level1">
-<h1>Preguntas más complejas</h1>
-<div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p><strong>TODO</strong> ¿Cuáles son las diferencias (los <em>trade-offs</em>) entre usar un <em>batch size</em> pequeño o un <em>batch size</em> más grande?</p>
-</div>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-Garcia2025PIA" class="csl-entry" role="listitem">
+García-González, J. 2025. <em>Programación Para La Inteligencia Artificial</em>. Universidad de Málaga.
 </div>
 </div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

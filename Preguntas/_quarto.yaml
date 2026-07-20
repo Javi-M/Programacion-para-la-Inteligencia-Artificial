@@ -8,3 +8,5 @@ website:
     left:
       - href: index.qmd
         text: Inicio
+      - href: bibliografia.qmd
+        text: Bibliografía

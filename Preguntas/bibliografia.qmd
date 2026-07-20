@@ -1,0 +1,14 @@
+---
+title: "Bibliografía"
+bibliography: bibliografia.bib
+nocite: "@*"
+---
+
+<!--
+Este documento es solo para que se genere
+bibliografia.html
+y tenerlo como página
+-->
+
+::: {#refs}
+:::

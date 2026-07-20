@@ -119,6 +119,20 @@ puede llevar a caer en mínimos locales de los que no se sale.
 
 ---
 
+::: {.callout-note icon="false" appearance="simple"}
+
+¿Qué es un _step_ en el proceso de aprendizaje?
+
+::: {.callout-tip collapse="true" title="Solución"}
+Es una iteración/etapa en la que el modelo: ve unos datos de entrada $\rightarrow$
+calcula la salida y el error $\rightarrow$ actualiza los parámetros.
+:::
+
+:::
+
+
+---
+
 # Preguntas más complejas
 
 ::: {.callout-note icon="false" appearance="simple"}
@@ -126,3 +140,5 @@ puede llevar a caer en mínimos locales de los que no se sale.
 **TODO** ¿Cuáles son las diferencias (los _trade-offs_) entre usar un _batch size_ pequeño o un _batch size_ más grande?
 
 :::
+
+

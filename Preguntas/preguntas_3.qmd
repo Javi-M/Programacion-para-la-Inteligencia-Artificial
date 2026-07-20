@@ -23,3 +23,174 @@ Preguntas correspondientes al cuaderno: _Aprendizaje en PyTorch II_
 :::
 
 ---
+
+::: {.callout-note icon="false" appearance="simple"}
+
+**TODO** ¿Qué es el _gradiente_? ¿Sobre qué función la usamos? ¿Para qué sirve? ¿Qué inconveniente acarrea?
+
+::: {.callout-tip collapse="true" title="Solución"}
+**TODO**: Recordar qué es el gradiente... (derivadas parciales de un campo escalar).
+
+La usamos sobre la función de error: el error en función de los parámetros.
+
+Sirve para minimizar el error.
+
+Sea $\mathcal L$ la función de error (campo escalar: $\mathcal L: \mathbb R^n \to \mathbb R$).
+Es decir hay $n$ parámetros y el error depende de ellos. Con el gradiente, podemos saber
+para un punto (unos ciertos parámetros) la derivada direccional máxima: es decir,
+en qué dirección incrementa más el error dado unos parámetros. (Por tanto, querremos
+modificar los parámetros en la dirección contraria).
+
+Acarrea el inconveniente de que $\mathcal L$ tiene que ser diferenciable en todos
+sus puntos: esto hará que haya que usar ciertas técnicas.
+
+Recordar que se deriva **respecto los parámetros**, no sobre los valores de entrada.
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+
+¿A qué denominamos _forward pass_ (pasada hacia adelante)? ¿Y _backwards pass_
+(pasada hacia detrás)? (De forma general).
+
+::: {.callout-tip collapse="true" title="Solución"}
+_Forward pass_: el modelo hace una predicción.
+
+_Backwards pass_: cálculo del gradiente del modelo.
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+
+¿Mediante _qué_ calcula PyTorch los gradientes?
+
+::: {.callout-tip collapse="true" title="Solución"}
+Mediante **Autograd**.
+[https://docs.pytorch.org/docs/2.13/autograd.html](https://docs.pytorch.org/docs/2.13/autograd.html)
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+¿Para qué sirve la opción `requires_grad`? ¿Fallará el siguiente código?
+¿Por qué?
+
+```python
+x = torch.tensor(2.0, requires_grad=False)
+x.backward()
+``` 
+
+¿No sería mejor dejarlo siempre a `True`?
+
+::: {.callout-tip collapse="true" title="Solución"}
+Indica si el gradiente debe ser calculado para el Tensor. (Para el sistema
+Autograd de PyTorch).
+
+`backward()` calcula el gradiente del tensor, y hemos dicho que no queremos 
+que sea calculado, obviamente fallará.
+
+Si siempre se pusiera a `True`, iría guardando información de los tensores para
+las derivadas posteriores, lo que aumentará la memoria usada. Solo interesan los
+gradientes de aquellos tensores que se quieran optimizar o de los que se necesiten
+derivadas.
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+¿Qué funciones de PyTorch implementan el error absoluto y el error cuadrático?
+
+::: {.callout-tip collapse="true" title="Solución"}
+`torch.nn.L1Loss()` y `torch.nn.MSELoss()`.
+
+Al calcular el error entre dos tensores $\hat y$, $y$, hace el error elemento
+a elemento y luego la media. Esa forma de combinar valores es lo que se conoce
+como `reduction`. 
+
+```python
+loss_function = torch.nn.MSELoss(size_average=None, reduce=None, reduction='mean')
+```
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+**TODO** Sobre el método `detach()`. Para qué se usa, qué erroresp puede dar.
+
+::: {.callout-tip collapse="true" title="Solución"}
+
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+**TODO** Sobre el método `with torch.no_grad()`. ¿Qué hace? ¿Cuándo se usa?
+
+::: {.callout-tip collapse="true" title="Solución"}
+
+:::
+
+:::
+
+---
+
+
+# Preguntas más complejas
+
+::: {.callout-note icon="false" appearance="simple"}
+
+**TODO** ¿Por qué el _backward pass_ es más costoso computacionalmente que el _forward pass_?
+
+::: {.callout-tip collapse="true" title="Solución"}
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+
+Desarrollar el funcionamiento de Autograd. (Cómo PyTorch gestiona los gradientes
+y las derivadas).
+
+::: {.callout-tip collapse="true" title="Solución"}
+PyTorch lleva un registro: el grafo de operaciones. 
+
+Imaginemos que decimos que la derivada de `g(x)` hace falta posteriormente:
+y ponemos `requires_grad=True`. Gracias a llevar el registro, cuando haga
+`f(g(x)) = f'(g(x)) g'(x)` lo hará más rápidamente.
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+
+Si $X$ es un tensor de entrada (_input_), ¿queremos su gradiente? (`requires_grad=True`)
+¿En qué casos sí y en qué casos no?
+
+::: {.callout-tip collapse="true" title="Solución"}
+Por lo general no. Si no podemos ajustar esos valores (a diferencia de los pesos de
+una red), ¿para qué queremos su gradiente?
+
+Para ataques adversarios (se verá más adelante) puede ser interesante, puesto que
+_podemos saber las entradas más puñeteras_. (Gradiente de la función de
+error en función de $X \rightarrow$ qué $X$ aumenta el error).
+:::
+
+:::

@@ -1,0 +1,142 @@
+Preguntas correspondientes al cuaderno: _Modelos Nueronales I_
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+**TODO** Método del descenso de gradiente estocástico (_Stochastic Gradient
+Descent_, SGD).
+
+::: {.callout-tip collapse="true" title="Solución"}
+Es una estrategia para ajustar parámetros para reducir el error, basándose en 
+el gradiente.
+
+También se puede usar el SGD para **maximizar**, si usáramos una función antagónica al
+error: _reward function_. Un caso en el que se desesa la función objetivo sea 
+máxima. **En este caso, la dirección es la del gradiente** y no la negativa.
+
+<https://docs.pytorch.org/docs/2.13/generated/torch.optim.SGD.html>
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+**TODO** ¿Cuál es la diferencia entre `torch.cat()` y `torch.stack()`?
+
+::: {.callout-tip collapse="true" title="Solución"}
+
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+**TODO** ¿Cuál es la ecuación de una _neurona lineal_? Describir cada uno de los componentes de la ecuación.
+
+::: {.callout-tip collapse="true" title="Solución"}
+$$
+y = \alpha \left( \sum \left(w_i x_i\right) - b \right)
+$$
+
+- $w$ es el peso del input $x_i$ (que puede ser o bien input de la red, o de
+    una neurona previa). Entendiéndolo con vectores: $W = (w_1, w_2, ..., w_i, ..., w_n)$,
+    $X = (x_1, x_2, ..., x_i, ..., x_n)$. Por tanto $\sum \left(w_i x_i\right)$
+    es el producto escalar $W \cdot X$. **Ojo**: esto con vectores de 1D. Se puede
+    generalizar a **tensores** y ya no sería un producto escalar (sino una 
+    **contracción tensorial**, término que no hay que aprender para la asignatura)
+- $b$ es el _sesgo_ o _bias_.
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+**TODO** ¿Qué pasaría si usásemos las neuronas/capas lineales sin utilizar funciones
+de activación? ¿Qué limitaciones tendría (o no) en su aprendizaje?
+
+::: {.callout-tip collapse="true" title="Solución"}
+El modelo final (la composición de todas las neuronas) sería también lineal.
+
+> Más concretamente **equivaldría a una única transformación afín** (ya que incluye
+> el _bias_), siendo equivalente a una sola capa lineal. (OpenAI, 2026)
+
+**TODO**: qué limitaciones tendría o no en su aprendizaje. (En principio: solo
+podría ajustar rectas, planos o hiperplanos).
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+
+¿Cuál es la ecuación de la _tangente hiperbólica_? ¿Es derivable en todo su dominio?
+¿Cuál es su dominio? ¿Y su imagen?
+
+::: {.callout-tip collapse="true" title="Solución"}
+$$
+\tanh (x) = \cfrac{\text e^x - \text e^{-x}}{\text e^x + \text e^{-x}}
+$$
+
+Es derivable en todo su dominio.
+
+Su dominio es $\mathbb R$.
+
+Su imagen es $(-1, 1)$. Esto es fácil de ver calculando los límites cuando 
+$x$ tiende a $\infty$ y a $-\infty$.
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+
+¿Cuál es la ecuación de la _sigmoide_? ¿Es derivable en todo su dominio?
+¿Cuál es su dominio? ¿Y su imagen?
+
+::: {.callout-tip collapse="true" title="Solución"}
+$$
+\text{sigmoid}(x) = \cfrac{1}{1 + e^{-x}}
+
+<https://docs.pytorch.org/docs/2.13/generated/torch.nn.Sigmoid.html>
+$$
+:::
+
+:::
+
+# Preguntas más complejas
+
+::: {.callout-note icon="false" appearance="simple"}
+
+¿Cómo define PyTorch `nn.Linear` (clase)? (Matemáticamente, su neurona lineal, sin incluir
+la función de activación).
+
+**Esto no hay que saberlo**, pero es para entender que hay una generalización 
+algo más complicada hacia los tensores.
+
+::: {.callout-tip collapse="true" title="Solución"}
+Es una _transformación lineal afín_ de los datos de entrada:
+$$
+y = xA^T + b
+$$
+- Esta $y$ no incluye "haber pasado por la función de activación".
+
+
+<https://docs.pytorch.org/docs/2.13/generated/torch.nn.Linear.html>
+:::
+
+:::
+
+---
+
+Posibles más preguntas:
+- Para qué viene bien o mal la tangente hiperbólica.
+- Para qué viene bien o mal la sigmoide.
+
+
+# Referencias
+- [On the importance of initialization and momentum in deep learning](https://www.cs.toronto.edu/%7Ehinton/absps/momentum.pdf)

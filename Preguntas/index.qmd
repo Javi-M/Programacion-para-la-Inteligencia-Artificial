@@ -2,5 +2,9 @@
 title: "Preguntas"
 ---
 
+Preguntas basadas en: _García-González, J. (2025). Programación para la Inteligencia Artificial. Universidad de Málaga._
+
 - [Preguntas 1](preguntas_1.qmd)
 - [Preguntas 2](preguntas_2.qmd)
+- [Preguntas 3](preguntas_3.qmd)
+- [Preguntas 4](preguntas_4.qmd)
