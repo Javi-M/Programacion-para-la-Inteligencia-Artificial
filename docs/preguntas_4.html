@@ -23,7 +23,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -44,9 +63,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-3916fdaf1920375591a8c8a0be317f3d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-6210a56947ab1778f7f428e168eaa062.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-3916fdaf1920375591a8c8a0be317f3d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-aa7b77f6338eb62bb042d2cf3af17466.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-cabb653b346451b9a3763b7dc63b9880.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-aa7b77f6338eb62bb042d2cf3af17466.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -250,7 +269,8 @@ window.Quarto = {
       }
     };
     const authorPrefersDark = false;
-    const darkModeDefault = authorPrefersDark;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
       document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
       document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
     let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
@@ -263,6 +283,14 @@ window.Quarto = {
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
       window.dispatchEvent(new Event('resize'));
     };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
     // Switch to dark mode if need be
     if (hasAlternateSentinel()) {
       toggleColorMode(true);
@@ -594,7 +622,66 @@ y = xA^T + b
 </div>
 </div>
 <hr>
-<p>Posibles preguntas: - Para qué viene bien o mal la tangente hiperbólica. - Para qué viene bien o mal la sigmoide.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>¿Qué se conoce como <em>rango sensible</em> de una función?</p>
+<p>(De nuestro interés: función de activación).</p>
+<!--En principio dejar sin solución
+::: {.callout-tip collapse="true" title="Solución"}
+:::
+-->
+</div>
+</div>
+</div>
+<hr>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>¿Qué es el <em>Problema de Desvanecimiento de Gradiente</em> (Vanishing Gradient Problem)?</p>
+<!--En principio dejar sin solución
+::: {.callout-tip collapse="true" title="Solución"}
+:::
+-->
+</div>
+</div>
+</div>
+<hr>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>¿Para qué sirve el método <code>torch.Tensor.detach()</code>?</p>
+<p>Por ejemplo tenemos un tensor <code>t</code> y se llama con <code>... = t.detach()</code></p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>“Tensor.detach() method in PyTorch is used to separate a tensor from the computational graph by returning a new tensor that doesn’t require a gradient.” <span class="citation" data-cites="geeksforgeeks_tensor_detach">(<a href="#ref-geeksforgeeks_tensor_detach" role="doc-biblioref">GeeksforGeeks 2025</a>)</span></p>
+<p><a href="https://docs.pytorch.org/docs/2.13/generated/torch.Tensor.detach.html" class="uri">https://docs.pytorch.org/docs/2.13/generated/torch.Tensor.detach.html</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Otras posibles preguntas: - Para qué viene bien o mal la tangente hiperbólica. - Para qué viene bien o mal la sigmoide. - <em>Así con cada función de activación. Esto es más avanzado.</em></p>
 </section>
 <section id="algunos-aspectos-clave" class="level1">
 <h1>Algunos aspectos clave</h1>
@@ -610,9 +697,14 @@ y = xA^T + b
 </ul>
 
 
+
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-geeksforgeeks_tensor_detach" class="csl-entry" role="listitem">
+GeeksforGeeks. 2025. <span>“Tensor.detach() Method in Python - PyTorch.”</span> <a href="https://www.geeksforgeeks.org/python/tensor-detach-method-in-python-pytorch/">https://www.geeksforgeeks.org/python/tensor-detach-method-in-python-pytorch/</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right

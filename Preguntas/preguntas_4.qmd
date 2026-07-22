@@ -174,11 +174,51 @@ $$
 
 ---
 
+::: {.callout-note icon="false" appearance="simple"}
+¿Qué se conoce como _rango sensible_ de una función?
 
-Posibles preguntas:
+(De nuestro interés: función de activación).
+
+<!--En principio dejar sin solución
+::: {.callout-tip collapse="true" title="Solución"}
+:::
+-->
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+¿Qué es el _Problema de Desvanecimiento de Gradiente_ (Vanishing Gradient 
+Problem)?
+
+<!--En principio dejar sin solución
+::: {.callout-tip collapse="true" title="Solución"}
+:::
+-->
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+¿Para qué sirve el método `torch.Tensor.detach()`?
+
+Por ejemplo tenemos un tensor `t` y se llama con `... = t.detach()`
+
+::: {.callout-tip collapse="true" title="Solución"}
+"Tensor.detach() method in PyTorch is used to separate a tensor from the computational graph by returning a new tensor that doesn't require a gradient."
+[@geeksforgeeks_tensor_detach]
+
+<https://docs.pytorch.org/docs/2.13/generated/torch.Tensor.detach.html>
+:::
+
+:::
+
+Otras posibles preguntas:
 - Para qué viene bien o mal la tangente hiperbólica.
 - Para qué viene bien o mal la sigmoide.
-
+- _Así con cada función de activación. Esto es más avanzado._
 
 # Algunos aspectos clave
 - Las dimensiones de entrada y salida: en cada neurona, función, etc.

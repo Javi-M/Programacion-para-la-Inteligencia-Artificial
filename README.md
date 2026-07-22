@@ -4,12 +4,13 @@ graph TD
   A-->B;
   B-->C;
 ```
+
 (Me ha gustado y lo usaré para algo).
 
 # Programación para la Inteligencia Artificial
 Este es un repositorio de apuntes para la asignatura homónima de Ingeniería Informática, de la Universidad de Málaga.
 
-Se basa en los apuntes originales (García-González, J. (2025). Programación para la Inteligencia Artificial. Universidad de Málaga.) y por tanto no es necesariamente autocontenido. Es más bien una especie de extensión: aclaro o profundizo en lo que me haya generado dudas en algún momento o me parezca por cualquier motivo que quiero desarrollar más.
+Se basa en los apuntes originales (García-González, J. (2025). Programación para la Inteligencia Artificial. Universidad de Málaga), y por tanto no es necesariamente autocontenido. Es más bien una especie de extensión: aclaro o profundizo en lo que me haya generado dudas en algún momento o me parezca por cualquier motivo que quiero desarrollar más.
 
 ## Cuestiones a responder
 Un aspecto muy importante para mí en estos apuntes es intentar sacar preguntas que

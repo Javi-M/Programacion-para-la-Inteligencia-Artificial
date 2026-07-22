@@ -63,9 +63,9 @@ div.csl-indent {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-3916fdaf1920375591a8c8a0be317f3d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-6210a56947ab1778f7f428e168eaa062.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-3916fdaf1920375591a8c8a0be317f3d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-aa7b77f6338eb62bb042d2cf3af17466.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-cabb653b346451b9a3763b7dc63b9880.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-aa7b77f6338eb62bb042d2cf3af17466.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -240,7 +240,8 @@ div.csl-indent {
       }
     };
     const authorPrefersDark = false;
-    const darkModeDefault = authorPrefersDark;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
       document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
       document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
     let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
@@ -253,6 +254,14 @@ div.csl-indent {
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
       window.dispatchEvent(new Event('resize'));
     };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
     // Switch to dark mode if need be
     if (hasAlternateSentinel()) {
       toggleColorMode(true);
@@ -326,8 +335,17 @@ bibliografia.html
 y tenerlo como página
 -->
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-chollet2025deeplearning" class="csl-entry" role="listitem">
+Chollet, François. 2025. <em>Deep Learning with Python</em>. 3rd ed. Manning Publications.
+</div>
 <div id="ref-Garcia2025PIA" class="csl-entry" role="listitem">
 García-González, J. 2025. <em>Programación Para La Inteligencia Artificial</em>. Universidad de Málaga.
+</div>
+<div id="ref-geeksforgeeks_tensor_detach" class="csl-entry" role="listitem">
+GeeksforGeeks. 2025. <span>“Tensor.detach() Method in Python - PyTorch.”</span> <a href="https://www.geeksforgeeks.org/python/tensor-detach-method-in-python-pytorch/">https://www.geeksforgeeks.org/python/tensor-detach-method-in-python-pytorch/</a>.
+</div>
+<div id="ref-pytorch_neural_networks_tutorial" class="csl-entry" role="listitem">
+PyTorch Contributors. 2025. <span>“Neural Networks.”</span> <a href="https://docs.pytorch.org/tutorials/beginner/blitz/neural_networks_tutorial.html">https://docs.pytorch.org/tutorials/beginner/blitz/neural_networks_tutorial.html</a>.
 </div>
 </div>
 

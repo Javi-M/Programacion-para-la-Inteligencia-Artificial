@@ -1,0 +1,143 @@
+Preguntas correspondientes al cuaderno: _Modelos Nueronales II_
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+
+¿Qué son las _redes neuronales prealimentadas_? (feedforward neural networks).
+
+::: {.callout-tip collapse="true" title="Solución"}
+Es un tipo de red neuronal en el que los cómputos van en una única dirección (hacia
+adelante, _forward_). Es acíclico. Sin retroalimentación ni bucles. Es el 
+más sencillo, y el que se usa en la asignatura.
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+
+¿Qué se conoce como _capa densa_ (de neuronas)?
+
+::: {.callout-tip collapse="true" title="Solución"}
+Una capa completamente conectada. Es decir, cada neurona de la capa está conectada
+a todas las neuronas de la capa previa.
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+
+**TODO** Sobre `torch.nn.Sequential()`
+
+::: {.callout-tip collapse="true" title="Solución"}
+
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+Se construye una red neuronal tal que (las dimensiones son irrelevantes): 
+
+```python
+model = torch.nn.Sequential(
+    torch.nn.Linear(...),
+    torch.nn.ReLU(...),
+    torch.nn.Linear(...)
+)
+```
+¿Por qué hay que añadir capas `torch.nn.Linear()` entremedias?
+Y al revés, ¿por qué hay que añadir las capas ReLU? (Repaso).
+
+::: {.callout-tip collapse="true" title="Solución"}
+En la capa `torch.nn.Linear()` es donde **residen los pesos**, es donde ocurre
+$y = \sum w_i x_i + b$. La capa ReLU no podría aprender porque no contiene pesos,
+solo aplica la función a la capa previa.
+
+Sin las capas ReLU, como se vio anteriormente, solo aprendería funciones lineales
+(rectas, planos, hiperplanos, etc.).
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+
+¿Cómo se puede ver el gradiente de la función de error? (Para, por ejemplo,
+ver si el modelo se ha estancado en una zona no sensible).
+
+<!--
+::: {.callout-tip collapse="true" title="Solución"}
+
+:::
+-->
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+
+¿Qué papeles juegan las funciones de activación?
+
+::: {.callout-tip collapse="true" title="Solución"}
+**A parte de lo que se especifica en los apuntes**:
+
+Con ellas se hacen transformaciones menos triviales que la lineal. Esto aumenta
+los espacios de hipótesis (_hypothesis space_)[@chollet2025deeplearning], es decir las posibles funciones que el modelo podría aprender. (Vamos, que puede aprender más cosas).
+:::
+
+:::
+
+---
+
+
+
+
+# Preguntas más complejas
+
+::: {.callout-note icon="false" appearance="simple"}
+
+Describir un procedimiento típico de entrenamient de la red.
+
+::: {.callout-tip collapse="true" title="Solución"}
+Un procedimiento típico de entrenamiento de una red neuronal es como sigue:
+
+- Definir la red neuronal, con parámetros a aprender (o pesos)
+- Iterar sobre un _dataset_ de _inputs_ (individuales o por lotes, _batches_)
+- Procesar el _input_ en la red 
+- Calcular la pérdida/error (_loss_)
+- Propagar el gradiente de vuelta hacia los parámetros de la red.
+- Actualizar los pesos de la red, típicamente usando una simple regla de
+    actualización de pesos: `weight = weight - learning_rate * gradient`
+[@pytorch_neural_networks_tutorial]
+
+Cabe decir que esto es un ejemplo básico, y podría complicarse o variar.
+
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+
+¿Por qué podríamos estar interesados en usar `t.unsqueeze()`? (`t` es un tensor).
+
+::: {.callout-tip collapse="true" title="Solución"}
+"If you have a single sample, just use input.unsqueeze(0) to add a fake batch dimension".
+[@pytorch_neural_networks_tutorial]
+
+`torch.nn` no puede tomar como inputs valores únicos (por ejemplo un `float`),
+el input mínimo **debe ser un tensor**.
+
+<https://docs.pytorch.org/docs/2.13/generated/torch.unsqueeze.html>
+:::
+
+:::

@@ -1,10 +1,10 @@
 project:
   type: website
   output-dir: ../docs
-
 format:
  html:
-   mainfont: "Century Schoolbook"
+  #  mainfont: "Century Schoolbook"
+   respect-user-color-scheme: true
 
 website:
   title: "Preguntas"
@@ -18,3 +18,5 @@ website:
 theme:
   light: flatly
   dark: darkly
+
+bibliography: bibliografia.bib

@@ -16,7 +16,8 @@ Preguntas correspondientes al cuaderno: _Aprendizaje en PyTorch I_
 ¿Qué significa _aprender_ en el contexto de las redes neuronales?
 
 ::: {.callout-tip collapse="true" title="Solución"}
-Ajustar los parámetros del modelo para minimizar el error.
+Ajustar los parámetros del modelo para minimizar el error. En nuestro caso, los
+pesos y los sesgos.
 :::
 
 :::
@@ -24,7 +25,7 @@ Ajustar los parámetros del modelo para minimizar el error.
 ---
 
 ::: {.callout-note icon="false" appearance="simple"}
-¿Cómo añadir ruido gaussiano a un conjunto de datos?
+¿Cómo añadir ruido gaussiano a un conjunto de datos? (PyTorch)
 
 ::: {.callout-tip collapse="true" title="Solución"}
 Se puede usar la función `torch.randn()` o la función `torch.normal()`, dependiendo

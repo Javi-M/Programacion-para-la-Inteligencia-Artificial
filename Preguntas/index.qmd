@@ -2,10 +2,12 @@
 title: "Preguntas"
 ---
 
-Preguntas basadas en: _García-González, J. (2025). Programación para la Inteligencia Artificial. Universidad de Málaga._
+Preguntas basadas en los apuntes de la asignatura [@Garcia2025PIA].
+
 
 - [Glosario](../GLOSSARY.md)
 - [Preguntas 1 - Manipulación de Datos en PyTorch](preguntas_1.qmd)
 - [Preguntas 2 - Aprendizaje en PyTorch I](preguntas_2.qmd)
 - [Preguntas 3 - Aprendizaje en PyTorch II](preguntas_3.qmd)
-- [Preguntas 4 - Modelos Nueronales I](preguntas_4.qmd)
+- [Preguntas 4 - Modelos Neuronales I](preguntas_4.qmd)
+- [Preguntas 5 - Modelos Neuronales II](preguntas_5.qmd)
