@@ -575,7 +575,35 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>Otro apunte interesante: &gt; If you have a single sample, just use input.unsqueeze(0) to add a fake batch dimension. &gt; <span class="citation" data-cites="pytorch_neural_networks_tutorial">(<a href="#ref-pytorch_neural_networks_tutorial" role="doc-biblioref">PyTorch Contributors 2025</a>)</span></p>
+<hr>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>¿Por qué podríamos estar interesados en usar <code>t.unsqueeze()</code>? (<code>t</code> es un tensor).</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>“If you have a single sample, just use input.unsqueeze(0) to add a fake batch dimension”. <span class="citation" data-cites="pytorch_neural_networks_tutorial">(<a href="#ref-pytorch_neural_networks_tutorial" role="doc-biblioref">PyTorch Contributors 2025</a>)</span></p>
+<p><code>torch.nn</code> no puede tomar como inputs valores únicos (por ejemplo un <code>float</code>), el input mínimo <strong>debe ser un tensor</strong>.</p>
+<p><a href="https://docs.pytorch.org/docs/2.13/generated/torch.unsqueeze.html" class="uri">https://docs.pytorch.org/docs/2.13/generated/torch.unsqueeze.html</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 
 
