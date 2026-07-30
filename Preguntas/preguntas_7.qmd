@@ -1,0 +1,50 @@
+Preguntas correspondientes al cuaderno: _Modelos Neuronales III_
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+
+> Esta cuestión es algo rara. No me fiaría mucho de la respuesta que he puesto,
+> de momento es lo que parece ser que ocurre.
+
+**TODO**: Al utilizar un `Dataset` de PyTorch, en la función `__getitem__`:
+
+- ¿Tiene que devolver valores `Y`?
+- ¿Los valores `X`, `Y` que devuelve tienen que ser tensores? (`... return X, Y`)
+
+::: {.callout-tip collapse="true" title="Solución"}
+No tiene por qué devolver valores `Y`. Por ejemplo en aprendizaje no supervisado.
+
+Nosotros por comodidad, de forma frecuente hacemos que sean tensores.
+
+Aunque la clase implementada pueda trabajar sin devolver tensores, el modelo sí
+necesitará que las entradas sean tensores. Es conveniente que lo que devuelva sean
+tensores.
+
+El DataLoader intentará convertirlo a tensores, pero posiblemente con un comportamiento
+inesperado (para el usuario). Así que sería mejor que ya sean tensores.
+
+<https://docs.pytorch.org/tutorials/beginner/basics/data_tutorial.html>
+<https://docs.pytorch.org/tutorials/beginner/data_loading_tutorial.html>
+
+:::
+
+:::
+
+---
+
+
+
+# Preguntas más complejas
+
+::: {.callout-note icon="false" appearance="simple"}
+**TODO**: 
+¿Qué pasa si durante el entrenamiento (haciendo los cálculos _forward_ y _backward_
+del modelo) se encuentra con valores nulos?
+
+::: {.callout-tip collapse="true" title="Solución"}
+Tampoco lo sé bien. Por investigar. (Petar, peta).
+
+:::
+
+:::

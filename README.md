@@ -1,16 +1,10 @@
-Dejo esto en sucio para acordarme de usarlo luego:
-```mermaid
-graph TD
-  A-->B;
-  B-->C;
-```
-
-(Me ha gustado y lo usaré para algo).
-
 # Programación para la Inteligencia Artificial
 Este es un repositorio de apuntes para la asignatura homónima de Ingeniería Informática, de la Universidad de Málaga.
 
 Se basa en los apuntes originales (García-González, J. (2025). Programación para la Inteligencia Artificial. Universidad de Málaga), y por tanto no es necesariamente autocontenido. Es más bien una especie de extensión: aclaro o profundizo en lo que me haya generado dudas en algún momento o me parezca por cualquier motivo que quiero desarrollar más.
+
+También habrá codigo muy parecido al de la asignatura, obviamente también de los apuntes,
+aunque no esté todo el rato citando...
 
 ## Cuestiones a responder
 Un aspecto muy importante para mí en estos apuntes es intentar sacar preguntas que
@@ -18,7 +12,7 @@ hay que saber responder. Puedes usarlas para reflexionar e intentar responderlas
 Es una forma de estudiar que he encontrado bastante eficiente personalmente.
 Las preguntas son tanto teóricas como de código. 
 
-Formato web: https://javi-m.github.io/Programacion-para-la-Inteligencia-Artificial/
+🌐🦄🌐 [Lista de preguntas en formato web](https://javi-m.github.io/Programacion-para-la-Inteligencia-Artificial/) 🌐🦄🌐
 
 Las pregunta las gestiono con Quarto (archivos `.qmnd`) para escribirlas en 
 Markdown y luego reenderizarlo. Algunas tienen solución, y otras no. 

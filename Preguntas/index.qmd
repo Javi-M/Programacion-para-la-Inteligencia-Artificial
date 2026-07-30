@@ -4,10 +4,11 @@ title: "Preguntas"
 
 Preguntas basadas en los apuntes de la asignatura [@Garcia2025PIA].
 
-
 - [Glosario](../GLOSSARY.md)
 - [Preguntas 1 - Manipulación de Datos en PyTorch](preguntas_1.qmd)
 - [Preguntas 2 - Aprendizaje en PyTorch I](preguntas_2.qmd)
 - [Preguntas 3 - Aprendizaje en PyTorch II](preguntas_3.qmd)
 - [Preguntas 4 - Modelos Neuronales I](preguntas_4.qmd)
 - [Preguntas 5 - Modelos Neuronales II](preguntas_5.qmd)
+- [Preguntas 6 - Manipulación de Datos en PyTorch II](preguntas_6.qmd)
+- [Preguntas 7 - Modelos Neuronales III](preguntas_7.qmd)
