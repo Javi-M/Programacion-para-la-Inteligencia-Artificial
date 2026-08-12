@@ -1,0 +1,193 @@
+Preguntas correspondientes al cuaderno: _Modelos Neuronales IV_
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+Si queremos definir nuestro propio modelo (clase) en PyTorch,
+
+- ¿de qué clase hereda?
+- ¿qué funciones hay que incluir siempre?
+
+::: {.callout-tip collapse="true" title="Solución"}
+Hereda de `torch.nn.Module`.
+
+"Base class for all neural network modules. Your models should also subclass this class".[...] (al definir la clase) "an `__init__()` call to the parent class must be made 
+before assignment on the child". [@pytorch_nn_module]
+
+Hay que incluir:
+
+- `__init__()`, obviamente (el constructor)
+- `forward()`. "Should be overidden by all subclasses"[@pytorch_nn_module]
+
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+**TODO** Sobre el método `forward()`: las operaciones tienen que ser derivables.
+
+::: {.callout-tip collapse="true" title="Solución"}
+
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+Definida nuestra clase que hereda de `torch.nn.Module`, **¿cómo definimos los parámetros
+optimzables?**
+
+::: {.callout-tip collapse="true" title="Solución"}
+Mediante la clase `Parameter`, del módulo `torch.nn.parameter` (`class torch.nn.parameter.Parameter(data=None, requires_grad=True)`).
+
+Con esta clase se define un tipo de tensor considerado parámetro del **módulo**.
+
+Si nos vamos a su implementación:
+
+```python
+# Metaclass to combine _TensorMeta and the instance check override for Parameter.
+class _ParameterMeta(torch._C._TensorMeta):
+    ... # Define cosas
+
+class Parameter(torch.Tensor, metaclass=_ParameterMeta):`
+    ... # Define cosas
+```
+
+Se aprecia que `Parameter` hereda de `torch.Tensor`, y como metaclase hereda de `torch._C._TensorMeta`.
+
+(Lo que sigue es un añadido no imprescindible para la asignatura).
+
+Las metaclases son una parte de metaprogramación en Python. 
+"Class metaprogramming is the art of creating or customizing classes at runtime [...] 
+Metaclasses are powerful, but hard to justify and even harder to get right".[@Ramalho2022FluentPython].
+
+Por ejemplo la clase `type` es una _metaclase_: una clase para construir clases (en runtime). Es una factoría de clases. <b style="color: yellow; background: black">
+Más que probablemente no necesites usar metaclases</b>.
+
+<https://docs.pytorch.org/docs/2.13/generated/torch.nn.parameter.Parameter.html>
+
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+**TODO**: Sobre los parámetros del método forward: ¿los tensores a optimizar tienen
+que ser `Parameter()`? ¿Por qué?
+
+::: {.callout-tip collapse="true" title="Solución"}
+
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+**TODO** 
+¿Por qué nos puede interesar el uso de `torch.nn.ModuleList()` y `torch.nn.ModuleDict()`?
+
+::: {.callout-tip collapse="true" title="Solución"}
+
+:::
+
+:::
+
+---
+::: {.callout-note icon="false" appearance="simple"}
+
+::: {.callout-tip collapse="true" title="Solución"}
+
+:::
+
+:::
+
+---
+
+---
+
+# Preguntas más complejas
+
+::: {.callout-note icon="false" appearance="simple"}
+
+¿Qué línea falla y por qué? (En qué línea "salta el error", y cuáles son la causa).
+
+```{.python code-line-numbers="true"}
+import os
+import torch
+import torch.nn as nn
+from torch.nn.parameter import Parameter
+
+class DummyModel1(torch.nn.Module):
+  def __init__(self):
+    super().__init__()
+    self.m = torch.tensor(1.0)
+    self.b = torch.tensor(1.0)
+
+  def forward(self, x):
+    return self.m * x + self.b
+
+dummy_model_1 = DummyModel1()
+y = dummy_model_1(10)
+se_loss = (y - 15) ** 2
+se_loss.backward()
+```
+
+::: {.callout-tip collapse="true" title="Solución"}
+Falla la última línea, `se_loss.backward()`, puesto que los parámetros definidos son tensores sin gradiente.
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+¿Cuál es la diferencia entre estos dos códigos? Es decir cuál es la diferencia
+entre usar `Parameter` o `requires_grad`, ¿acaso no sirven los dos para que se pueda
+diferenciar el tensor? (Y hacer un `backward()`)
+
+```{.python code-line-numbers="true"}
+import os
+import torch
+import torch.nn as nn
+from torch.nn.parameter import Parameter
+
+class DummyModel1(torch.nn.Module):
+  def __init__(self):
+    super().__init__()
+    self.m = Parameter(torch.tensor(1.0))
+    self.b = Parameter(torch.tensor(1.0))
+
+  def forward(self, x):
+    return self.m * x + self.b
+```
+
+```{.python code-line-numbers="true"}
+import os
+import torch
+import torch.nn as nn
+from torch.nn.parameter import Parameter
+
+class DummyModel1(torch.nn.Module):
+  def __init__(self):
+    super().__init__()
+    self.m = torch.tensor(1.0, requires_grad = True)
+    self.b = torch.tensor(1.0, requires_grad = True)
+
+  def forward(self, x):
+    return self.m * x + self.b
+```
+
+::: {.callout-tip collapse="true" title="Solución"}
+Al instanciar un tensor con `Parameter`, obviamente será un parámetro del módulo.
+Esto significa que a parte de poder calcular el gradiente, también aparecerá en 
+la lista de parámetros, y los optimizadores de PyTorch encontrarán esos tensores.
+
+Los tensores definidos en el segundo ejemplo no los encontrará un optimizador de PyTorch.
+:::
+
+:::

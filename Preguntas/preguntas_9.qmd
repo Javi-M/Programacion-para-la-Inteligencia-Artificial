@@ -1,0 +1,82 @@
+Preguntas correspondientes al cuaderno: _Clasificación I_
+
+# Entropía Binaria Cruzada, BCE
+
+::: {.callout-note icon="false" appearance="simple"}
+¿Cuál es la expresión matemática de la Entropía Binaria Cruzada, Binary Cross-Entropy (BCE)?
+
+::: {.callout-tip collapse="true" title="Solución"}
+En los apuntes utilizamos:
+
+$$
+\text{BCE} (y_\text{pred}, y_\text{true}) = - (y_\text{true}\log(y_\text{pred}) + (1 - y_\text{true}) \log(1-y_\text{pred}))
+$$
+
+En PyTorch se utiliza la expresión:
+$$
+\ell_n (x,y) = - w_n [y_n \cdot \log x_n + (1 - y_n)\cdot \log(1 - x_n)]
+$$
+
+- (donde $x_n = y_\text{pred}$, y $y_n = y_\text{true}$)
+
+Teniendo en cuenta que su uso en código es algo así:
+
+```python
+loss = nn.BCELoss()
+output = loss(m(input), target)
+```
+
+<https://docs.pytorch.org/docs/2.13/generated/torch.nn.BCELoss.html>
+
+:::
+
+:::
+
+---
+
+**Nota**: En PyTorch, se añade el uso implícito de un `batch` en la BCE, además de utilizar una función `reduction` (o bien `mean` o bien `sum`), para "poner en común" los valores calculados.
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+**TODO** ¿Qué ocurre con la BCE cuando $y_\text{true} = 1$? ¿Y cuando $y_\text{true} = 0$?
+
+::: {.callout-tip collapse="true" title="Solución"}
+
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+**TODO** ... Sobre interpretar $y_\text{pred}$ como la probabilidad que asigna el modelo de que pertenezca a la clase positiva...
+
+::: {.callout-tip collapse="true" title="Solución"}
+
+:::
+
+:::
+
+---
+
+# Preguntas más complejas
+
+::: {.callout-note icon="false" appearance="simple"}
+**TODO**
+¿Cuál es la diferencia entre la ecuación BCE de los apuntes?: 
+$$
+\text{BCE} (y_\text{pred}, y_\text{true}) = - (y_\text{true}\log(y_\text{pred}) + (1 - y_\text{true}) \log(1-y_\text{pred}))
+$$
+
+¿Y la utilizada en PyTorch?:
+$$
+\ell_n (x,y) = - w_n [y_n \cdot \log x_n + (1 - y_n)\cdot \log(1 - x_n)]
+$$
+
+::: {.callout-tip collapse="true" title="Solución"}
+La expresión de los apuntes es **para un único ejemplo**.
+
+:::
+
+:::

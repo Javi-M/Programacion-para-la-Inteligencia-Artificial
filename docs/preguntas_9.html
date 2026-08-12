@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>preguntas_6 – Preguntas</title>
+<title>preguntas_9 – Preguntas</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -110,6 +110,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -329,43 +358,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p>Preguntas correspondientes al cuaderno: <em>Manipulación de Datos en PyTorch II</em></p>
-<hr>
-<p>TODO:</p>
-<ul>
-<li><p>Sobre generators y <code>yield()</code> en Python</p></li>
-<li><p>¿Por qué queremos usar la clase <code>Datasets</code> de PyTorch?</p></li>
-<li><p>Sobre <code>Dataset</code> y <code>DataLoader</code></p></li>
-<li><p>¿Cuál es la diferencia entre <code>Dataset</code> y <code>DataLoader</code>? ¿Por qué no simplemente usamos <code>dataset[idx]</code> para obtener datos?</p></li>
-<li><p><code>torch.clamp()</code></p></li>
-<li><p>¿Qué 3 métodos tiene que tener implementado <code>Dataset</code>, y por qué?</p></li>
-<li><p>¿Para qué sirve <code>Optimiezer.zero_grad()</code>?</p></li>
-<li><p>¿Para qué sirve <code>Optimizer.step()</code>?</p></li>
-</ul>
-<hr>
-<section id="preguntas-más-complejas" class="level1">
-<h1>Preguntas más complejas</h1>
-<p>O más complejas, o bien que se me han ocurrido y no tienen mucha relación con los apuntes (sino con experimentos o situaciones varias en las que me he visto).</p>
+<p>Preguntas correspondientes al cuaderno: <em>Clasificación I</em></p>
+<section id="entropía-binaria-cruzada-bce" class="level1">
+<h1>Entropía Binaria Cruzada, BCE</h1>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>¿Por qué este fragmento de código falla?:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>model_1 <span class="op">=</span> torch.nn.Sequential(</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    torch.nn.Linear(<span class="dv">13</span>, <span class="dv">13</span>),</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    torch.nn.ReLU(<span class="dv">13</span>, <span class="dv">13</span>),</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    torch.nn.Linear(<span class="dv">13</span>, <span class="dv">1</span>),</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    torch.nn.Sigmoid(<span class="dv">1</span>, <span class="dv">1</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>¿Y por qué este otro no?:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>model_1 <span class="op">=</span> torch.nn.Sequential(</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    torch.nn.Linear(<span class="dv">13</span>, <span class="dv">13</span>),</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    torch.nn.ReLU(),</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    torch.nn.Linear(<span class="dv">13</span>, <span class="dv">1</span>),</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    torch.nn.Sigmoid()</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>¿Cuál es la expresión matemática de la Entropía Binaria Cruzada, Binary Cross-Entropy (BCE)?</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solución">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -378,11 +380,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Si consultamos la documentación vemos:</p>
-<p><code>class torch.nn.Linear(in_features, out_features, bias=True, device=None, dtype=None)</code></p>
-<p>que la clase <code>Linear</code> necesita, como se está usando bien, mínimo 2 argumentos <code>in_features</code> y <code>out_features</code> (ambos enteros, no sé qué tiene de malo poner los tipos que a nadie les gusta mencionarlos).</p>
-<p>Pero <code>ReLU()</code> y <code>Sigmoid()</code> recibirían si acaso un argumento <code>class torch.nn.ReLU(inplace=False)</code> que no tiene que ver con el número de valores de entrada y de salida.</p>
-<p><strong>Y es que la función de activación tiene la misma dimensionalidad de entrada y salida</strong>, no hace falta especificar nada.</p>
+<p>En los apuntes utilizamos:</p>
+<p><span class="math display">\[
+\text{BCE} (y_\text{pred}, y_\text{true}) = - (y_\text{true}\log(y_\text{pred}) + (1 - y_\text{true}) \log(1-y_\text{pred}))
+\]</span></p>
+<p>En PyTorch se utiliza la expresión: <span class="math display">\[
+\ell_n (x,y) = - w_n [y_n \cdot \log x_n + (1 - y_n)\cdot \log(1 - x_n)]
+\]</span></p>
+<ul>
+<li>(donde <span class="math inline">\(x_n = y_\text{pred}\)</span>, y <span class="math inline">\(y_n = y_\text{true}\)</span>)</li>
+</ul>
+<p>Teniendo en cuenta que su uso en código es algo así:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>loss <span class="op">=</span> nn.BCELoss()</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>output <span class="op">=</span> loss(m(<span class="bu">input</span>), target)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><a href="https://docs.pytorch.org/docs/2.13/generated/torch.nn.BCELoss.html" class="uri">https://docs.pytorch.org/docs/2.13/generated/torch.nn.BCELoss.html</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<p><strong>Nota</strong>: En PyTorch, se añade el uso implícito de un <code>batch</code> en la BCE, además de utilizar una función <code>reduction</code> (o bien <code>mean</code> o bien <code>sum</code>), para “poner en común” los valores calculados.</p>
+<hr>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>TODO</strong> ¿Qué ocurre con la BCE cuando <span class="math inline">\(y_\text{true} = 1\)</span>? ¿Y cuando <span class="math inline">\(y_\text{true} = 0\)</span>?</p>
+<div class="callout callout-style-default callout-tip callout-empty-content callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+
 </div>
 </div>
 </div>
@@ -396,15 +436,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>¿Cuántas capas ocultas tiene este modelo?</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>model_1 <span class="op">=</span> torch.nn.Sequential(</span>
-<span id="cb3-2"><a href="#cb3-2"></a>    torch.nn.Linear(<span class="dv">13</span>, <span class="dv">13</span>),</span>
-<span id="cb3-3"><a href="#cb3-3"></a>    torch.nn.ReLU(),</span>
-<span id="cb3-4"><a href="#cb3-4"></a>    torch.nn.Linear(<span class="dv">13</span>, <span class="dv">1</span>),</span>
-<span id="cb3-5"><a href="#cb3-5"></a>    torch.nn.Sigmoid()</span>
-<span id="cb3-6"><a href="#cb3-6"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<p><strong>TODO</strong> … Sobre interpretar <span class="math inline">\(y_\text{pred}\)</span> como la probabilidad que asigna el modelo de que pertenezca a la clase positiva…</p>
+<div class="callout callout-style-default callout-tip callout-empty-content callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -413,15 +447,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Tiene una única capa oculta. Y es que dos líneas de código: <code>...Linear</code> y <code>...ReLu</code> (líneas 2 y 3) hacen una capa: la parte de la transformación afín y la función de activación.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="imagenes/Perceptron-Spaceship.png" class="img-fluid figure-img"></p>
-<figcaption>Modelo usado en Experimentos/Spaceship Titanic/spaceship_1.ipynb</figcaption>
-</figure>
+
 </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="preguntas-más-complejas" class="level1">
+<h1>Preguntas más complejas</h1>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>TODO</strong> ¿Cuál es la diferencia entre la ecuación BCE de los apuntes?: <span class="math display">\[
+\text{BCE} (y_\text{pred}, y_\text{true}) = - (y_\text{true}\log(y_\text{pred}) + (1 - y_\text{true}) \log(1-y_\text{pred}))
+\]</span></p>
+<p>¿Y la utilizada en PyTorch?: <span class="math display">\[
+\ell_n (x,y) = - w_n [y_n \cdot \log x_n + (1 - y_n)\cdot \log(1 - x_n)]
+\]</span></p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>La expresión de los apuntes es <strong>para un único ejemplo</strong>.</p>
 </div>
 </div>
 </div>

@@ -1,6 +1,6 @@
 Preguntas correspondientes al cuaderno: _Aprendizaje en PyTorch II_
 
-<!-- Para copiar y pegar para hacer preguntas:
+<!-- COPIAR Y PEGAR PARA CREAR PREGUNTAS
 ::: {.callout-note icon="false" appearance="simple"}
 
 ::: {.callout-tip collapse="true" title="Solución"}

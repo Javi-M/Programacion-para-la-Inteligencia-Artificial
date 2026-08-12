@@ -12,3 +12,6 @@ Preguntas basadas en los apuntes de la asignatura [@Garcia2025PIA].
 - [Preguntas 5 - Modelos Neuronales II](preguntas_5.qmd)
 - [Preguntas 6 - Manipulación de Datos en PyTorch II](preguntas_6.qmd)
 - [Preguntas 7 - Modelos Neuronales III](preguntas_7.qmd)
+- [Preguntas 8 - Modelos Neuronales IV](preguntas_8.qmd)
+- [Preguntas 9 - Clasificación I](preguntas_9.qmd)
+- [Preguntas 10 - Clasificación II](preguntas_10.qmd)
