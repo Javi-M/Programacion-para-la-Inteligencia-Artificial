@@ -1,15 +1,181 @@
 Preguntas correspondientes al cuaderno: _Clasificación I_
 
+<!--
+::: {.callout-note icon="false" appearance="simple"}
+
+::: {.callout-tip collapse="true" title="Solución"}
+
+:::
+
+:::
+-->
+
+--- 
+
+::: {.callout-note icon="false" appearance="simple"}
+¿Qué dos tipos de problemas de clasificación hay? ¿Por qué esa distinción?
+
+::: {.callout-tip collapse="true" title="Solución"}
+De clasificación binarios y multiclase.
+
+La relevancia de la distinción viene de que los problemas binarios se tratan de forma bastante distinguible a los multiclase. Y los multiclase, entre sí, de forma relativamente parecida.
+
+Por ejemplo, en los multiclase la función de activación de la capa de salida será considerablemente diferente (normalmente una _softmax_). 
+
+En un problema de clasificación binario, basta con dar una salida $\in [0, 1]$ representando "cuánto pertenece" a la clase positiva. En un multiclase sin embargo, si las salidas representan probabilidad de pretenencia a cada clase, hay que asegurarse que la suma sea 1.
+
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+(Repaso) ¿Para qué queremos dividir los datos en: entrenamiento, validación y test?
+¿Para qué se utiliza cada conjunto?
+
+<!-- Esto es para recordar
+::: {.callout-tip collapse="true" title="Solución"}
+
+:::
+-->
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+Si el modelo devuelve un valor $\in [0, 1]$ y las clases solo pueden ser $\{0,1\}$...
+¿por qué no hay ningún problema? ¿Por qué no falla?
+
+::: {.callout-tip collapse="true" title="Solución"}
+Porque establecemos un criterio, por ejemplo un umbral: $0.5$, de forma que si
+$M(X) > 0.5$ entonces le asignamos la clase positiva (1).
+
+**Recordatorio:** $M(X)$ es la predicción del modelo (_forward_) sobre el tensor de entrada $X$.
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+¿Qué métricas se utilizan para evaluar un modelo de clasificación binaria?
+
+::: {.callout-tip collapse="true" title="Solución"}
+
+- $Accuracy = \cfrac{TP + TN}{TP + TN + FP + FN}$
+- $Recall = \cfrac{TP}{TP + FN}$
+- $Precision = \cfrac{TP}{TP + FP}$
+
+donde:
+
+- $TP$ - _True Positives_
+- $TN$ - _True Negatives_
+- $FP$ - _False Positives_
+- $FN$ - _False Negatives_
+
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+¿Qué representa, o cómo se puede interpretar cada métrica...?
+
+- _Accuracy_
+- _Recall_
+- _Precision_
+
+(Se puede deducir viendo las fórmulas).
+
+::: {.callout-tip collapse="true" title="Solución"}
+_Accuracy_: representa la probabilidad de que el modelo dé la etiqueta correcta. Es decir $P(\hat Y = Y)$. O bien: $P(M(X) = Y)$.
+
+_Recall_: representa la probabilidad de que el modelo la clasifique como positiva si la clase es positiva. $P(M(X) = 1 | Y = 1)$. Por ejemplo: si _recall_ = 0.8, y la clase verdadera es positiva, la probabilidad de que el modelo le asigne la clase positiva es 0.8.
+
+_Precision_: representa la probabilidad de que la clase verdadera sea positiva si el modelo dice que es positiva: $P(Y = 1 | M(X) = 1)$. Por ejemplo: si _precision_ = 0.6, y el modelo dice que la clase es positiva, la "probabilidad" de que sea verdaderamente positiva es 0.6.
+
+Si el _accuracy_ fuera alto pero _precision_ bajo, nos fiaríamos menos cada vez que el modelo diga que la etiqueta es positiva.
+
+**Nota**: estoy llamando "probabilidad" a la proporción observada, que no son realmente lo mismo. Es una forma de entenderlo, pero lo más correcto es hablar de la frecuencia relativa (la proporción) sobre los datos, no de **probabilidad**. (Para eso habría que incluir y asumir la Ley de los Grandes Números...)
+
+**Nota**: $M(X) = \hat Y$.
+
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+Las métricas _accuracy_, _recall_, _precision_, ¿pueden utilizarse como función de error para entrenar el modelo? ¿Por qué?
+
+::: {.callout-tip collapse="true" title="Solución"}
+No se utilzan. No tiene sentido considerar ninguna de ellas para un único ejemplo.[@Garcia2025PIA]
+
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+¿Qué requisitos debe cumplir la función de activación para un modelo de clasificación binaria? ¿Qué opciones hay?
+
+::: {.callout-tip collapse="true" title="Solución"}
+La salida debe estar entre 0 y 1. O bien se podría usar otra función y reescalarlo a 0 y 1.
+
+Se podría incluso escoger una función $f$ tal que $\text{Im}(f) = [a, b]$ y reescalar de forma que $a$ corresponda al $0$ y $b$ al $1$. O incluso usar _clamp_ para limitar la salida a 0 y 1, junto a un reescalado.
+
+**Desconozco como de buena o mala se considera cada práctica en la asignatura**. 
+
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+**TODO** ¿Qué se representa en una **matriz de confusión**?
+
+<!--
+::: {.callout-tip collapse="true" title="Solución"}
+
+:::
+-->
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+Tenemos un modelo de clasificación binaria con un _accuracy_ del 95%, y sin embargo la función de error no lo refleja (un error de por ejemplo 0.4). ¿Por qué puede ser? [@Garcia2025PIA]
+
+<!-- La respuesta viene en los apuntes
+::: {.callout-tip collapse="true" title="Solución"}
+
+:::
+-->
+
+:::
+
+---
+
+
+---
+
 # Entropía Binaria Cruzada, BCE
 
 ::: {.callout-note icon="false" appearance="simple"}
-¿Cuál es la expresión matemática de la Entropía Binaria Cruzada, Binary Cross-Entropy (BCE)?
+¿Cuál es la ecuación de la Entropía Binaria Cruzada, Binary Cross-Entropy (BCE)?
 
 ::: {.callout-tip collapse="true" title="Solución"}
 En los apuntes utilizamos:
 
 $$
-\text{BCE} (y_\text{pred}, y_\text{true}) = - (y_\text{true}\log(y_\text{pred}) + (1 - y_\text{true}) \log(1-y_\text{pred}))
+\text{BCE} (y_\text{pred}, y_\text{true}) = - [y_\text{true}\log(y_\text{pred}) + (1 - y_\text{true}) \log(1-y_\text{pred})]
 $$
 
 En PyTorch se utiliza la expresión:
@@ -34,14 +200,19 @@ output = loss(m(input), target)
 
 ---
 
-**Nota**: En PyTorch, se añade el uso implícito de un `batch` en la BCE, además de utilizar una función `reduction` (o bien `mean` o bien `sum`), para "poner en común" los valores calculados.
+**Nota**: En PyTorch, se añade el uso implícito de un `batch` en la BCE, además de utilizar una función `reduction` (o bien `mean` o bien `sum`), para "poner en común" los valores calculados. Por eso se utiliza $\ell_n$, representando el error del n-ésimo batch
+(loss n-ésimo). Si se utiliza `mean`, entonces el BCE final es
+$\text{mean}(\ell_1, \ell_2, ..., \ell_N)$. (Sobra decir que el tamaño del batch es N).
 
 ---
 
 ::: {.callout-note icon="false" appearance="simple"}
 **TODO** ¿Qué ocurre con la BCE cuando $y_\text{true} = 1$? ¿Y cuando $y_\text{true} = 0$?
+¿Qué problemas pueden aparecer? ¿Cómo se solucionan?
 
 ::: {.callout-tip collapse="true" title="Solución"}
+
+... Problemas: $\log(0)$. ¿Cómo lo soluciona PyTorch...?
 
 :::
 
@@ -50,11 +221,40 @@ output = loss(m(input), target)
 ---
 
 ::: {.callout-note icon="false" appearance="simple"}
-**TODO** ... Sobre interpretar $y_\text{pred}$ como la probabilidad que asigna el modelo de que pertenezca a la clase positiva...
+En un modelo de clasificación binaria, con una salida $\in [0, 1]$, ¿de qué forma se podría interpretar el valor que devuelve?
 
 ::: {.callout-tip collapse="true" title="Solución"}
+Como la probabilidad de que pertenezca a la clase (clase asignada al 1).
+
+**Nota (opinión mía)**: otra cosa que puede representar es _cuánto_ pertenece a la clase (como si fuera un conjunto difuso). Por ejemplo: un modelo que diga si alguien es alto o no. $M(1.75) = 0.6$, representaría que es _un poco alto_. Otro ejemplo, si estamos clasificando imágenes de ceros y unos, $M(X) = 0.7$ representa _cuánto la imagen parece un uno_, en lugar de la probabilidad de que sea un uno.
 
 :::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+¿Cuál es la imagen de la función BCELoss? (de PyTorch, teniendo en cuenta que maneja $\log(0)$ como $\log(0) = -100$)
+
+::: {.callout-tip collapse="true" title="Solución"}
+$\text{BCELoss}(X) \in [0, 100]$, desde una clasificación perfecta hasta una totalmente errónea.
+
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+**TODO** ¿Por qué puede ser preferible la función de error BCE frente a MSE o MAE para problemas de clasificación binaria?
+
+<!--
+::: {.callout-tip collapse="true" title="Solución"}
+- El gradiente de BCE en función del error crece más.
+"Observando la evolución del gradiente de la BCE, sabemos que se dará mucha más importancia a los ejemplos con clasificaciones muy lejanas a la ideal."[@Garcia2025PIA]
+:::
+-->
 
 :::
 
@@ -75,7 +275,44 @@ $$
 $$
 
 ::: {.callout-tip collapse="true" title="Solución"}
-La expresión de los apuntes es **para un único ejemplo**.
+La expresión de los apuntes es **para un único ejemplo**. PyTorch considera que se untilizan _batches_ por defecto. Por eso hay que calcular la función de error $n$ veces
+y luego hacer una reducción (_reduction_).
+
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+Si un modelo predice si estás sano (clase positiva, 1) o no (0), ¿qué es preferible, tener un mejor _recall_ o un mejor _precision_?
+
+::: {.callout-tip collapse="true" title="Solución"}
+Lo que **no se quiere que ocurra** es ignorar los casos enfermos.
+
+Es preferible un mayor _precision_ para la clase positiva, para reducir los falsos positivos. Que si el modelo
+dice que estés sano, efectivamente estés sano: $P(Y = 1\ |\ \hat Y = 1)$. Y con ello reducir $P(Y = 0\ |\ \hat Y = 1)$
+
+El _recall_ alto es deseable para evitar pruebas innecesarias.
+
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+¿Cuál es la solución de PyTorch para evitar el problema de `log(0)` en `BCELoss`?
+
+::: {.callout-tip collapse="true" title="Solución"}
+Deciden que $\text{Im}(\log) = [-100, +\infty]$. Hacen _clamp_.
+
+Para llegar a $\log(x) = -100$, en base 2, habría que utilizar $2^{-100}$. Para PyTorch,
+$\log(0) = -100$ en lugar de $- \infty$, evitando indeterminaciones.
+
+Además también lo hacen por otros motivos: "This way, we can always have a finite loss value and a linear backward method."
+
+<https://docs.pytorch.org/docs/2.13/generated/torch.nn.BCELoss.html>
 
 :::
 

@@ -12,3 +12,146 @@ Preguntas correspondientes al cuaderno _Clasificación II_
 
 ---
 
+::: {.callout-note icon="false" appearance="simple"}
+¿Qué es el concepto de _mask_ a la hora de usar arrays de numpy, o tensores? (De hecho es un concepto común).
+
+También se puede conocer como _boolean indexing_.
+
+::: {.callout-tip collapse="true" title="Solución"}
+Un _mask_ se utiliza para elegir elementos de un array.
+
+"As mentioned, one can select a subset of an array to assign to using a single index, slices, and index and mask arrays." (<https://numpy.net/doc/stable/user/basics.indexing.html>)
+
+PyTorch incluye una función específica: `masked_select`.
+
+<https://docs.pytorch.org/docs/2.13/generated/torch.masked_select.html>
+
+Ejemplo de uso de _mask_:
+
+- Array: [1, 2, 3, 4, 5, 6]
+- Mask:  [0, 1, 0, 1, 0, 1]
+- Array con el _mask_ aplicado: [2, 4, 6] (se seleccionan los 1's).
+
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+En un modelo de clasificación multiclase, donde hay $|C|$ clases:
+
+- ¿Cuántas salidas debe tener el modelo?
+- ¿Qué condiciones debe cumplir la(s) salida(s)?
+- ¿Qué es lo que se conoce como _one-hot encoding_?
+
+**Nota:** $C$ es el conjunto de clases, por tanto tiene $|C|$ elementos.
+
+::: {.callout-tip collapse="true" title="Solución"}
+$|C|$ salidas (tantas salidas como clases). Cada una debe estar en el rango $[0,1]$.
+
+Podría tener también una única salida: un único número que representa la "clase más probable". Pero sería más difícil entrenar al modelo.
+
+La suma de las salidas, si son clases excluyentes y lo interpretamos como probabilidades, **debe ser exactamente 1**. ()
+
+El _one-hot encoding_ es una forma de representar la salida del modelo. Para cada una de las $|C|$ clases, se le asigna un vector binario de $|C|$ elementos, con todos los elementos a $0$ a excepción de uno (_one-hot_)[@antiga2026deep]. La posición indica el número. Por ejemplo para 4 clases:
+
+- $0 \to (1, 0, 0, 0)$
+- $1 \to (0, 1, 0, 0)$
+- $2 \to (0, 0, 1, 0)$
+- $3 \to (0, 0, 0, 1)$ 
+
+**Nota:** $0 \to (1, 0, 0, 0)$ puesto que comúnmente se empieza a indexar desde cero. Por tanto `vector[0] == 1` indica que el vector corresponde a la clase `0`. O bien `vector[i] == 1` indica que el vector corresponde a la clase `i`.
+
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+**TODO**: ¿Qué ventajas tiene el _one-hot encoding_?
+
+::: {.callout-tip collapse="true" title="Solución"}
+- Si se utilizara un único número en la salida, no podría entrenarse para clases no excluyentes. ¿Qué pasaría si algo puede ser un vehículo y un barco? Sin embargo vectorizando sí se pueden representar varias clases.
+- ¿Por qué vectores binarios y no números escalares?
+    "Assigning arbitrary numerical values to categorical data can lead to incorrect interpretations by the algorithm, as these values may imply a false order or hierarchy among the categories." <https://www.geeksforgeeks.org/machine-learning/why-one-hot-encoding-improves-machine-learning-performance/>.
+    Se puede introducir algún tipo de información jerárquica entre las clases cuando
+    no la hay.
+
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+Para un modelo de clasificación multiclase, de clases exluyentes, donde cada salida representa la probabilidad de pertenecer a cada clase:
+
+- ¿Podría usarse la función sigmoide como función de activación?
+- ¿Por qué?
+- ¿Qué función podría usarse?
+
+
+::: {.callout-tip collapse="true" title="Solución"}
+**No**, no se podría usar la sigmoide para la capa de salida. Porque la suma de las salidas debe ser $1$.
+
+Una función de activación más apropiada para la capa de salida es la función Softmax.
+"Applies the Softmax function to an n-dimensional input Tensor.
+Rescales them so that the elements of the n-dimensional output Tensor lie in the range [0,1] and sum to 1." 
+
+<https://docs.pytorch.org/docs/2.13/generated/torch.nn.Softmax.html>
+
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+¿Cuál es la ecuación de la función Softmax? ¿Cuál es la relación entra la dimensión de entrada y la de salida?
+
+::: {.callout-tip collapse="true" title="Solución"}
+La función Softmax tiene la misma dimensión de entrada y de salida: no cambia el _shape_ del tensor, sino que **lo normaliza**.
+
+Para un tensor $x = (x_1, x_2, ..., x_n)$, el cálculo elemento a elemento:
+$$
+\text{Softmax}(x_i) 
+= \cfrac{\exp{(x_i)}}{\sum^n_j \exp{x_j}} 
+= \cfrac{\text e^{x_i}}{\sum^n_j \text e^{x_j}} 
+$$
+
+Por tanto la fórmula para el tensor $x$ queda como en los apuntes:
+$$
+\text{Softmax}(x) = \text{Softmax}(x_{1},x_{2},...,x_{n}) = 
+\left(
+    \frac{\text e^{x_{1}}}{\sum_{i=1}^{n} \text e^{x_{i}}}, 
+    \frac{\text e^{x_{2}}}{\sum_{i=1}^{n} \text e^{x_{i}}},..., 
+    \frac{\text e^{x_{n}}}{\sum_{i=1}^{n} \text e^{x_{i}}}
+\right)
+$$ 
+[@Garcia2025PIA]
+
+<http://docs.pytorch.org/docs/2.13/generated/torch.nn.Softmax.html>
+
+**Nota:** he combinado la notación de PyTorch y los apuntes.
+
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+¿Qué ventaja tiene usar Softmax en lugar de usar una proporción? O de otra forma,
+¿por qué $\cfrac{\text e^{x_i}}{\sum^n_j \text e^{x_j}}$ en lugar de $\cfrac{x_i}{\sum^n_j x_j}$?
+
+(A la hora de buscar normalizar los valores a $[0,1]$ y que la suma sea igual a $1$).
+
+<!--
+::: {.callout-tip collapse="true" title="Solución"}
+_Mirar los apuntes_.
+:::
+-->
+
+:::

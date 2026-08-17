@@ -98,6 +98,7 @@ que ser `Parameter()`? ¿Por qué?
 :::
 
 ---
+
 ::: {.callout-note icon="false" appearance="simple"}
 
 ::: {.callout-tip collapse="true" title="Solución"}
