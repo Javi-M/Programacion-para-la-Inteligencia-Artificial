@@ -6,6 +6,9 @@ Se basa en los apuntes originales (García-González, J. (2025). Programación p
 También habrá codigo muy parecido al de la asignatura, obviamente también de los apuntes,
 aunque no esté todo el rato citando...
 
+Playlist de O'Reilly:
+<https://learning.oreilly.com/playlists/7a20950b-7581-4ae1-bcbd-7212fc8d7b01> <b style="color: red">Disclaimer: son libros, no música.</b>
+
 ## Cuestiones a responder
 Un aspecto muy importante para mí en estos apuntes es intentar sacar preguntas que
 hay que saber responder. Puedes usarlas para reflexionar e intentar responderlas.
