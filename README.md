@@ -17,24 +17,27 @@ Las preguntas son tanto teóricas como de código.
 
 🌐🦄🌐 [Lista de preguntas en formato web](https://javi-m.github.io/Programacion-para-la-Inteligencia-Artificial/) 🌐🦄🌐
 
-Las pregunta las gestiono con Quarto (archivos `.qmnd`) para escribirlas en 
+Las pregunta las gestiono con Quarto (archivos `.qmd`) para escribirlas en 
 Markdown y luego reenderizarlo. Algunas tienen solución, y otras no. 
-Si alguien quisiera colaborar daría más detalles de cómo hacer preguntas y 
-reenderizar en Quarto.
 
 (`cd Preguntas/` y ejecutar `quarto render`, o desde la raíz del repositorio:
 `quarto render Preguntas`)
 
 > Quarto es muy quisquilloso con su sintaxis markdown.
 
+<!--
 # Sobre el código
 Estos apuntes no incluyen soluciones a prácticas. Primero para evitarme problemas a mí y
 al estudiante que se copie (por el mero hecho de copiar). Pero es que además hay
 que saber en profundidad qué hace cada parte del código, y es uno mismo el que
 debe probar.
+-->
 
 # Contenidos
-- [Diccionario](GLOSSARY.md) Terminología clave.
+- [Glosario](GLOSSARY.md) - Lista de términos clave.
+- [Preguntas](Preguntas/) - Archivos `.qmd` para ser reenderizados a html y usados en      
+    GitHub pages.
+- [Experimentos](Experimentos/) - Puesta en práctica de los conceptos de la asignatura.
 
 <!--# **Advertencia**: no me hago responsable
 Aunque aquí está mi mejor intento de apuntes que aporten para la asignatura, puede
@@ -43,6 +46,7 @@ hecho mi mejor intento. O bien cada vez que digo "_esto es importante_...",
 "_esto no es importante_...".
 -->
 
+<!--
 ## Uso de IA
 Se han utilizado varios LLMs. La gran parte de la redacción es propia, mencionando
 los fragmentos que haya copiado por una IA. He leído y revisado todo texto que
@@ -64,8 +68,8 @@ he usado para qué cosa_.
     - Excepto el texto mencionado explícitamente como que es de un LLM, todo ha sido
     redactado y revisado por mí (Javier Márquez Ruiz). 
 
-No ha sido usado para generar preguntas.
+Ha sido usado para generar algunas preguntas.
 
 No ha sido usado para generar **directamente** respuestas, aunque sí para ciertas 
-aclaraciones, a partir de las cuales luego yo he escrito la respuesta. Todo ha
-sido revisado, reescrito, y comprobado con otras referencias.
+aclaraciones, a partir de las cuales luego yo he escrito la respuesta.
+-->
