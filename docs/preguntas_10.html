@@ -23,7 +23,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -75,6 +94,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -294,7 +342,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>Preguntas correspondientes al cuaderno <em>Clasificación II</em></p>
+<p>Preguntas correspondientes al cuaderno: <em>Clasificación II</em></p>
 <!-- COPIAR Y PEGAR PARA CREAR PREGUNTAS
 ::: {.callout-note icon="false" appearance="simple"}
 
@@ -305,10 +353,280 @@ ul.task-list li input[type="checkbox"] {
 :::
 -->
 <hr>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>¿Qué es el concepto de <em>mask</em> a la hora de usar arrays de numpy, o tensores? (De hecho es un concepto común).</p>
+<p>También se puede conocer como <em>boolean indexing</em>.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Un <em>mask</em> se utiliza para elegir elementos de un array.</p>
+<p>“As mentioned, one can select a subset of an array to assign to using a single index, slices, and index and mask arrays.” (<a href="https://numpy.net/doc/stable/user/basics.indexing.html" class="uri">https://numpy.net/doc/stable/user/basics.indexing.html</a>)</p>
+<p>PyTorch incluye una función específica: <code>masked_select</code>.</p>
+<p><a href="https://docs.pytorch.org/docs/2.13/generated/torch.masked_select.html" class="uri">https://docs.pytorch.org/docs/2.13/generated/torch.masked_select.html</a></p>
+<p>Ejemplo de uso de <em>mask</em>:</p>
+<ul>
+<li>Array: [1, 2, 3, 4, 5, 6]</li>
+<li>Mask: [0, 1, 0, 1, 0, 1]</li>
+<li>Array con el <em>mask</em> aplicado: [2, 4, 6] (se seleccionan los 1’s).</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>En un modelo de clasificación multiclase, donde hay <span class="math inline">\(|C|\)</span> clases:</p>
+<ul>
+<li>¿Cuántas salidas debe tener el modelo?</li>
+<li>¿Qué condiciones debe cumplir la(s) salida(s)?</li>
+<li>¿Qué es lo que se conoce como <em>one-hot encoding</em>?</li>
+</ul>
+<p><strong>Nota:</strong> <span class="math inline">\(C\)</span> es el conjunto de clases, por tanto tiene <span class="math inline">\(|C|\)</span> elementos.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(|C|\)</span> salidas (tantas salidas como clases). Cada una debe estar en el rango <span class="math inline">\([0,1]\)</span>.</p>
+<p>Podría tener también una única salida: un único número que representa la “clase más probable”. Pero sería más difícil entrenar al modelo.</p>
+<p>La suma de las salidas, si son clases excluyentes y lo interpretamos como probabilidades, <strong>debe ser exactamente 1</strong>. ()</p>
+<p>El <em>one-hot encoding</em> es una forma de representar la salida del modelo. Para cada una de las <span class="math inline">\(|C|\)</span> clases, se le asigna un vector binario de <span class="math inline">\(|C|\)</span> elementos, con todos los elementos a <span class="math inline">\(0\)</span> a excepción de uno (<em>one-hot</em>)<span class="citation" data-cites="antiga2026deep">(<a href="#ref-antiga2026deep" role="doc-biblioref">Antiga et al. 2026</a>)</span>. La posición indica el número. Por ejemplo para 4 clases:</p>
+<ul>
+<li><span class="math inline">\(0 \to (1, 0, 0, 0)\)</span></li>
+<li><span class="math inline">\(1 \to (0, 1, 0, 0)\)</span></li>
+<li><span class="math inline">\(2 \to (0, 0, 1, 0)\)</span></li>
+<li><span class="math inline">\(3 \to (0, 0, 0, 1)\)</span></li>
+</ul>
+<p><strong>Nota:</strong> <span class="math inline">\(0 \to (1, 0, 0, 0)\)</span> puesto que comúnmente se empieza a indexar desde cero. Por tanto <code>vector[0] == 1</code> indica que el vector corresponde a la clase <code>0</code>. O bien <code>vector[i] == 1</code> indica que el vector corresponde a la clase <code>i</code>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>TODO</strong>: ¿Qué ventajas tiene el <em>one-hot encoding</em>?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Si se utilizara un único número en la salida, no podría entrenarse para clases no excluyentes. ¿Qué pasaría si algo puede ser un vehículo y un barco? Sin embargo vectorizando sí se pueden representar varias clases.</li>
+<li>¿Por qué vectores binarios y no números escalares? “Assigning arbitrary numerical values to categorical data can lead to incorrect interpretations by the algorithm, as these values may imply a false order or hierarchy among the categories.” <a href="https://www.geeksforgeeks.org/machine-learning/why-one-hot-encoding-improves-machine-learning-performance/" class="uri">https://www.geeksforgeeks.org/machine-learning/why-one-hot-encoding-improves-machine-learning-performance/</a>. Se puede introducir algún tipo de información jerárquica entre las clases cuando no la hay.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Para un modelo de clasificación multiclase, de clases exluyentes, donde cada salida representa la probabilidad de pertenecer a cada clase:</p>
+<ul>
+<li>¿Podría usarse la función sigmoide como función de activación?</li>
+<li>¿Por qué?</li>
+<li>¿Qué función podría usarse?</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>No</strong>, no se podría usar la sigmoide para la capa de salida. Porque la suma de las salidas debe ser <span class="math inline">\(1\)</span>.</p>
+<p>Una función de activación más apropiada para la capa de salida es la función Softmax. “Applies the Softmax function to an n-dimensional input Tensor. Rescales them so that the elements of the n-dimensional output Tensor lie in the range [0,1] and sum to 1.”</p>
+<p><a href="https://docs.pytorch.org/docs/2.13/generated/torch.nn.Softmax.html" class="uri">https://docs.pytorch.org/docs/2.13/generated/torch.nn.Softmax.html</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>¿Cuál es la ecuación de la función Softmax? ¿Cuál es la relación entra la dimensión de entrada y la de salida?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>La función Softmax tiene la misma dimensión de entrada y de salida: no cambia el <em>shape</em> del tensor, sino que <strong>lo normaliza</strong>.</p>
+<p>Para un tensor <span class="math inline">\(x = (x_1, x_2, ..., x_n)\)</span>, el cálculo elemento a elemento: <span class="math display">\[
+\text{Softmax}(x_i)
+= \cfrac{\exp{(x_i)}}{\sum^n_j \exp{x_j}}
+= \cfrac{\text e^{x_i}}{\sum^n_j \text e^{x_j}}
+\]</span></p>
+<p>Por tanto la fórmula para el tensor <span class="math inline">\(x\)</span> queda como en los apuntes: <span class="math display">\[
+\text{Softmax}(x) = \text{Softmax}(x_{1},x_{2},...,x_{n}) =
+\left(
+    \frac{\text e^{x_{1}}}{\sum_{i=1}^{n} \text e^{x_{i}}},
+    \frac{\text e^{x_{2}}}{\sum_{i=1}^{n} \text e^{x_{i}}},...,
+    \frac{\text e^{x_{n}}}{\sum_{i=1}^{n} \text e^{x_{i}}}
+\right)
+\]</span> <span class="citation" data-cites="Garcia2025PIA">(<a href="#ref-Garcia2025PIA" role="doc-biblioref">García-González 2025</a>)</span></p>
+<p><a href="http://docs.pytorch.org/docs/2.13/generated/torch.nn.Softmax.html" class="uri">http://docs.pytorch.org/docs/2.13/generated/torch.nn.Softmax.html</a></p>
+<p><strong>Nota:</strong> he combinado la notación de PyTorch y los apuntes.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>¿Qué ventaja tiene usar Softmax en lugar de usar una proporción? O de otra forma, ¿por qué <span class="math inline">\(\cfrac{\text e^{x_i}}{\sum^n_j \text e^{x_j}}\)</span> en lugar de <span class="math inline">\(\cfrac{x_i}{\sum^n_j x_j}\)</span>?</p>
+<p>(A la hora de buscar normalizar los valores a <span class="math inline">\([0,1]\)</span> y que la suma sea igual a <span class="math inline">\(1\)</span>).</p>
+<!--
+::: {.callout-tip collapse="true" title="Solución"}
+_Mirar los apuntes_.
+:::
+-->
+</div>
+</div>
+</div>
+<hr>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>¿Qué es el del <em>early stopping</em>? ¿Para qué sirve? ¿Qué es la <em>paciencia</em>?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>El <em>early stopping</em> sirve para evitar el sobreentrenamiento. <span class="citation" data-cites="Garcia2025PIA">(<a href="#ref-Garcia2025PIA" role="doc-biblioref">García-González 2025</a>)</span></p>
+<p>La paciencia es un hiperparámetro para indicar cuánto esperar si no hay mejoras.</p>
+<p>“(Early stopping) Stop training when a monitored metric has stopped improving.” <a href="https://keras.io/api/callbacks/early_stopping/" class="uri">https://keras.io/api/callbacks/early_stopping/</a></p>
+<p>“If the training is stopped at the point where the validation errors start increasing, we can have a model with better generalization performance. This is called early stopping.”<span class="citation" data-cites="sarkar2018handson">(<a href="#ref-sarkar2018handson" role="doc-biblioref">Sarkar et al. 2018</a>)</span></p>
+<p><a href="https://www.geeksforgeeks.org/deep-learning/how-to-handle-overfitting-in-pytorch-models-using-early-stopping/" class="uri">https://www.geeksforgeeks.org/deep-learning/how-to-handle-overfitting-in-pytorch-models-using-early-stopping/</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div class="callout callout-style-default callout-tip callout-empty-content callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-antiga2026deep" class="csl-entry" role="listitem">
+Antiga, Luca, Eli Stevens, Howard Huang, and Thomas Viehmann. 2026. <em>Deep Learning with PyTorch, Second Edition: Training and Applying Deep Learning and Generative AI Models</em>. 2nd ed. Manning Publications.
+</div>
+<div id="ref-Garcia2025PIA" class="csl-entry" role="listitem">
+García-González, J. 2025. <em>Programación Para La Inteligencia Artificial</em>. Universidad de Málaga.
+</div>
+<div id="ref-sarkar2018handson" class="csl-entry" role="listitem">
+Sarkar, Dipanjan, Raghav Bali, and Tamoghna Ghosh. 2018. <em>Hands-on Transfer Learning with Python: Implement Advanced Deep Learning and Neural Network Models Using TensorFlow and Keras</em>. Packt Publishing.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right

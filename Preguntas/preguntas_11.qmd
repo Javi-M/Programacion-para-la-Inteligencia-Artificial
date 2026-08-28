@@ -1,0 +1,26 @@
+Preguntas correspondientes al cuaderno: _Aumentado de Datos_.
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+¿En qué consta el aumentado de datos, _data augmentation_? ¿Para qué sirve?
+
+::: {.callout-tip collapse="true" title="Solución"}
+"Data augmentation takes the approach of generating more training data from existing training samples, by augmenting the samples via a number of random transformations".[@chollet2025deeplearning]
+
+Es decir coger datos existentes y modificarlos para hacer más datos.
+
+Se busca evitar el sobreajuste causado por muy pocas muestras, lo que dificulta que el modelo generalice. Pueden haber pocos datos porque obtenerlos es muy costoso.
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+¿En qué etapas se utiliza el aumentado de datos, en cuáles no, y por qué?
+<!-- La explicación viene tal cual en los apuntes -->
+:::
+
+---
+

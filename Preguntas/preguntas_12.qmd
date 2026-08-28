@@ -1,0 +1,54 @@
+Preguntas correspondientes al cuaderno: _Optimizando la Optimización_
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+¿Qué regla de ajuste utiliza el optimizador SGD (ecuación)? Describir cada elemento.
+(Sin _momentum_, ni _weight decay_).
+
+::: {.callout-tip collapse="true" title="Solución"}
+$$
+\mathbf{w}_{t+1} = \mathbf{w}_{t} - \gamma \nabla L(m_{\mathbf{w}_{t}}(x))
+$$  
+[@Garcia2025PIA]
+
+
+La ecuación por parte de PyTorch sería algo así (para minimizar la función objetivo):
+$$
+\theta_t \gets \theta_{t-1} - \gamma \nabla_\theta f_t(\theta_{t-1})
+$$
+<https://docs.pytorch.org/docs/2.13/generated/torch.optim.SGD.html>
+
+- $\theta_t$: parámetros del modelo (pesos) tras la actualización, en el instante $t$.
+- $\theta_{t-1}$: parámetros antes de la actualización. (Antes de procesar el 
+    _batch_ $t$-ésimo).
+- $\gamma$: ratio de aprendizaje, _learning rate_, `lr`. Por defecto en PyTorch es `1e-3`.
+- $f_t$: función de pérdida asociada al _batch_ $t$-ésimo.
+
+En nuestro caso la mayoría de las veces la función objetivo a minimizar es **la función de error**.
+
+**Nota:** $\theta_{t-1} \to$ se calcula el gradiente sobre el error del batch $t$-ésimo
+    $\to$ se obtienen los parámetros $\theta_t$.
+:::
+
+:::
+
+---
+
+::: {.callout-warning}
+El descenso gradiente, descenso gradiente estocástico, el descenso gradiente por lotes no son exactamente lo mismo. El uso de los términos es, por parte de PyTorch y otros sitios, algo inconsistente.
+
+La diferencia está en **los datos usados** en cada momento para calcular el gradiente. 
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+¿Hay más ruido con un _batch size_ mayor o menor? ¿Qué significa "que haya ruido"?
+
+**TODO** respuesta
+
+:::
+
+---
+

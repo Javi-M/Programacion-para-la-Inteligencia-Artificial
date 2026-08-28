@@ -1,0 +1,18 @@
+Preguntas correspondientes al cuaderno: _Mejorando el Aprendizaje_
+
+---
+
+POR CUBRIR:
+- Normalización de lote
+  - Desplazamiento Interno de Covariables, _Internal Covariate Shift_
+  - Ecuación a partir de las medias y las varianzas.
+- ¿Qué es el RMSProp?
+
+::: {.callout-note icon="false" appearance="simple"}
+**TODO** ¿Qué es la normalización de lote, _batch normalization_? ¿Qué se quiere solventar?
+
+::: {.callout-tip collapse="true" title="Solución"}
+
+:::
+
+:::

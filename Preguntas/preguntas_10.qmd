@@ -1,4 +1,4 @@
-Preguntas correspondientes al cuaderno _Clasificación II_
+Preguntas correspondientes al cuaderno: _Clasificación II_
 
 <!-- COPIAR Y PEGAR PARA CREAR PREGUNTAS
 ::: {.callout-note icon="false" appearance="simple"}
@@ -153,5 +153,35 @@ $$
 _Mirar los apuntes_.
 :::
 -->
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+¿Qué es el del _early stopping_? ¿Para qué sirve? ¿Qué es la _paciencia_?
+
+::: {.callout-tip collapse="true" title="Solución"}
+El _early stopping_ sirve para evitar el sobreentrenamiento. [@Garcia2025PIA]
+
+La paciencia es un hiperparámetro para indicar cuánto esperar si no hay mejoras.
+
+"(Early stopping) Stop training when a monitored metric has stopped improving." <https://keras.io/api/callbacks/early_stopping/>
+
+"If the training is stopped at the point where the validation errors start increasing, we can have a model with better generalization performance. This is called early stopping."[@sarkar2018handson]
+
+<https://www.geeksforgeeks.org/deep-learning/how-to-handle-overfitting-in-pytorch-models-using-early-stopping/>
+
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+
+::: {.callout-tip collapse="true" title="Solución"}
+
+:::
 
 :::

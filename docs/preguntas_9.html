@@ -58,7 +58,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -359,15 +378,23 @@ window.Quarto = {
 
 
 <p>Preguntas correspondientes al cuaderno: <em>Clasificación I</em></p>
-<section id="entropía-binaria-cruzada-bce" class="level1">
-<h1>Entropía Binaria Cruzada, BCE</h1>
+<!--
+::: {.callout-note icon="false" appearance="simple"}
+
+::: {.callout-tip collapse="true" title="Solución"}
+
+:::
+
+:::
+-->
+<hr>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>¿Cuál es la expresión matemática de la Entropía Binaria Cruzada, Binary Cross-Entropy (BCE)?</p>
+<p>¿Qué dos tipos de problemas de clasificación hay? ¿Por qué esa distinción?</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solución">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -380,9 +407,250 @@ window.Quarto = {
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<p>De clasificación binarios y multiclase.</p>
+<p>La relevancia de la distinción viene de que los problemas binarios se tratan de forma bastante distinguible a los multiclase. Y los multiclase, entre sí, de forma relativamente parecida.</p>
+<p>Por ejemplo, en los multiclase la función de activación de la capa de salida será considerablemente diferente (normalmente una <em>softmax</em>).</p>
+<p>En un problema de clasificación binario, basta con dar una salida <span class="math inline">\(\in [0, 1]\)</span> representando “cuánto pertenece” a la clase positiva. En un multiclase sin embargo, si las salidas representan probabilidad de pretenencia a cada clase, hay que asegurarse que la suma sea 1.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>(Repaso) ¿Para qué queremos dividir los datos en: entrenamiento, validación y test? ¿Para qué se utiliza cada conjunto?</p>
+<!-- Esto es para recordar
+::: {.callout-tip collapse="true" title="Solución"}
+
+:::
+-->
+</div>
+</div>
+</div>
+<hr>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Si el modelo devuelve un valor <span class="math inline">\(\in [0, 1]\)</span> y las clases solo pueden ser <span class="math inline">\(\{0,1\}\)</span>… ¿por qué no hay ningún problema? ¿Por qué no falla?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Porque establecemos un criterio, por ejemplo un umbral: <span class="math inline">\(0.5\)</span>, de forma que si <span class="math inline">\(M(X) &gt; 0.5\)</span> entonces le asignamos la clase positiva (1).</p>
+<p><strong>Recordatorio:</strong> <span class="math inline">\(M(X)\)</span> es la predicción del modelo (<em>forward</em>) sobre el tensor de entrada <span class="math inline">\(X\)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>¿Qué métricas se utilizan para evaluar un modelo de clasificación binaria?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><span class="math inline">\(Accuracy = \cfrac{TP + TN}{TP + TN + FP + FN}\)</span></li>
+<li><span class="math inline">\(Recall = \cfrac{TP}{TP + FN}\)</span></li>
+<li><span class="math inline">\(Precision = \cfrac{TP}{TP + FP}\)</span></li>
+</ul>
+<p>donde:</p>
+<ul>
+<li><span class="math inline">\(TP\)</span> - <em>True Positives</em></li>
+<li><span class="math inline">\(TN\)</span> - <em>True Negatives</em></li>
+<li><span class="math inline">\(FP\)</span> - <em>False Positives</em></li>
+<li><span class="math inline">\(FN\)</span> - <em>False Negatives</em></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>¿Qué representa, o cómo se puede interpretar cada métrica…?</p>
+<ul>
+<li><em>Accuracy</em></li>
+<li><em>Recall</em></li>
+<li><em>Precision</em></li>
+</ul>
+<p>(Se puede deducir viendo las fórmulas).</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><em>Accuracy</em>: representa la probabilidad de que el modelo dé la etiqueta correcta. Es decir <span class="math inline">\(P(\hat Y = Y)\)</span>. O bien: <span class="math inline">\(P(M(X) = Y)\)</span>.</p>
+<p><em>Recall</em>: representa la probabilidad de que el modelo la clasifique como positiva si la clase es positiva. <span class="math inline">\(P(M(X) = 1 | Y = 1)\)</span>. Por ejemplo: si <em>recall</em> = 0.8, y la clase verdadera es positiva, la probabilidad de que el modelo le asigne la clase positiva es 0.8.</p>
+<p><em>Precision</em>: representa la probabilidad de que la clase verdadera sea positiva si el modelo dice que es positiva: <span class="math inline">\(P(Y = 1 | M(X) = 1)\)</span>. Por ejemplo: si <em>precision</em> = 0.6, y el modelo dice que la clase es positiva, la “probabilidad” de que sea verdaderamente positiva es 0.6.</p>
+<p>Si el <em>accuracy</em> fuera alto pero <em>precision</em> bajo, nos fiaríamos menos cada vez que el modelo diga que la etiqueta es positiva.</p>
+<p><strong>Nota</strong>: estoy llamando “probabilidad” a la proporción observada, que no son realmente lo mismo. Es una forma de entenderlo, pero lo más correcto es hablar de la frecuencia relativa (la proporción) sobre los datos, no de <strong>probabilidad</strong>. (Para eso habría que incluir y asumir la Ley de los Grandes Números…)</p>
+<p><strong>Nota</strong>: <span class="math inline">\(M(X) = \hat Y\)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Las métricas <em>accuracy</em>, <em>recall</em>, <em>precision</em>, ¿pueden utilizarse como función de error para entrenar el modelo? ¿Por qué?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>No se utilzan. No tiene sentido considerar ninguna de ellas para un único ejemplo.<span class="citation" data-cites="Garcia2025PIA">(<a href="#ref-Garcia2025PIA" role="doc-biblioref">García-González 2025</a>)</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>¿Qué requisitos debe cumplir la función de activación para un modelo de clasificación binaria? ¿Qué opciones hay?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>La salida debe estar entre 0 y 1. O bien se podría usar otra función y reescalarlo a 0 y 1.</p>
+<p>Se podría incluso escoger una función <span class="math inline">\(f\)</span> tal que <span class="math inline">\(\text{Im}(f) = [a, b]\)</span> y reescalar de forma que <span class="math inline">\(a\)</span> corresponda al <span class="math inline">\(0\)</span> y <span class="math inline">\(b\)</span> al <span class="math inline">\(1\)</span>. O incluso usar <em>clamp</em> para limitar la salida a 0 y 1, junto a un reescalado.</p>
+<p><strong>Desconozco como de buena o mala se considera cada práctica en la asignatura</strong>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>TODO</strong> ¿Qué se representa en una <strong>matriz de confusión</strong>?</p>
+<!--
+::: {.callout-tip collapse="true" title="Solución"}
+
+:::
+-->
+</div>
+</div>
+</div>
+<hr>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Tenemos un modelo de clasificación binaria con un <em>accuracy</em> del 95%, y sin embargo la función de error no lo refleja (un error de por ejemplo 0.4). ¿Por qué puede ser? <span class="citation" data-cites="Garcia2025PIA">(<a href="#ref-Garcia2025PIA" role="doc-biblioref">García-González 2025</a>)</span></p>
+<!-- La respuesta viene en los apuntes
+::: {.callout-tip collapse="true" title="Solución"}
+
+:::
+-->
+</div>
+</div>
+</div>
+<hr>
+<hr>
+<section id="entropía-binaria-cruzada-bce" class="level1">
+<h1>Entropía Binaria Cruzada, BCE</h1>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>¿Cuál es la ecuación de la Entropía Binaria Cruzada, Binary Cross-Entropy (BCE)?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p>En los apuntes utilizamos:</p>
 <p><span class="math display">\[
-\text{BCE} (y_\text{pred}, y_\text{true}) = - (y_\text{true}\log(y_\text{pred}) + (1 - y_\text{true}) \log(1-y_\text{pred}))
+\text{BCE} (y_\text{pred}, y_\text{true}) = - [y_\text{true}\log(y_\text{pred}) + (1 - y_\text{true}) \log(1-y_\text{pred})]
 \]</span></p>
 <p>En PyTorch se utiliza la expresión: <span class="math display">\[
 \ell_n (x,y) = - w_n [y_n \cdot \log x_n + (1 - y_n)\cdot \log(1 - x_n)]
@@ -401,7 +669,7 @@ window.Quarto = {
 </div>
 </div>
 <hr>
-<p><strong>Nota</strong>: En PyTorch, se añade el uso implícito de un <code>batch</code> en la BCE, además de utilizar una función <code>reduction</code> (o bien <code>mean</code> o bien <code>sum</code>), para “poner en común” los valores calculados.</p>
+<p><strong>Nota</strong>: En PyTorch, se añade el uso implícito de un <code>batch</code> en la BCE, además de utilizar una función <code>reduction</code> (o bien <code>mean</code> o bien <code>sum</code>), para “poner en común” los valores calculados. Por eso se utiliza <span class="math inline">\(\ell_n\)</span>, representando el error del n-ésimo batch (loss n-ésimo). Si se utiliza <code>mean</code>, entonces el BCE final es <span class="math inline">\(\text{mean}(\ell_1, \ell_2, ..., \ell_N)\)</span>. (Sobra decir que el tamaño del batch es N).</p>
 <hr>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
@@ -409,9 +677,9 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p><strong>TODO</strong> ¿Qué ocurre con la BCE cuando <span class="math inline">\(y_\text{true} = 1\)</span>? ¿Y cuando <span class="math inline">\(y_\text{true} = 0\)</span>?</p>
-<div class="callout callout-style-default callout-tip callout-empty-content callout-titled" title="Solución">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<p><strong>TODO</strong> ¿Qué ocurre con la BCE cuando <span class="math inline">\(y_\text{true} = 1\)</span>? ¿Y cuando <span class="math inline">\(y_\text{true} = 0\)</span>? ¿Qué problemas pueden aparecer? ¿Cómo se solucionan?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -420,9 +688,9 @@ window.Quarto = {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-
+<p>… Problemas: <span class="math inline">\(\log(0)\)</span>. ¿Cómo lo soluciona PyTorch…?</p>
 </div>
 </div>
 </div>
@@ -436,9 +704,9 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p><strong>TODO</strong> … Sobre interpretar <span class="math inline">\(y_\text{pred}\)</span> como la probabilidad que asigna el modelo de que pertenezca a la clase positiva…</p>
-<div class="callout callout-style-default callout-tip callout-empty-content callout-titled" title="Solución">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<p>En un modelo de clasificación binaria, con una salida <span class="math inline">\(\in [0, 1]\)</span>, ¿de qué forma se podría interpretar el valor que devuelve?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -447,12 +715,57 @@ window.Quarto = {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-
+<p>Como la probabilidad de que pertenezca a la clase (clase asignada al 1).</p>
+<p><strong>Nota (opinión mía)</strong>: otra cosa que puede representar es <em>cuánto</em> pertenece a la clase (como si fuera un conjunto difuso). Por ejemplo: un modelo que diga si alguien es alto o no. <span class="math inline">\(M(1.75) = 0.6\)</span>, representaría que es <em>un poco alto</em>. Otro ejemplo, si estamos clasificando imágenes de ceros y unos, <span class="math inline">\(M(X) = 0.7\)</span> representa <em>cuánto la imagen parece un uno</em>, en lugar de la probabilidad de que sea un uno.</p>
 </div>
 </div>
 </div>
+</div>
+</div>
+</div>
+<hr>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>¿Cuál es la imagen de la función BCELoss? (de PyTorch, teniendo en cuenta que maneja <span class="math inline">\(\log(0)\)</span> como <span class="math inline">\(\log(0) = -100\)</span>)</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(\text{BCELoss}(X) \in [0, 100]\)</span>, desde una clasificación perfecta hasta una totalmente errónea.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>TODO</strong> ¿Por qué puede ser preferible la función de error BCE frente a MSE o MAE para problemas de clasificación binaria?</p>
+<!--
+::: {.callout-tip collapse="true" title="Solución"}
+- El gradiente de BCE en función del error crece más.
+"Observando la evolución del gradiente de la BCE, sabemos que se dará mucha más importancia a los ejemplos con clasificaciones muy lejanas a la ideal."[@Garcia2025PIA]
+:::
+-->
 </div>
 </div>
 </div>
@@ -473,7 +786,7 @@ window.Quarto = {
 \ell_n (x,y) = - w_n [y_n \cdot \log x_n + (1 - y_n)\cdot \log(1 - x_n)]
 \]</span></p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solución">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -482,20 +795,84 @@ window.Quarto = {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>La expresión de los apuntes es <strong>para un único ejemplo</strong>.</p>
+<p>La expresión de los apuntes es <strong>para un único ejemplo</strong>. PyTorch considera que se untilizan <em>batches</em> por defecto. Por eso hay que calcular la función de error <span class="math inline">\(n\)</span> veces y luego hacer una reducción (<em>reduction</em>).</p>
 </div>
 </div>
 </div>
 </div>
 </div>
 </div>
+<hr>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Si un modelo predice si estás sano (clase positiva, 1) o no (0), ¿qué es preferible, tener un mejor <em>recall</em> o un mejor <em>precision</em>?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Lo que <strong>no se quiere que ocurra</strong> es ignorar los casos enfermos.</p>
+<p>Es preferible un mayor <em>precision</em> para la clase positiva, para reducir los falsos positivos. Que si el modelo dice que estés sano, efectivamente estés sano: <span class="math inline">\(P(Y = 1\ |\ \hat Y = 1)\)</span>. Y con ello reducir <span class="math inline">\(P(Y = 0\ |\ \hat Y = 1)\)</span></p>
+<p>El <em>recall</em> alto es deseable para evitar pruebas innecesarias.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>¿Cuál es la solución de PyTorch para evitar el problema de <code>log(0)</code> en <code>BCELoss</code>?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Deciden que <span class="math inline">\(\text{Im}(\log) = [-100, +\infty]\)</span>. Hacen <em>clamp</em>.</p>
+<p>Para llegar a <span class="math inline">\(\log(x) = -100\)</span>, en base 2, habría que utilizar <span class="math inline">\(2^{-100}\)</span>. Para PyTorch, <span class="math inline">\(\log(0) = -100\)</span> en lugar de <span class="math inline">\(- \infty\)</span>, evitando indeterminaciones.</p>
+<p>Además también lo hacen por otros motivos: “This way, we can always have a finite loss value and a linear backward method.”</p>
+<p><a href="https://docs.pytorch.org/docs/2.13/generated/torch.nn.BCELoss.html" class="uri">https://docs.pytorch.org/docs/2.13/generated/torch.nn.BCELoss.html</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
 
 
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-Garcia2025PIA" class="csl-entry" role="listitem">
+García-González, J. 2025. <em>Programación Para La Inteligencia Artificial</em>. Universidad de Málaga.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
