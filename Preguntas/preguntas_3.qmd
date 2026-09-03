@@ -1,3 +1,5 @@
+# Preguntas 3 - Aprendizaje en PyTorch II
+
 Preguntas correspondientes al cuaderno: _Aprendizaje en PyTorch II_
 
 <!-- COPIAR Y PEGAR PARA CREAR PREGUNTAS
@@ -67,7 +69,6 @@ _Backwards pass_: cálculo del gradiente del modelo.
 ---
 
 ::: {.callout-note icon="false" appearance="simple"}
-
 ¿Mediante _qué_ calcula PyTorch los gradientes?
 
 ::: {.callout-tip collapse="true" title="Solución"}
@@ -127,7 +128,7 @@ loss_function = torch.nn.MSELoss(size_average=None, reduce=None, reduction='mean
 ---
 
 ::: {.callout-note icon="false" appearance="simple"}
-**TODO** Sobre el método `detach()`. Para qué se usa, qué erroresp puede dar.
+**TODO** Sobre el método `detach()`. Para qué se usa, qué errores puede dar.
 
 ::: {.callout-tip collapse="true" title="Solución"}
 

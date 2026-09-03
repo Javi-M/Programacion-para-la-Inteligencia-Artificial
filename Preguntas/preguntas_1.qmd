@@ -1,3 +1,5 @@
+# Preguntas 1 - Manipulación de Datos en PyTorch
+
 Preguntas correspondientes al cuaderno: _Manipulación de Datos en PyTorch_
 
 <!-- COPIAR Y PEGAR PARA CREAR PREGUNTAS
@@ -9,3 +11,53 @@ Preguntas correspondientes al cuaderno: _Manipulación de Datos en PyTorch_
 
 :::
 -->
+
+::: {.callout-note icon="false" appearance="simple"}
+**TODO** ¿Qué similitudes y diferencias hay entre los array de Numpy y los tensores de PyTorch?
+
+::: {.callout-tip collapse="true" title="Solución"}
+
+Diferencias:
+
+- Los tensores de PyTorch pueden "residir" y operarse en la GPU.
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+Trabajando con modelos de PyTorch, ¿qué datos necesitaremos que sean tensores? (Eventualmente).
+
+::: {.callout-tip collapse="true" title="Solución"}
+¡Todos! Imágenes, texto, clases... todo se traducirá a tensores numéricos.
+
+<https://docs.pytorch.org/tutorials/beginner/introyt/tensors_deeper_tutorial.html>
+
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+1. ¿Cuál es el error de este código?
+2. ¿Cuáles dimensiones tiene `torch_tensor`? ¿Cuántos elementos hay por dimensión?
+3. ¿Qué diferencias hay entre `torch_tensor.shape` y `torch_tensor.dim()`?
+
+```python
+torch_tensor = torch.rand(10)
+torch_tensor.to("cuda")
+```
+
+::: {.callout-tip collapse="true" title="Solución"}
+1. El objeto `torch_tensor` no se ha movido a la GPU, hay que hacer una asignación:
+    `torch_tensor = torch_tensor.to("cuda")`.
+2. Tiene una única dimensión con 10 elementos.
+3. `torch_tensor.shape` devuelve una tupla con el tamaño de cada dimensión (el número de elementos por dimensión).     
+    `torch_tensor.dim()` devuelve el número de dimensiones.
+:::
+
+**Nota:** `torch_tensor.shape` es un alias para `torch_tensor.size()`.
+
+:::

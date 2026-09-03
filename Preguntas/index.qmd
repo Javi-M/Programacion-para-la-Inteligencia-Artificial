@@ -4,11 +4,16 @@ title: "Preguntas"
 
 Preguntas basadas en los apuntes de la asignatura [@Garcia2025PIA].
 
+# Preguntas de teoría
+
 - [Glosario](../GLOSSARY.md)
 - [Preguntas 1 - Manipulación de Datos en PyTorch](preguntas_1.qmd)
 - [Preguntas 2 - Aprendizaje en PyTorch I](preguntas_2.qmd)
+  - **Contiene**: Aprendizaje - Modelo lineal - Ruido gaussiano - Error cuadrático - Error absoluto - Ratio de cambio de error (*learning rate*) - Step
 - [Preguntas 3 - Aprendizaje en PyTorch II](preguntas_3.qmd)
+  - **Contiene**: Parámetro - Hiperparámetro - Gradiente - `requires_grad` - `detach`
 - [Preguntas 4 - Modelos Neuronales I](preguntas_4.qmd)
+  - **Contiene**: 
 - [Preguntas 5 - Modelos Neuronales II](preguntas_5.qmd)
 - [Preguntas 6 - Manipulación de Datos en PyTorch II](preguntas_6.qmd)
 - [Preguntas 7 - Modelos Neuronales III](preguntas_7.qmd)
@@ -19,5 +24,9 @@ Preguntas basadas en los apuntes de la asignatura [@Garcia2025PIA].
 - [Preguntas 12 - Optimizando la Optimización](preguntas_12.qmd)
 - [Preguntas 13 - Mejorando el Aprendizaje](preguntas_13.qmd)
 - [Preguntas 14 - Regularizadores](preguntas_14.qmd)
-- [Preguntas 15 - ](preguntas_15.qmd)
-- [Preguntas 16 - ](preguntas_16.qmd)
+- [Preguntas 15 - Aprendizaje Continuo](preguntas_15.qmd)
+- [Preguntas 16 - Ataques Adversarios](preguntas_16.qmd)
+
+# Preguntas de prácticas
+
+_TODO_
