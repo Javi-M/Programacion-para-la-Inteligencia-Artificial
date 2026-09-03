@@ -1,17 +1,204 @@
 Preguntas correspondientes al cuaderno: _Mejorando el Aprendizaje_
 
+<!-- COPIAR Y PEGAR PARA CREAR PREGUNTAS
+::: {.callout-note icon="false" appearance="simple"}
+
+::: {.callout-tip collapse="true" title="Solución"}
+
+:::
+
+:::
+-->
+
 ---
 
 POR CUBRIR:
-- Normalización de lote
-  - Desplazamiento Interno de Covariables, _Internal Covariate Shift_
-  - Ecuación a partir de las medias y las varianzas.
+
 - ¿Qué es el RMSProp?
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+¿Qué son los problemas: *vanishing gradient* y *exploding gradients*?
+
+::: {.callout-tip collapse="true" title="Solución"}
+El problema del gradiente que desaparece, _vanishing gradient_, ocurre durante la _backpropagation_: durante la propagación hacia atrás, capa a capa, la "señal" se va desvaneciendo, haciendo que las primeras capas ajusten a un ritmo distinto que las últimas (pues el gradiente tiene menos magnitud). 
+
+Y es que cada capa en realidad **tiene un gradiente distinto**.
+
+1. Se calcula $M(X)$ y el error con $M(X)$ y $Y$
+2. Se calcula el gradiente, del error, y se corrigen los pesos de la última capa.
+3. Se actualiza el gradiente y se corrigen los pesos de la penúltima capa.
+4. Así sucesivamente hacia atrás
+
+El problema del _exploding gradient_ es justamente el contrario. La "señal" va aumentando durante la pasada hacia atrás, y las primeras capas tendrán un gradiente de mayor magnitud que las últimas, ajustando a mayor ritmo sus pesos.
+  
+:::
+
+:::
+
+---
+
+
+::: {.callout-note icon="false" appearance="simple"}
+¿Qué es una región de saturación? (Repaso)
+
+::: {.callout-tip collapse="true" title="Solución"}
+La región de saturación de una función (de activación) es una zona en la que una función de activación deja de responder significativamente a cambios en su entrada.
+También denominada **zona poco sensible** de la función.
+:::
+
+:::
+
+---
+
+# Normalización del lote, _batch normalization_
+
+::: {.callout-note icon="false" appearance="simple"}
+**TODO** ¿Qué es el *Internal Covariate Shift*?
+
+::: {.callout-tip collapse="true" title="Solución"}
+Es el cambio en la distribución de las activaciones de la red provocado por la variación de los parámetros de la red durante el entrenamiento.[@ioffe2015batch]
+:::
+
+:::
+
+
+---
+
 
 ::: {.callout-note icon="false" appearance="simple"}
 **TODO** ¿Qué es la normalización de lote, _batch normalization_? ¿Qué se quiere solventar?
 
 ::: {.callout-tip collapse="true" title="Solución"}
+La normalización de lote es una técnica que busca reescalar las salidas de las capas para que sigan una distribución cercana a la normal. Resumido: es reescalar el lote (input) para que los valores sigan una distribución normal. 
+
+Lo que se busca con esta técnica es garantizar que la distribución de las entradas sea más estable a medida que se entrena la red, para evitar que el optimizador se quede atrapado en una región de saturación, y acelerar el entrenamiento. [@ioffe2015batch]
+
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+**TODO** ¿Cuál es la ecuación para aplicar la normalización por lotes? ¿Qué es cada elemento de la ecuación?
+
+::: {.callout-tip collapse="true" title="Solución"}
+**TODO**: describir elementos ecuación
+$$
+\hat{z}=\frac{z-\mu_{B}}{\sqrt{\sigma^{2}_{B}+\epsilon}}
+$$
+
+$$
+y = \gamma \hat{z} + \beta
+$$ 
+[@Garcia2025PIA]
+
+Según la documentación de PyTorch:
+$$
+y = \cfrac{x - \mathbb{E}[x]}{\sqrt{\text{Var}[x] + \epsilon} \cdot \gamma + \beta 
+$$
+
+Donde:
+
+- $x$ es la "activación de entrada".
+- $\mathbb{E}[x] = \mu$ es la media del mini-batch $x$.
+- $\text{Var]}[x] = \sigma^2$ es la varianza del mini-batch $x$.
+- $\gamma$ y $\beta$ son parámetros a aprender.
+- $\epsilon$ es una constante muy pequeña para evitar la división por 0.
+- **Nota:** $\mathbb{E}[x]$ y $\text{Var]}[x]$ se calculan para cada dimensión 
+    del mini-batch.
+
+<https://docs.pytorch.org/docs/2.14/generated/torch.nn.BatchNorm1d.html>
+
+:::
+
+:::
+
+---
+
+Según el artículo original [@ioffe2015batch]: primero se normaliza cada _feature_ haciendo que tenga media cero y varianza uno. Si la varianza $\sigma^2 = 1$ obviamente también la desviación estándar $\sigma = 1$. Para una capa de **se normaliza cada dimensión**. $x^{(k)}$ son los valores de la dimensión $k$-ésima de entrada.
+Entrada a la capa de $d$ dimensiones: $x = (x^{(1)}, ..., x^{(d)})$. Capa normalizada (mismas dimensiones): $\hat{x} = (\hat{x}^{(1)}, ..., \hat{x}^{(d)})$. Donde:
+
+$$
+\hat{x}^{(k)} = \cfrac{x^{(k)} - \mathbb{E}[x^{(k)})]}{\sqrt{\text{Var}[x^{(k)}]}}
+$$
+
+Después se calcula:
+$$
+y^{(k)} = \gamma^{(k)} \hat{x}^{(k)} + \beta^{(k)}
+$$
+donde los parámetros $\gamma^{(k)}, \beta^{(k)}$ los aprende la red. Es decir: calcula la distribución normal correspondiente. Y es que esta transformación afín sobre $\hat{x}^{(k)}$ da como resultado otra distribución normal.
+
+Propiedad de la distribución normal: si $X \sim \mathcal{N}(\mu, \sigma^2)$ y se le aplica una transformacion afín $Y = aX + b$, se tiene que $Y \sim \mathcal{N}(a \mu + b, a^2\sigma^2)$. Es decir que da como resultado otra distribución normal.
+
+Un detalle es que en esta ecuación podría darse que el denominador sea 0, y sin embargo PyTorch introduce un término $\epsilon$ para que esto no ocurra.
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+¿Dónde ocurre la normalización del lote?
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+¿Qué son $\gamma$ y $\beta$? ¿Cómo se inicializan normalmente?
+
+::: {.callout-tip collapse="true" title="Solución"}
+Son vectores de pesos aprendibles. Normalmente se inicializan a 1s y 0s, respectivamente.
+:::
+
+:::
+
+Hay una buena explicación de _batch normalization_ en el capítulo 11 de [@Geron2022]
+
+
+# Dropout
+
+::: {.callout-note icon="false" appearance="simple"}
+¿Qué es el *dropout*? ¿Cómo funciona en PyTorch? ¿Qué escalado hace?
+
+::: {.callout-tip collapse="true" title="Solución"}
+"During training, randomly zeroes some of the elements of the input tensor with probability `p`. The zeroed elements are chosen independently for each forward call and are sampled from a Bernoulli distribution".
+
+<https://docs.pytorch.org/docs/2.14/generated/torch.nn.Dropout.html>
+
+Después de aplicar el _dropout_ PyTorch escala el tensor de salida $y$ como sigue:
+$$
+\hat{y} = \cfrac{1}{1 - p} y
+$$
+
+En los apuntes se combina la aplicación del dropout y el escalado, donde $r_i \in \{0,1\}$ indica si se desactiva (0) o no la neurona (1):
+$$
+\hat{y_{i}} = \frac{r_{i}}{1-p} y_{i}
+$$
+
+**En resumen:** 1) se desactivan neuronas 2) se escala el resultado.
+
+**Nota**: si en el _input tensor_ $x$ hay $n$ elementos, la probabilidad de que se pongan a $0$ $m$ elementos es, como describe según Bernuilli (siendo $p$ la probabilidad de desactivar la neurona):
+$$
+P(M = m) = \binom{n}{m} p^m (1 - p)^{n - m}
+$$
+(Probabilidad de que el número $M$ de elementos puestos a $0$ sea $m$).
+
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+¿Cuál es el propósito del escalado después del _dropout_?
+
+::: {.callout-tip collapse="true" title="Solución"}
+Si $p = 75%$ (`p = 0.75`), solo 1/4 de las neuronas se activan en entrenamiento. Después del entrenamiento cada neurona tendría como entrada 4 veces más neuronas que durante el entrenamiento. [@ioffe2015batch]. (Donde se haya aplicado *dropout*, claro).
+
+Por eso se usa el escalado $\hat{y} = \cfrac{1}{1 - p} y$.
+
+Si se desactivan 3 de cada 4 neuronas, entonces $\frac{1}{1 - 0.75} = 4$, de forma que las salidas de las neuronas activas, que son $1/4$,  se multiplica por $4$ para intentar compensar y que no haya tanta disparidad entre entrenamiento con *dropout* y evaluación sin él. **Resumen:** ¿$1/4$ de neuronas activas? $\implies$ se multiplica su salida $\times 4$.
 
 :::
 

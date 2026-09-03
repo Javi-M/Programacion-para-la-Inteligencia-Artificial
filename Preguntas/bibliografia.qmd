@@ -1,5 +1,5 @@
 ---
-title: "Bibliografía"
+title: "Bibliografía & Referencias"
 bibliography: bibliografia.bib
 nocite: "@*"
 ---

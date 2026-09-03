@@ -23,7 +23,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -75,6 +94,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -295,16 +343,29 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>Preguntas correspondientes al cuaderno: <em>Mejorando el Aprendizaje</em></p>
+<!-- COPIAR Y PEGAR PARA CREAR PREGUNTAS
+::: {.callout-note icon="false" appearance="simple"}
+
+::: {.callout-tip collapse="true" title="Solución"}
+
+:::
+
+:::
+-->
 <hr>
-<p>POR CUBRIR: - Normalización de lote - Desplazamiento Interno de Covariables, <em>Internal Covariate Shift</em> - Ecuación a partir de las medias y las varianzas. - ¿Qué es el RMSProp?</p>
+<p>POR CUBRIR:</p>
+<ul>
+<li>¿Qué es el RMSProp?</li>
+</ul>
+<hr>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p><strong>TODO</strong> ¿Qué es la normalización de lote, <em>batch normalization</em>? ¿Qué se quiere solventar?</p>
-<div class="callout callout-style-default callout-tip callout-empty-content callout-titled" title="Solución">
+<p>¿Qué son los problemas: <em>vanishing gradient</em> y <em>exploding gradients</em>?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -316,7 +377,262 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-
+<p>El problema del gradiente que desaparece, <em>vanishing gradient</em>, ocurre durante la <em>backpropagation</em>: durante la propagación hacia atrás, capa a capa, la “señal” se va desvaneciendo, haciendo que las primeras capas ajusten a un ritmo distinto que las últimas (pues el gradiente tiene menos magnitud).</p>
+<p>Y es que cada capa en realidad <strong>tiene un gradiente distinto</strong>.</p>
+<ol type="1">
+<li>Se calcula <span class="math inline">\(M(X)\)</span> y el error con <span class="math inline">\(M(X)\)</span> y <span class="math inline">\(Y\)</span></li>
+<li>Se calcula el gradiente, del error, y se corrigen los pesos de la última capa.</li>
+<li>Se actualiza el gradiente y se corrigen los pesos de la penúltima capa.</li>
+<li>Así sucesivamente hacia atrás</li>
+</ol>
+<p>El problema del <em>exploding gradient</em> es justamente el contrario. La “señal” va aumentando durante la pasada hacia atrás, y las primeras capas tendrán un gradiente de mayor magnitud que las últimas, ajustando a mayor ritmo sus pesos.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>¿Qué es una región de saturación? (Repaso)</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>La región de saturación de una función (de activación) es una zona en la que una función de activación deja de responder significativamente a cambios en su entrada. También denominada <strong>zona poco sensible</strong> de la función.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<section id="normalización-del-lote-batch-normalization" class="level1">
+<h1>Normalización del lote, <em>batch normalization</em></h1>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>TODO</strong> ¿Qué es el <em>Internal Covariate Shift</em>?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Es el cambio en la distribución de las activaciones de la red provocado por la variación de los parámetros de la red durante el entrenamiento.<span class="citation" data-cites="ioffe2015batch">(<a href="#ref-ioffe2015batch" role="doc-biblioref">Ioffe and Szegedy 2015</a>)</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>TODO</strong> ¿Qué es la normalización de lote, <em>batch normalization</em>? ¿Qué se quiere solventar?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>La normalización de lote es una técnica que busca reescalar las salidas de las capas para que sigan una distribución cercana a la normal. Resumido: es reescalar el lote (input) para que los valores sigan una distribución normal.</p>
+<p>Lo que se busca con esta técnica es garantizar que la distribución de las entradas sea más estable a medida que se entrena la red, para evitar que el optimizador se quede atrapado en una región de saturación, y acelerar el entrenamiento. <span class="citation" data-cites="ioffe2015batch">(<a href="#ref-ioffe2015batch" role="doc-biblioref">Ioffe and Szegedy 2015</a>)</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>TODO</strong> ¿Cuál es la ecuación para aplicar la normalización por lotes? ¿Qué es cada elemento de la ecuación?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>TODO</strong>: describir elementos ecuación <span class="math display">\[
+\hat{z}=\frac{z-\mu_{B}}{\sqrt{\sigma^{2}_{B}+\epsilon}}
+\]</span></p>
+<p><span class="math display">\[
+y = \gamma \hat{z} + \beta
+\]</span> <span class="citation" data-cites="Garcia2025PIA">(<a href="#ref-Garcia2025PIA" role="doc-biblioref">García-González 2025</a>)</span></p>
+<p>Según la documentación de PyTorch: <span class="math display">\[
+y = \cfrac{x - \mathbb{E}[x]}{\sqrt{\text{Var}[x] + \epsilon} \cdot \gamma + \beta
+\]</span></p>
+<p>Donde:</p>
+<ul>
+<li><span class="math inline">\(x\)</span> es la “activación de entrada”.</li>
+<li><span class="math inline">\(\mathbb{E}[x] = \mu\)</span> es la media del mini-batch <span class="math inline">\(x\)</span>.</li>
+<li><span class="math inline">\(\text{Var]}[x] = \sigma^2\)</span> es la varianza del mini-batch <span class="math inline">\(x\)</span>.</li>
+<li><span class="math inline">\(\gamma\)</span> y <span class="math inline">\(\beta\)</span> son parámetros a aprender.</li>
+<li><span class="math inline">\(\epsilon\)</span> es una constante muy pequeña para evitar la división por 0.</li>
+<li><strong>Nota:</strong> <span class="math inline">\(\mathbb{E}[x]\)</span> y <span class="math inline">\(\text{Var]}[x]\)</span> se calculan para cada dimensión del mini-batch.</li>
+</ul>
+<p><a href="https://docs.pytorch.org/docs/2.14/generated/torch.nn.BatchNorm1d.html" class="uri">https://docs.pytorch.org/docs/2.14/generated/torch.nn.BatchNorm1d.html</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<p>Según el artículo original <span class="citation" data-cites="ioffe2015batch">(<a href="#ref-ioffe2015batch" role="doc-biblioref">Ioffe and Szegedy 2015</a>)</span>: primero se normaliza cada <em>feature</em> haciendo que tenga media cero y varianza uno. Si la varianza <span class="math inline">\(\sigma^2 = 1\)</span> obviamente también la desviación estándar <span class="math inline">\(\sigma = 1\)</span>. Para una capa de <strong>se normaliza cada dimensión</strong>. <span class="math inline">\(x^{(k)}\)</span> son los valores de la dimensión <span class="math inline">\(k\)</span>-ésima de entrada. Entrada a la capa de <span class="math inline">\(d\)</span> dimensiones: <span class="math inline">\(x = (x^{(1), ..., x^{(d)}})\)</span>. Capa normalizada (mismas dimensiones): <span class="math inline">\(\hat{x} = (\hat{x}^{(1), ..., \hat{x}^{(d)}})\)</span>. Donde:</p>
+<p><span class="math display">\[
+\hat{x}^{(k)} = \cfrac{x^{(k)} - \mathbb{E}[x^{(k)})]}{\sqrt{\text{Var}[x^{(k)}]}}
+\]</span></p>
+<p>Después se calcula: <span class="math display">\[
+y^{(k)} = \gamma^{(k)} \hat{x}^{(k)} + \beta^{(k)}
+\]</span> donde los parámetros <span class="math inline">\(\gamma^{(k)}, \beta^{(k)}\)</span> los aprende la red. Es decir: calcula la distribución normal correspondiente. Y es que esta transformación afín sobre <span class="math inline">\(\hat{x}^{(k)}\)</span> da como resultado otra distribución normal.</p>
+<p>Propiedad de la distribución normal: si <span class="math inline">\(X \sim \mathcal{N}(\mu, \sigma^2)\)</span> y se le aplica una transformacion afín <span class="math inline">\(Y = aX + b\)</span>, se tiene que <span class="math inline">\(Y \sim \mathcal{N}(a \mu + b, a^2\sigma^2)\)</span>. Es decir que da como resultado otra distribución normal.</p>
+<p>Un detalle es que en esta ecuación podría darse que el denominador sea 0, y sin embargo PyTorch introduce un término <span class="math inline">\(\epsilon\)</span> para que esto no ocurra.</p>
+<hr>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>¿Dónde ocurre la normalización del lote?</p>
+</div>
+</div>
+</div>
+<hr>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>¿Qué son <span class="math inline">\(\gamma\)</span> y <span class="math inline">\(\beta\)</span>? ¿Cómo se inicializan normalmente?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Son vectores de pesos aprendibles. Normalmente se inicializan a 1s y 0s, respectivamente.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Hay una buena explicación de <em>batch normalization</em> en el capítulo 11 de <span class="citation" data-cites="Geron2022">(<a href="#ref-Geron2022" role="doc-biblioref">Géron 2022</a>)</span></p>
+</section>
+<section id="dropout" class="level1">
+<h1>Dropout</h1>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>¿Qué es el <em>dropout</em>? ¿Cómo funciona en PyTorch? ¿Qué escalado hace?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>“During training, randomly zeroes some of the elements of the input tensor with probability <code>p</code>. The zeroed elements are chosen independently for each forward call and are sampled from a Bernoulli distribution”.</p>
+<p><a href="https://docs.pytorch.org/docs/2.14/generated/torch.nn.Dropout.html" class="uri">https://docs.pytorch.org/docs/2.14/generated/torch.nn.Dropout.html</a></p>
+<p>Después de aplicar el <em>dropout</em> PyTorch escala el tensor de salida <span class="math inline">\(y\)</span> como sigue: <span class="math display">\[
+\hat{y} = \cfrac{1}{1 - p} y
+\]</span></p>
+<p>En los apuntes se combina la aplicación del dropout y el escalado, donde <span class="math inline">\(r_i \in \{0,1\}\)</span> indica si se desactiva (0) o no la neurona (1): <span class="math display">\[
+\hat{y_{i}} = \frac{r_{i}}{1-p} y_{i}
+\]</span></p>
+<p><strong>En resumen:</strong> 1) se desactivan neuronas 2) se escala el resultado.</p>
+<p><strong>Nota</strong>: si en el <em>input tensor</em> <span class="math inline">\(x\)</span> hay <span class="math inline">\(n\)</span> elementos, la probabilidad de que se pongan a <span class="math inline">\(0\)</span> <span class="math inline">\(m\)</span> elementos es, como describe según Bernuilli (siendo <span class="math inline">\(p\)</span> la probabilidad de desactivar la neurona): <span class="math display">\[
+P(M = m) = \binom{n}{m} p^m (1 - p)^{n - m}
+\]</span> (Probabilidad de que el número <span class="math inline">\(M\)</span> de elementos puestos a <span class="math inline">\(0\)</span> sea <span class="math inline">\(m\)</span>).</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>¿Cuál es el propósito del escalado después del <em>dropout</em>?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Si <span class="math inline">\(p = 75%\)</span> (<code>p = 0.75</code>), solo 1/4 de las neuronas se activan en entrenamiento. Después del entrenamiento cada neurona tendría como entrada 4 veces más neuronas que durante el entrenamiento. <span class="citation" data-cites="ioffe2015batch">(<a href="#ref-ioffe2015batch" role="doc-biblioref">Ioffe and Szegedy 2015</a>)</span>. (Donde se haya aplicado <em>dropout</em>, claro).</p>
+<p>Por eso se usa el escalado <span class="math inline">\(\hat{y} = \cfrac{1}{1 - p} y\)</span>.</p>
+<p>Si se desactivan 3 de cada 4 neuronas, entonces <span class="math inline">\(\frac{1}{1 - 0.75} = 4\)</span>, de forma que las salidas de las neuronas activas, que son <span class="math inline">\(1/4\)</span>, se multiplica por <span class="math inline">\(4\)</span> para intentar compensar y que no haya tanta disparidad entre entrenamiento con <em>dropout</em> y evaluación sin él. <strong>Resumen:</strong> ¿<span class="math inline">\(1/4\)</span> de neuronas activas? <span class="math inline">\(\implies\)</span> se multiplica su salida <span class="math inline">\(\times 4\)</span>.</p>
 </div>
 </div>
 </div>
@@ -326,7 +642,19 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-</main> <!-- /main -->
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-Garcia2025PIA" class="csl-entry" role="listitem">
+García-González, J. 2025. <em>Programación Para La Inteligencia Artificial</em>. Universidad de Málaga.
+</div>
+<div id="ref-Geron2022" class="csl-entry" role="listitem">
+Géron, Aurélien. 2022. <em>Hands-on Machine Learning with Scikit-Learn, Keras, and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems</em>. 3rd ed. O’Reilly Media.
+</div>
+<div id="ref-ioffe2015batch" class="csl-entry" role="listitem">
+Ioffe, Sergey, and Christian Szegedy. 2015. <span>“Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift.”</span> <em>Proceedings of the 32nd International Conference on Machine Learning (ICML 2015)</em> 37: 448–56.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right

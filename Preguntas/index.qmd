@@ -23,6 +23,7 @@ Preguntas basadas en los apuntes de la asignatura [@Garcia2025PIA].
 - [Preguntas 11 - Aumentado de Datos](preguntas_11.qmd)
 - [Preguntas 12 - Optimizando la Optimización](preguntas_12.qmd)
 - [Preguntas 13 - Mejorando el Aprendizaje](preguntas_13.qmd)
+  - **Contiene**: Normalización de lote (_batch normalization_) - `torch.nn.BatchNorm1d()` - _Dropout_
 - [Preguntas 14 - Regularizadores](preguntas_14.qmd)
 - [Preguntas 15 - Aprendizaje Continuo](preguntas_15.qmd)
 - [Preguntas 16 - Ataques Adversarios](preguntas_16.qmd)

@@ -4,6 +4,12 @@ Preguntas correspondientes al cuaderno: _Optimizando la Optimización_
 
 ---
 
+POR CUBRIR: 
+
+- RMSProp
+
+---
+
 ::: {.callout-note icon="false" appearance="simple"}
 ¿Qué regla de ajuste utiliza el optimizador SGD (ecuación)? Describir cada elemento.
 (Sin _momentum_, ni _weight decay_).
