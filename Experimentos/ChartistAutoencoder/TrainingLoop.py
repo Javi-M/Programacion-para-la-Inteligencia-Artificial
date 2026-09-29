@@ -15,7 +15,8 @@ def train_autoencoder(
     optimizer: torch.optim.Optimizer,
     device: torch.device = torch.device("cpu"),
     val_dataloader: DataLoader | None = None,
-    dtype=torch.float64
+    dtype=torch.float64,
+    patience=10
 ):
     """
     Entrena un autoencoder.
@@ -39,6 +40,9 @@ def train_autoencoder(
     train_losses = []
     val_losses = []
 
+    best_val_loss = float("inf")
+    patience_counter = 0
+    
     with tqdm(range(epochs), desc="epoch") as pbar:
         for epoch in pbar:
 
@@ -52,7 +56,7 @@ def train_autoencoder(
                 optimizer.zero_grad()
                 x_pred: torch.Tensor = model(x)
                 if x_pred.isinf().any():
-                    print("Valores INF en x_pred (bucle entrenamiento)")
+                    print("INF values in training (x_pred)")
                 loss = loss_fn(x_pred, x)
                 loss.backward()
                 batch_losses.append(loss.item())
@@ -78,6 +82,15 @@ def train_autoencoder(
                 epoch_val_loss = sum(batch_val_losses) / len(batch_val_losses)
                 val_losses.append(epoch_val_loss)
 
+                if epoch_val_loss < best_val_loss:
+                    best_val_loss = epoch_val_loss
+                    patience_counter = 0
+                else:
+                    patience_counter += 1
+
+                if patience_counter >= patience:
+                    print(f"Early stopping at epoch {epoch + 1}")
+                    break
             else:
                 # So it has the same length as train_losses
                 val_losses.append(None)
@@ -92,5 +105,6 @@ def train_autoencoder(
                 postfix["val_loss"] = f"{epoch_val_loss:.4e}"
 
             pbar.set_postfix(postfix)
+    
 
     return model, train_losses, val_losses
