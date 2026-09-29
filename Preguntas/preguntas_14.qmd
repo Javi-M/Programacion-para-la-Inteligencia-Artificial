@@ -1,1 +1,66 @@
 Preguntas correspondientes al cuaderno: _Regularizadores_
+
+---
+
+<!-- COPIAR Y PEGAR PARA CREAR PREGUNTAS
+::: {.callout-note icon="false" appearance="simple"}
+
+::: {.callout-tip collapse="true" title="Solución"}
+
+:::
+
+:::
+-->
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+**TODO** ¿Qué se busca con las técnicas de regularización?
+
+::: {.callout-tip collapse="true" title="Solución"}
+
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+Inciso: ¿para qué sirve...?
+
+1. `torch.optim.Optimizer.zero_grad()`
+2.  `torch.Tensor.backward()`
+3. `torch.optim.Optimizer.step()`
+
+::: {.callout-tip collapse="true" title="Solución"}
+
+1. Resetea los gradientes (a 0) de todos los tensores `torch.Tensor` optimizados.
+2. *Computes the gradient of current tensor wrt graph leaves.*
+3. Actualiza los parámetros del modelo (utilizando los gradientes previamente calculados con `loss.backward()`).
+
+En un paso típico de entrenamiento:
+```python
+for x_true, y_true in train_dataloader:
+    y_pred = model(x_true)          # Forward -> calcula salida modelo
+    optimizer.zero_grad()           # Resetea gradientes previos
+    loss = loss_fn(y_pred, y_true)  # Pues... el error...
+    loss.backward()                 # Backward -> calcula gradientes
+    optimizer.step()                # Actualiza los pesos con el gradiente del error
+```
+
+**Nota**: el gradiente del error se utiliza para la **última capa**. Así hacia atrás calculando nuevos gradientes y actualizando pesos en función de esos nuevos gradientes.
+
+Explicación por **Copilot**:
+> Durante `loss.backward()`, el algoritmo de backpropagation comienza en la salida de la
+> red (donde se evalúa la función de pérdida) y propaga los gradientes hacia atrás,
+> calculando el gradiente de la pérdida respecto a los parámetros de cada capa.
+> Estos gradientes quedan almacenados (normalmente en `param.grad`). 
+> Posteriormente, `optimizer.step()` utiliza dichos gradientes para actualizar todos 
+> los parámetros del modelo.
+
+:::
+
+:::
+
+---
+
