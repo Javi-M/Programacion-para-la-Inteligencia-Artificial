@@ -60,3 +60,61 @@ La diferencia está en **los datos usados** en cada momento para calcular el gra
 
 ---
 
+::: {.callout-note icon="false" appearance="simple"}
+¿Qué es el _momentum_?
+
+<!--
+::: {.callout-tip collapse="true" title="Solución"}
+:::
+-->
+
+:::
+
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+¿Qué efectos puede tener sobre el entrenamiento usar o no _momentum_? ¿Y qué efectos puede tener un mayor o menor _momentum_ en el entrenamiento?
+
+<!--
+::: {.callout-tip collapse="true" title="Solución"}
+:::
+-->
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+Cuando se utiliza SGD con _momentum_, ¿qué es el _dampening_, $\tau$?
+
+<!--
+::: {.callout-tip collapse="true" title="Solución"}
+:::
+-->
+
+:::
+
+
+# Pregunas más complejas
+
+::: {.callout-note icon="false" appearance="simple"}
+¿Cómo cambia las ecuaciones del SGD cuando se incluye _momentum_?
+
+<!--
+::: {.callout-tip collapse="true" title="Solución"}
+:::
+-->
+
+:::
+
+
+::: {.callout-note icon="false" appearance="simple"}
+Desarrollar: todo lo que se pueda sobre el **optimizador Adam**. ¿Qué es? ¿Qué diferencias tiene con el SGD? ¿Cuál es su ecuación? ¿Cómo puede evitar caer/estancarse en mínimos locales (o lograr salir de)? ¿Qué diferencias hay entre usar Adam o SGD con momentum?
+
+<!--
+::: {.callout-tip collapse="true" title="Solución"}
+:::
+-->
+
+:::

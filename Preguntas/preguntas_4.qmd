@@ -12,11 +12,26 @@ Descent_, SGD).
 Es una estrategia para ajustar parámetros para reducir el error, basándose en 
 el gradiente.
 
-También se puede usar el SGD para **maximizar**, si usáramos una función antagónica al
-error: _reward function_. Un caso en el que se desesa la función objetivo sea 
-máxima. **En este caso, la dirección es la del gradiente** y no la negativa.
+También se puede usar el SGD para **maximizar**. En este caso, la dirección y sentido utilizado es la del gradiente sin negar.
 
 <https://docs.pytorch.org/docs/2.13/generated/torch.optim.SGD.html>
+
+Regla de actualización por descenso de gradiente (simplificando). Ecuación de PyTorch:
+$$
+\theta_t \gets \theta_{t-1} - \gamma \nabla_{\theta}f_t(\theta_{t-1})
+$$
+
+- $\gamma$ es la tasa de aprendizaje, _learning rate_.
+- $\theta_t$ son los parámetros (pesos) después de actualizarlos.
+- $\theta_{t-1}$ son los parámetros antes de la actualización.
+- $f_t$ es la función de pérdida. El subíndice $t$ indica que esta función
+  puede depender del _batch_ recibido en el paso $t$ (los valores $x,y$ o,
+  en algunos casos, solo $x$). $f_t(\theta)$ es la pérdida en función de los
+  parámetros $\theta$.
+- $\nabla_{\theta}f_t(\theta_{t-1})$ es el gradiente de la función $f_t$ respecto a 
+  los parámetros ($\theta$) evaluado en $\theta_{t-1}$.
+
+**Nota:** la función de pérdida, u objetivo, es en nuestro caso mayormente una **función que mide el error** pero no tiene por qué ser siempre así.
 :::
 
 :::

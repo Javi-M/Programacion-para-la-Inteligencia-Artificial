@@ -4,7 +4,7 @@ title: "Preguntas"
 
 Preguntas basadas en los apuntes de la asignatura [@Garcia2025PIA].
 
-# Preguntas de teoría
+## Preguntas de teoría
 
 - [Glosario](../GLOSSARY.md)
 - [Preguntas 1 - Manipulación de Datos en PyTorch](preguntas_1.qmd)
@@ -25,9 +25,10 @@ Preguntas basadas en los apuntes de la asignatura [@Garcia2025PIA].
 - [Preguntas 13 - Mejorando el Aprendizaje](preguntas_13.qmd)
   - **Contiene**: Normalización de lote (_batch normalization_) - `torch.nn.BatchNorm1d()` - _Dropout_
 - [Preguntas 14 - Regularizadores](preguntas_14.qmd)
+  - **Contiene**: Sobreajuste (_overfitting_) - Parada Temprana
 - [Preguntas 15 - Aprendizaje Continuo](preguntas_15.qmd)
 - [Preguntas 16 - Ataques Adversarios](preguntas_16.qmd)
 
-# Preguntas de prácticas
+## Preguntas de prácticas
 
 _TODO_

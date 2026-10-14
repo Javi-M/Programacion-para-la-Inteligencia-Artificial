@@ -51,6 +51,12 @@ X_noisy = torch.normal(mean=X, std=1)
 En la línea 1, se crea un tensor de enteros y sin embargo `torch.normal` necesita
 uno de tipo `float`. Con PyTorch, al igual que con Numpy, hay que estar atento
 a los tipos. 
+
+La línea 2 también fallará.
+
+(Dejando de lado que en el código la línea 2 es inútil, porque se sobreescribe en la 3).
+
+**Nota:** la lína 2 y la 3 hacen lo mismo.
 :::
 
 :::

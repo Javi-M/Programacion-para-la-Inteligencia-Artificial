@@ -1,7 +1,5 @@
 Preguntas correspondientes al cuaderno: _Regularizadores_
 
----
-
 <!-- COPIAR Y PEGAR PARA CREAR PREGUNTAS
 ::: {.callout-note icon="false" appearance="simple"}
 
@@ -15,9 +13,12 @@ Preguntas correspondientes al cuaderno: _Regularizadores_
 ---
 
 ::: {.callout-note icon="false" appearance="simple"}
-**TODO** ¿Qué se busca con las técnicas de regularización?
+(Repaso) ¿Qué es el sobreajuste u *overfitting*?
 
 ::: {.callout-tip collapse="true" title="Solución"}
+El nombre lo dice: es un ajuste excesivo a los datos. Es un aprendizaje tan bien ajustado sobre unos datos de entrenamiento que el error del modelo con esos datos es muy bajo, pero con la consecuencia negativa de no generalizar bien: de tener un mal desempeño con datos nuevos (no visitados en entrenamiento).
+
+Sobreajuste = (excesivamente) bien con datos vistos & mal con datos no visitados.
 
 :::
 
@@ -26,7 +27,18 @@ Preguntas correspondientes al cuaderno: _Regularizadores_
 ---
 
 ::: {.callout-note icon="false" appearance="simple"}
-Inciso: ¿para qué sirve...?
+¿Qué es la _regularización_? ¿Qué se busca con las técnicas de regularización?
+
+::: {.callout-tip collapse="true" title="Solución"}
+La regularización es la práctica de restringir un modelo, o condicionar su aprendizaje, para reducir el riesgo de _overfitting_.
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+Repaso: ¿para qué sirve...?
 
 1. `torch.optim.Optimizer.zero_grad()`
 2.  `torch.Tensor.backward()`
@@ -51,6 +63,7 @@ for x_true, y_true in train_dataloader:
 **Nota**: el gradiente del error se utiliza para la **última capa**. Así hacia atrás calculando nuevos gradientes y actualizando pesos en función de esos nuevos gradientes.
 
 Explicación por **Copilot**:
+
 > Durante `loss.backward()`, el algoritmo de backpropagation comienza en la salida de la
 > red (donde se evalúa la función de pérdida) y propaga los gradientes hacia atrás,
 > calculando el gradiente de la pérdida respecto a los parámetros de cada capa.
@@ -64,3 +77,23 @@ Explicación por **Copilot**:
 
 ---
 
+
+
+
+# Por cubrir:
+
+- Parada temprana
+- Divergencia de Kullback-Leibler (para Variational Autoencoder).
+- Regularizadores que condicionan el tamaño de los pesos.
+  - ¿Por qué dan problemas los pesos grandes?
+- Regularización L2
+  - Ecuación (clase y PyTorch)
+  - _Previo: **weight decay**_
+- _Previo: optimizador **Adam**_
+- Optimizador AdamW.
+- **Max-Norm** $||w||_2 < r$
+- Regularización L1
+  - _Sparsity_
+  - Umbral suave, _soft threshold_
+- Manipular pesos vs. manipular función de pérdida
+- Condicionante de Consistencia

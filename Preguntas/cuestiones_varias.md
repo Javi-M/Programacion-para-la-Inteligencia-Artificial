@@ -1,3 +1,0 @@
-- ¿Cuándo se considera un _learning rate_ pequeño o grande?
-- ¿Cuándo se considera un _batch size_ pequeño o grande?
-- ¿Criterios para elegir la función de error?

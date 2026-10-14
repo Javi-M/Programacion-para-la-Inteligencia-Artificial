@@ -1,0 +1,13 @@
+::: {.callout-note icon="false" appearance="simple"}
+
+Entrenando un modelo, se observa en algún momento que `loss=nan`, y el entrenamiento deja de avanzar correctamente. ¿Por qué razones puede ser?
+
+<!--
+::: {.callout-tip collapse="true" title="Solución"}
+- Por valores infinitos: ya sea al dividir entre cero, explosión del gradiente...
+  - Por un learning rate demasiado alto.
+- TODO: AMPLIAR LISTA
+:::
+-->
+
+:::

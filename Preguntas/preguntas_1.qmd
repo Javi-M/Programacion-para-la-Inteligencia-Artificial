@@ -42,7 +42,7 @@ Trabajando con modelos de PyTorch, ¿qué datos necesitaremos que sean tensores?
 
 ::: {.callout-note icon="false" appearance="simple"}
 1. ¿Cuál es el error de este código?
-2. ¿Cuáles dimensiones tiene `torch_tensor`? ¿Cuántos elementos hay por dimensión?
+2. ¿Cuántas dimensiones tiene `torch_tensor`? ¿Cuántos elementos hay por dimensión?
 3. ¿Qué diferencias hay entre `torch_tensor.shape` y `torch_tensor.dim()`?
 
 ```python
@@ -52,7 +52,7 @@ torch_tensor.to("cuda")
 
 ::: {.callout-tip collapse="true" title="Solución"}
 1. El objeto `torch_tensor` no se ha movido a la GPU, hay que hacer una asignación:
-    `torch_tensor = torch_tensor.to("cuda")`.
+    `torch_tensor = torch_tensor.to("cuda")`. También podría achacarse el no comprobar si CUDA está disponible.
 2. Tiene una única dimensión con 10 elementos.
 3. `torch_tensor.shape` devuelve una tupla con el tamaño de cada dimensión (el número de elementos por dimensión).     
     `torch_tensor.dim()` devuelve el número de dimensiones.
