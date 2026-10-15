@@ -56,7 +56,8 @@ $$
 \end{aligned}
 $$
 
-Que es como escribir que la regla para actualizar los parámetros:
+**Que es como escribir que la regla para actualizar los parámetros es la siguiente**:
+
 $$
 \theta_t \leftarrow \theta_{t-1} - \gamma \nabla_\theta f_t(\theta_{t-1})
 $$
