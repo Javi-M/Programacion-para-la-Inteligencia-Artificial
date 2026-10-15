@@ -22,17 +22,22 @@ POR CUBRIR:
 ¿Qué son los problemas: *vanishing gradient* y *exploding gradients*?
 
 ::: {.callout-tip collapse="true" title="Solución"}
-El problema del gradiente que desaparece, _vanishing gradient_, ocurre durante la _backpropagation_: durante la propagación hacia atrás, capa a capa, la "señal" se va desvaneciendo, haciendo que las primeras capas ajusten a un ritmo distinto que las últimas (pues el gradiente tiene menos magnitud). 
+El problema del gradiente que desaparece, _vanishing gradient_, puede ocurrir durante la _backpropagation_: durante la propagación hacia atrás, capa a capa, la "señal" se va desvaneciendo, haciendo que las primeras capas ajusten a un ritmo distinto que las últimas (pues el gradiente llega con menos magnitud a las primeras capas). Puede llevar a que las primeras capas aprendan muy lentamente o prácticamente dejen de aprender.
 
-Y es que cada capa en realidad **tiene un gradiente distinto**.
+Y es que cada capa tiene su propio gradiente. Esto se debe al funcionamiento de `torch.autograd` durante el _back propagation_.
 
 1. Se calcula $M(X)$ y el error con $M(X)$ y $Y$
-2. Se calcula el gradiente, del error, y se corrigen los pesos de la última capa.
-3. Se actualiza el gradiente y se corrigen los pesos de la penúltima capa.
-4. Así sucesivamente hacia atrás
+2. Se calcula el gradiente del error respecto los parámetros de la última capa.
+3. Se propagan los gradientes hacia atrás mediante (_backpropagation_), calculando 
+    cuánto contribuyen los pesos de cada capa al error final. 
+4. Ya con los gradientes, se actualizan los pesos según indique el optimizador.
 
-El problema del _exploding gradient_ es justamente el contrario. La "señal" va aumentando durante la pasada hacia atrás, y las primeras capas tendrán un gradiente de mayor magnitud que las últimas, ajustando a mayor ritmo sus pesos.
-  
+El problema del _exploding gradient_ es justamente el contrario. Los gradientes van aumentando durante la pasada hacia atrás, y las primeras capas tendrán un gradiente de mayor magnitud que las últimas, ajustando a mayor ritmo sus pesos. Esto puede llevar incluso a valores `inf`, y que el modelo deje de aprender.
+
+_Esta respuesta ha sido revisada con ChatGPT, para detectar errores conceptuales._
+
+Leer más: <https://docs.pytorch.org/tutorials/beginner/basics/autogradqs_tutorial.html>
+
 :::
 
 :::

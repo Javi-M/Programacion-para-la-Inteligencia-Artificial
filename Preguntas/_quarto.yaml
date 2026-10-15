@@ -1,6 +1,7 @@
 project:
   type: website
-  output-dir: ../docs
+  output-dir: _site
+  post-render: ./post-render.sh
 format:
  html:
   #  mainfont: "Century Schoolbook"
