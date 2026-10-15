@@ -1,75 +1,56 @@
 # Programación para la Inteligencia Artificial
-Este es un repositorio de apuntes para la asignatura homónima de Ingeniería Informática, de la Universidad de Málaga.
+[![GitHub Pages](https://img.shields.io/badge/Web-GitHub%20Pages-blue?style=flat-square&logo=github)](https://javi-m.github.io/Programacion-para-la-Inteligencia-Artificial/)
+[![Universidad de Málaga](https://img.shields.io/badge/UMA-Ingeniería%20Informática-purple?style=flat-square)](https://www.uma.es/)
+
+Repositorio para la asignatura Programación para la Inteligencia Artificial, de la Universidad de Málaga.
 
 Se basa en los apuntes originales (García-González, J. (2025). Programación para la Inteligencia Artificial. Universidad de Málaga), y por tanto no es necesariamente autocontenido. Es más bien una especie de extensión: aclaro o profundizo en lo que me haya generado dudas en algún momento o me parezca por cualquier motivo que quiero desarrollar más.
 
-También habrá codigo muy parecido al de la asignatura, obviamente también de los apuntes,
-aunque no esté todo el rato citando...
+[Playlist de O'Reilly](https://learning.oreilly.com/playlists/7a20950b-7581-4ae1-bcbd-7212fc8d7b01)
 
-Playlist de O'Reilly:
-<https://learning.oreilly.com/playlists/7a20950b-7581-4ae1-bcbd-7212fc8d7b01> <b style="color: red">Disclaimer: son libros, no música.</b>
+## Contenidos
+
+- [Terminología usada](GLOSSARY.md) - Términos clave, y funciones, métodos y clases importantes de PyTorch.
+- [Experimentos/](Experimentos/) - Puesta en práctica de los conceptos. Notebooks jupyter. (No incluye prácticas de la asignatura).
+- [Apuntes/](Apuntes/) - Apuntes Markdown.
+  - [Recursos](Apuntes/0_Recursos.md) - Enlaces a conceptos de Python, explicaciones, artículos, etc.
+  - [Hiperparámetros](Apuntes/1_Hiperparametros.md) - Batch size, learning rate, etc.
+  - [Optimizadores](Apuntes/3_Optimizadores.md)
+  - [Funciones de activación](Apuntes/4_Funciones_de_activación.md) - Sobre las funciones usadas en la
+    asignatura para tal propósito (aunque son, simplemente, funciones normales y corrientes sobre tensores).
+- [Preguntas/](Preguntas/) - Preguntas escritas en Quarto (`qmd`), para generar la web (GitHub Pages).
+- [docs/](docs/) - Sitio web (archivos html para GitHub pages).
 
 ## Cuestiones a responder
-Un aspecto muy importante para mí en estos apuntes es intentar sacar preguntas que
-hay que saber responder. Puedes usarlas para reflexionar e intentar responderlas.
-Es una forma de estudiar que he encontrado bastante eficiente personalmente.
-Las preguntas son tanto teóricas como de código. 
+Un propósito importante de este repositorio es intentar plantear las preguntas clave a saber responder. Las preguntas son tanto teóricas como de código. No están pensadas para visualizarlas desde el repositorio sino desde esta página:
+🌐 [Preguntas en formato web](https://javi-m.github.io/Programacion-para-la-Inteligencia-Artificial/) 🌐 (GitHub Pages)
 
-🌐🦄🌐 [Lista de preguntas en formato web](https://javi-m.github.io/Programacion-para-la-Inteligencia-Artificial/) 🌐🦄🌐
 
-Las pregunta las gestiono con Quarto (archivos `.qmd`) para escribirlas en 
-Markdown y luego reenderizarlo. Algunas tienen solución, y otras no. 
+Las preguntas han sido gestionadas con Quarto (archivos `.qmd`) para ser luego reenderizadas a **html**. Puede probarse a reenderizar en pdf, pero no está garantizado que funcione.
 
 (`cd Preguntas/` y ejecutar `quarto render`, o desde la raíz del repositorio:
 `quarto render Preguntas`)
 
-> Quarto es muy quisquilloso con su sintaxis markdown.
+> Quarto es muy quisquilloso con su sintaxis Markdown.
 
-<!--
-# Sobre el código
-Estos apuntes no incluyen soluciones a prácticas. Primero para evitarme problemas a mí y
-al estudiante que se copie (por el mero hecho de copiar). Pero es que además hay
-que saber en profundidad qué hace cada parte del código, y es uno mismo el que
-debe probar.
--->
+## Uso de LLMs
+Donde se hayan utilizado LLMs se menciona muy claramente. Además todo texto incluido ha sido revisado y nunca copiado y pegado sin supervisar. Más aún cuando tiene que adecuarse a los conceptos de la asignatura y no a conceptos "cualesquiera" de Inteligencia Artificial.
 
-# Contenidos
-- [Glosario](GLOSSARY.md) - Lista de términos clave.
-- [Preguntas](Preguntas/) - Archivos `.qmd` para ser reenderizados a html y usados en      
-    GitHub pages.
-- [Experimentos](Experimentos/) - Puesta en práctica de los conceptos de la asignatura.
+- Se ha usado LLMs para generar referencias `.bib`
+- Se ha usado LLMs para generar algunas preguntas, mencionado explícitamente.
+- Se han usado LLMs para revisiones de ortografía, norma, etc.
 
-<!--# **Advertencia**: no me hago responsable
-Aunque aquí está mi mejor intento de apuntes que aporten para la asignatura, puede
-que contenga errores. Allá aquel que crea de fé ciega lo que pongo, aunque haya
-hecho mi mejor intento. O bien cada vez que digo "_esto es importante_...", 
-"_esto no es importante_...".
--->
+Ningún texto generado por LLMs se incluye sin revisión rigurosa, entre otros para adaptarlo al temario. Se ha intentado que sea transparente, mencionando las partes generadas por cualquier modelo.
 
-<!--
-## Uso de IA
-Se han utilizado varios LLMs. La gran parte de la redacción es propia, mencionando
-los fragmentos que haya copiado por una IA. He leído y revisado todo texto que
-hay en este repositorio. No he llevado un registro estricto del uso de _qué modelo
-he usado para qué cosa_.
+Se ha hecho uso de LLMs para:
+- Generación de las referencias `.bib`
+- Generar algunas preguntas, mencionado explícitamente siempre.
+- Revisiones ortográficas, gramaticales, de norma, estilo, etc.
 
-1. LLMs utilizados (modelos gratuitos, a julio de 2026):
-    - ChatGPT (más frecuente)
-    - Gemini (de vez en cuando)
-    - Copilot (en menor medida)
-2. Usos principales:
-    - Para pedir referencias.
-        - Ejemplo: "Dame documentación PyTorch que explique X".
-        - Ejemplo: "Busca artículos que expliquen el uso del momentum".
-    - Sobre cómo citar ciertas referencias.
-    - Cómo generar referencias `.bib`.
-    - Para aclaraciones de teoría.
-3. Sobre la redacción y edición:
-    - Excepto el texto mencionado explícitamente como que es de un LLM, todo ha sido
-    redactado y revisado por mí (Javier Márquez Ruiz). 
+## Reenderizar con Quarto
 
-Ha sido usado para generar algunas preguntas.
+Está pensado para Linux.
 
-No ha sido usado para generar **directamente** respuestas, aunque sí para ciertas 
-aclaraciones, a partir de las cuales luego yo he escrito la respuesta.
--->
+Puede que tengas que darles permisos a `post-render.sh`: `chmod +x Preguntas/post-render.sh` o bien 
+`cd Preguntas/`, y `chmod +x post-render.sh`
+
