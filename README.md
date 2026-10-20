@@ -25,14 +25,6 @@ Se basa en los apuntes originales (García-González, J. (2025). Programación p
 Un propósito importante de este repositorio es intentar plantear las preguntas clave a saber responder. Las preguntas son tanto teóricas como de código. No están pensadas para visualizarlas desde el repositorio sino desde esta página:
 🌐 [Preguntas en formato web](https://javi-m.github.io/Programacion-para-la-Inteligencia-Artificial/) 🌐 (GitHub Pages)
 
-
-Las preguntas han sido gestionadas con Quarto (archivos `.qmd`) para ser luego reenderizadas a **html**. Puede probarse a reenderizar en pdf, pero no está garantizado que funcione.
-
-(`cd Preguntas/` y ejecutar `quarto render`, o desde la raíz del repositorio:
-`quarto render Preguntas`)
-
-> Quarto es muy quisquilloso con su sintaxis Markdown.
-
 ## Uso de LLMs
 Donde se hayan utilizado LLMs se menciona muy claramente. Además todo texto incluido ha sido revisado y nunca copiado y pegado sin supervisar. Más aún cuando tiene que adecuarse a los conceptos de la asignatura y no a conceptos "cualesquiera" de Inteligencia Artificial.
 
@@ -49,8 +41,15 @@ Se ha hecho uso de LLMs para:
 
 ## Reenderizar con Quarto
 
-Está pensado para Linux.
+Los scripts están pensados para Linux.
 
-Puede que tengas que darles permisos a `post-render.sh`: `chmod +x Preguntas/post-render.sh` o bien 
-`cd Preguntas/`, y `chmod +x post-render.sh`
+Las preguntas han sido gestionadas con Quarto (archivos `.qmd`) para ser luego reenderizadas a **html**. Puede probarse a reenderizar en pdf, pero no está garantizado que funcione.
 
+Para reenderizar:
+- Ejecutar `quarto render Preguntas/` desde la raíz del repositorio.
+
+Puede que tengas que darles permisos a `post-render.sh` y `pre-render.sh` con `chmod +x Preguntas/post-render.sh` y `chmod +x Preguntas/post-render.sh`. También puede que tengas que ejecutar `quarto render Preguntas/` como sudo: `sudo quarto render Preguntas/`
+
+> Quarto es muy quisquilloso con su sintaxis Markdown.
+
+**Nota:** si ejecutas `cd Preguntas/` y luego `quarto render` puede fallar por cuestión de las ubicaciones. A unas malas, en `pre-render.sh` hay una solución a esta problemática.
