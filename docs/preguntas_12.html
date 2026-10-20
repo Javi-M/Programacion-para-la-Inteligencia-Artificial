@@ -383,8 +383,7 @@ window.Quarto = {
 <li><span class="math inline">\(\gamma\)</span>: ratio de aprendizaje, <em>learning rate</em>, <code>lr</code>. Por defecto en PyTorch es <code>1e-3</code>.</li>
 <li><span class="math inline">\(f_t\)</span>: función de pérdida asociada al <em>batch</em> <span class="math inline">\(t\)</span>-ésimo.</li>
 </ul>
-<p>En nuestro caso la mayoría de las veces la función objetivo a minimizar es <strong>la función de error</strong>.</p>
-<p><strong>Nota:</strong> <span class="math inline">\(\theta_{t-1} \to\)</span> se calcula el gradiente sobre el error del batch <span class="math inline">\(t\)</span>-ésimo <span class="math inline">\(\to\)</span> se obtienen los parámetros <span class="math inline">\(\theta_t\)</span>.</p>
+<p><strong>Notas</strong>: - En nuestro caso la mayoría de las veces la función objetivo a minimizar es <strong>la función de error</strong>. - El optimizador “no conoce” la función de pérdida, sino el gradiente de los parámetros, mediante <code>model.parameters()</code> y <code>loss.backward()</code> (consultar bucle de entrenamiento).</p>
 </div>
 </div>
 </div>
@@ -414,7 +413,6 @@ Warning
 </div>
 <div class="callout-body-container">
 <p>¿Hay más ruido con un <em>batch size</em> mayor o menor? ¿Qué significa “que haya ruido”?</p>
-<p><strong>TODO</strong> respuesta</p>
 </div>
 </div>
 </div>
@@ -425,7 +423,7 @@ Warning
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>¿Qué es el <em>momentum</em>?</p>
+<p>¿Qué es el <em>momentum</em>? ¿Cuál es la ecuación de SGD con momentum?</p>
 <!--
 ::: {.callout-tip collapse="true" title="Solución"}
 :::
@@ -463,23 +461,10 @@ Warning
 </div>
 </div>
 </div>
+<hr>
 </section>
 <section id="pregunas-más-complejas" class="level1">
 <h1>Pregunas más complejas</h1>
-<div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>¿Cómo cambia las ecuaciones del SGD cuando se incluye <em>momentum</em>?</p>
-<!--
-::: {.callout-tip collapse="true" title="Solución"}
-:::
--->
-</div>
-</div>
-</div>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">

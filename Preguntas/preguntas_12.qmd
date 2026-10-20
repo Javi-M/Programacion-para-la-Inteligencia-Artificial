@@ -33,10 +33,10 @@ $$
 - $\gamma$: ratio de aprendizaje, _learning rate_, `lr`. Por defecto en PyTorch es `1e-3`.
 - $f_t$: función de pérdida asociada al _batch_ $t$-ésimo.
 
-En nuestro caso la mayoría de las veces la función objetivo a minimizar es **la función de error**.
+**Notas**:
+- En nuestro caso la mayoría de las veces la función objetivo a minimizar es **la función de error**.
+- El optimizador "no conoce" la función de pérdida, sino el gradiente de los parámetros, mediante `model.parameters()` y `loss.backward()` (consultar bucle de entrenamiento).
 
-**Nota:** $\theta_{t-1} \to$ se calcula el gradiente sobre el error del batch $t$-ésimo
-    $\to$ se obtienen los parámetros $\theta_t$.
 :::
 
 :::
@@ -53,15 +53,12 @@ La diferencia está en **los datos usados** en cada momento para calcular el gra
 
 ::: {.callout-note icon="false" appearance="simple"}
 ¿Hay más ruido con un _batch size_ mayor o menor? ¿Qué significa "que haya ruido"?
-
-**TODO** respuesta
-
 :::
 
 ---
 
 ::: {.callout-note icon="false" appearance="simple"}
-¿Qué es el _momentum_?
+¿Qué es el _momentum_? ¿Cuál es la ecuación de SGD con momentum?
 
 <!--
 ::: {.callout-tip collapse="true" title="Solución"}
@@ -69,7 +66,6 @@ La diferencia está en **los datos usados** en cada momento para calcular el gra
 -->
 
 :::
-
 
 ---
 
@@ -95,19 +91,9 @@ Cuando se utiliza SGD con _momentum_, ¿qué es el _dampening_, $\tau$?
 
 :::
 
+---
 
 # Pregunas más complejas
-
-::: {.callout-note icon="false" appearance="simple"}
-¿Cómo cambia las ecuaciones del SGD cuando se incluye _momentum_?
-
-<!--
-::: {.callout-tip collapse="true" title="Solución"}
-:::
--->
-
-:::
-
 
 ::: {.callout-note icon="false" appearance="simple"}
 Desarrollar: todo lo que se pueda sobre el **optimizador Adam**. ¿Qué es? ¿Qué diferencias tiene con el SGD? ¿Cuál es su ecuación? ¿Cómo puede evitar caer/estancarse en mínimos locales (o lograr salir de)? ¿Qué diferencias hay entre usar Adam o SGD con momentum?

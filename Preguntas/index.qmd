@@ -6,7 +6,7 @@ Preguntas basadas en los apuntes de la asignatura [@Garcia2025PIA].
 
 ## Preguntas de teoría
 
-- [Glosario](../GLOSSARY.md)
+- [Glosario](GLOSSARY.qmd)
 - [Preguntas 1 - Manipulación de Datos en PyTorch](preguntas_1.qmd)
 - [Preguntas 2 - Aprendizaje en PyTorch I](preguntas_2.qmd)
   - **Contiene**: Aprendizaje - Modelo lineal - Ruido gaussiano - Error cuadrático - Error absoluto - Ratio de cambio de error (*learning rate*) - Step
@@ -22,6 +22,7 @@ Preguntas basadas en los apuntes de la asignatura [@Garcia2025PIA].
 - [Preguntas 10 - Clasificación II](preguntas_10.qmd)
 - [Preguntas 11 - Aumentado de Datos](preguntas_11.qmd)
 - [Preguntas 12 - Optimizando la Optimización](preguntas_12.qmd)
+  - **Contiene**: Descenso de gradiente estocástico (_stochastic gradient descent_) - `torch.optim.SGD()` - Momentum - `torch.optim.Adam()` - `torch.optim.AdamW()`
 - [Preguntas 13 - Mejorando el Aprendizaje](preguntas_13.qmd)
   - **Contiene**: Normalización de lote (_batch normalization_) - `torch.nn.BatchNorm1d()` - _Dropout_
 - [Preguntas 14 - Regularizadores](preguntas_14.qmd)
