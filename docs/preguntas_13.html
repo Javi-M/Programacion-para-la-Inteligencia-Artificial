@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.9.38">
@@ -80,17 +80,17 @@ div.csl-indent {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
   }
 }</script>
 
@@ -308,8 +308,8 @@ window.Quarto = {
     <span class="navbar-title">Preguntas</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -325,7 +325,7 @@ window.Quarto = {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -443,7 +443,7 @@ window.Quarto = {
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Es el cambio en la distribución de las activaciones de la red provocado por la variación de los parámetros de la red durante el entrenamiento.<span class="citation" data-cites="ioffe2015batch">(<a href="#ref-ioffe2015batch" role="doc-biblioref">Ioffe and Szegedy 2015</a>)</span></p>
+<p>Es el cambio en la distribución de las activaciones de la red provocado por la variación de los parámetros de la red durante el entrenamiento.<span class="citation" data-cites="ioffe2015batch">(<a href="#ref-ioffe2015batch" role="doc-biblioref">Ioffe y Szegedy 2015</a>)</span></p>
 </div>
 </div>
 </div>
@@ -471,7 +471,7 @@ window.Quarto = {
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>La normalización de lote es una técnica que busca reescalar las salidas de las capas para que sigan una distribución cercana a la normal. Resumido: es reescalar el lote (input) para que los valores sigan una distribución normal.</p>
-<p>Lo que se busca con esta técnica es garantizar que la distribución de las entradas sea más estable a medida que se entrena la red, para evitar que el optimizador se quede atrapado en una región de saturación, y acelerar el entrenamiento. <span class="citation" data-cites="ioffe2015batch">(<a href="#ref-ioffe2015batch" role="doc-biblioref">Ioffe and Szegedy 2015</a>)</span></p>
+<p>Lo que se busca con esta técnica es garantizar que la distribución de las entradas sea más estable a medida que se entrena la red, para evitar que el optimizador se quede atrapado en una región de saturación, y acelerar el entrenamiento. <span class="citation" data-cites="ioffe2015batch">(<a href="#ref-ioffe2015batch" role="doc-biblioref">Ioffe y Szegedy 2015</a>)</span></p>
 </div>
 </div>
 </div>
@@ -524,7 +524,7 @@ y = \cfrac{x - \mathbb{E}[x]}{\sqrt{\text{Var}[x] + \epsilon} \cdot \gamma + \be
 </div>
 </div>
 <hr>
-<p>Según el artículo original <span class="citation" data-cites="ioffe2015batch">(<a href="#ref-ioffe2015batch" role="doc-biblioref">Ioffe and Szegedy 2015</a>)</span>: primero se normaliza cada <em>feature</em> haciendo que tenga media cero y varianza uno. Si la varianza <span class="math inline">\(\sigma^2 = 1\)</span> obviamente también la desviación estándar <span class="math inline">\(\sigma = 1\)</span>. Para una capa de <strong>se normaliza cada dimensión</strong>. <span class="math inline">\(x^{(k)}\)</span> son los valores de la dimensión <span class="math inline">\(k\)</span>-ésima de entrada. Entrada a la capa de <span class="math inline">\(d\)</span> dimensiones: <span class="math inline">\(x = (x^{(1)}, ..., x^{(d)})\)</span>. Capa normalizada (mismas dimensiones): <span class="math inline">\(\hat{x} = (\hat{x}^{(1)}, ..., \hat{x}^{(d)})\)</span>. Donde:</p>
+<p>Según el artículo original <span class="citation" data-cites="ioffe2015batch">(<a href="#ref-ioffe2015batch" role="doc-biblioref">Ioffe y Szegedy 2015</a>)</span>: primero se normaliza cada <em>feature</em> haciendo que tenga media cero y varianza uno. Si la varianza <span class="math inline">\(\sigma^2 = 1\)</span> obviamente también la desviación estándar <span class="math inline">\(\sigma = 1\)</span>. Para una capa de <strong>se normaliza cada dimensión</strong>. <span class="math inline">\(x^{(k)}\)</span> son los valores de la dimensión <span class="math inline">\(k\)</span>-ésima de entrada. Entrada a la capa de <span class="math inline">\(d\)</span> dimensiones: <span class="math inline">\(x = (x^{(1)}, ..., x^{(d)})\)</span>. Capa normalizada (mismas dimensiones): <span class="math inline">\(\hat{x} = (\hat{x}^{(1)}, ..., \hat{x}^{(d)})\)</span>. Donde:</p>
 <p><span class="math display">\[
 \hat{x}^{(k)} = \cfrac{x^{(k)} - \mathbb{E}[x^{(k)})]}{\sqrt{\text{Var}[x^{(k)}]}}
 \]</span></p>
@@ -632,7 +632,7 @@ P(M = m) = \binom{n}{m} p^m (1 - p)^{n - m}
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Si <span class="math inline">\(p = 75%\)</span> (<code>p = 0.75</code>), solo 1/4 de las neuronas se activan en entrenamiento. Después del entrenamiento cada neurona tendría como entrada 4 veces más neuronas que durante el entrenamiento. <span class="citation" data-cites="ioffe2015batch">(<a href="#ref-ioffe2015batch" role="doc-biblioref">Ioffe and Szegedy 2015</a>)</span>. (Donde se haya aplicado <em>dropout</em>, claro).</p>
+<p>Si <span class="math inline">\(p = 75%\)</span> (<code>p = 0.75</code>), solo 1/4 de las neuronas se activan en entrenamiento. Después del entrenamiento cada neurona tendría como entrada 4 veces más neuronas que durante el entrenamiento. <span class="citation" data-cites="ioffe2015batch">(<a href="#ref-ioffe2015batch" role="doc-biblioref">Ioffe y Szegedy 2015</a>)</span>. (Donde se haya aplicado <em>dropout</em>, claro).</p>
 <p>Por eso se usa el escalado <span class="math inline">\(\hat{y} = \cfrac{1}{1 - p} y\)</span>.</p>
 <p>Si se desactivan 3 de cada 4 neuronas, entonces <span class="math inline">\(\frac{1}{1 - 0.75} = 4\)</span>, de forma que las salidas de las neuronas activas, que son <span class="math inline">\(1/4\)</span>, se multiplica por <span class="math inline">\(4\)</span> para intentar compensar y que no haya tanta disparidad entre entrenamiento con <em>dropout</em> y evaluación sin él. <strong>Resumen:</strong> ¿<span class="math inline">\(1/4\)</span> de neuronas activas? <span class="math inline">\(\implies\)</span> se multiplica su salida <span class="math inline">\(\times 4\)</span>.</p>
 </div>
@@ -646,15 +646,15 @@ P(M = m) = \binom{n}{m} p^m (1 - p)^{n - m}
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Referencias</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-Garcia2025PIA" class="csl-entry" role="listitem">
-García-González, J. 2025. <em>Programación Para La Inteligencia Artificial</em>. Universidad de Málaga.
+García-González, J. 2025. <em>Programación para la Inteligencia Artificial</em>. Universidad de Málaga.
 </div>
 <div id="ref-Geron2022" class="csl-entry" role="listitem">
-Géron, Aurélien. 2022. <em>Hands-on Machine Learning with Scikit-Learn, Keras, and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems</em>. 3rd ed. O’Reilly Media.
+Géron, Aurélien. 2022. <em>Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems</em>. 3.ª ed. O’Reilly Media.
 </div>
 <div id="ref-ioffe2015batch" class="csl-entry" role="listitem">
-Ioffe, Sergey, and Christian Szegedy. 2015. <span>“Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift.”</span> <em>Proceedings of the 32nd International Conference on Machine Learning (ICML 2015)</em> 37: 448–56.
+Ioffe, Sergey, y Christian Szegedy. 2015. <span>«Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift»</span>. <em>Proceedings of the 32nd International Conference on Machine Learning (ICML 2015)</em> 37: 448-56.
 </div>
 </div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -695,12 +695,12 @@ Ioffe, Sergey, and Christian Szegedy. 2015. <span>“Batch Normalization: Accele
       // flash "checked"
       button.classList.add('code-copy-button-checked');
       var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
+      button.setAttribute("title", "Copiado");
       let tooltip;
       if (window.bootstrap) {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
+        button.setAttribute("data-bs-title", "Copiado");
         tooltip = new bootstrap.Tooltip(button, 
           { trigger: "manual", 
             customClass: "code-copy-button-tooltip",

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.9.38">
@@ -80,17 +80,17 @@ div.csl-indent {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
   }
 }</script>
 
@@ -308,8 +308,8 @@ window.Quarto = {
     <span class="navbar-title">Preguntas</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -325,7 +325,7 @@ window.Quarto = {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -420,7 +420,7 @@ window.Quarto = {
 <p><span class="math inline">\(|C|\)</span> salidas (tantas salidas como clases). Cada una debe estar en el rango <span class="math inline">\([0,1]\)</span>.</p>
 <p>Podría tener también una única salida: un único número que representa la “clase más probable”. Pero sería más difícil entrenar al modelo.</p>
 <p>La suma de las salidas, si son clases excluyentes y lo interpretamos como probabilidades, <strong>debe ser exactamente 1</strong>. ()</p>
-<p>El <em>one-hot encoding</em> es una forma de representar la salida del modelo. Para cada una de las <span class="math inline">\(|C|\)</span> clases, se le asigna un vector binario de <span class="math inline">\(|C|\)</span> elementos, con todos los elementos a <span class="math inline">\(0\)</span> a excepción de uno (<em>one-hot</em>)<span class="citation" data-cites="antiga2026deep">(<a href="#ref-antiga2026deep" role="doc-biblioref">Antiga et al. 2026</a>)</span>. La posición indica el número. Por ejemplo para 4 clases:</p>
+<p>El <em>one-hot encoding</em> es una forma de representar la salida del modelo. Para cada una de las <span class="math inline">\(|C|\)</span> clases, se le asigna un vector binario de <span class="math inline">\(|C|\)</span> elementos, con todos los elementos a <span class="math inline">\(0\)</span> a excepción de uno (<em>one-hot</em>)<span class="citation" data-cites="antiga2026deep">(<a href="#ref-antiga2026deep" role="doc-biblioref">Antiga et&nbsp;al. 2026</a>)</span>. La posición indica el número. Por ejemplo para 4 clases:</p>
 <ul>
 <li><span class="math inline">\(0 \to (1, 0, 0, 0)\)</span></li>
 <li><span class="math inline">\(1 \to (0, 1, 0, 0)\)</span></li>
@@ -580,7 +580,7 @@ _Mirar los apuntes_.
 <p>El <em>early stopping</em> sirve para evitar el sobreentrenamiento. <span class="citation" data-cites="Garcia2025PIA">(<a href="#ref-Garcia2025PIA" role="doc-biblioref">García-González 2025</a>)</span></p>
 <p>La paciencia es un hiperparámetro para indicar cuánto esperar si no hay mejoras.</p>
 <p>“(Early stopping) Stop training when a monitored metric has stopped improving.” <a href="https://keras.io/api/callbacks/early_stopping/" class="uri">https://keras.io/api/callbacks/early_stopping/</a></p>
-<p>“If the training is stopped at the point where the validation errors start increasing, we can have a model with better generalization performance. This is called early stopping.”<span class="citation" data-cites="sarkar2018handson">(<a href="#ref-sarkar2018handson" role="doc-biblioref">Sarkar et al. 2018</a>)</span></p>
+<p>“If the training is stopped at the point where the validation errors start increasing, we can have a model with better generalization performance. This is called early stopping.”<span class="citation" data-cites="sarkar2018handson">(<a href="#ref-sarkar2018handson" role="doc-biblioref">Sarkar et&nbsp;al. 2018</a>)</span></p>
 <p><a href="https://www.geeksforgeeks.org/deep-learning/how-to-handle-overfitting-in-pytorch-models-using-early-stopping/" class="uri">https://www.geeksforgeeks.org/deep-learning/how-to-handle-overfitting-in-pytorch-models-using-early-stopping/</a></p>
 </div>
 </div>
@@ -619,15 +619,15 @@ _Mirar los apuntes_.
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Referencias</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-antiga2026deep" class="csl-entry" role="listitem">
-Antiga, Luca, Eli Stevens, Howard Huang, and Thomas Viehmann. 2026. <em>Deep Learning with PyTorch, Second Edition: Training and Applying Deep Learning and Generative AI Models</em>. 2nd ed. Manning Publications.
+Antiga, Luca, Eli Stevens, Howard Huang, y Thomas Viehmann. 2026. <em>Deep Learning with PyTorch, Second Edition: Training and Applying Deep Learning and Generative AI Models</em>. 2.ª ed. Manning Publications.
 </div>
 <div id="ref-Garcia2025PIA" class="csl-entry" role="listitem">
-García-González, J. 2025. <em>Programación Para La Inteligencia Artificial</em>. Universidad de Málaga.
+García-González, J. 2025. <em>Programación para la Inteligencia Artificial</em>. Universidad de Málaga.
 </div>
 <div id="ref-sarkar2018handson" class="csl-entry" role="listitem">
-Sarkar, Dipanjan, Raghav Bali, and Tamoghna Ghosh. 2018. <em>Hands-on Transfer Learning with Python: Implement Advanced Deep Learning and Neural Network Models Using TensorFlow and Keras</em>. Packt Publishing.
+Sarkar, Dipanjan, Raghav Bali, y Tamoghna Ghosh. 2018. <em>Hands-On Transfer Learning with Python: Implement advanced deep learning and neural network models using TensorFlow and Keras</em>. Packt Publishing.
 </div>
 </div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -668,12 +668,12 @@ Sarkar, Dipanjan, Raghav Bali, and Tamoghna Ghosh. 2018. <em>Hands-on Transfer L
       // flash "checked"
       button.classList.add('code-copy-button-checked');
       var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
+      button.setAttribute("title", "Copiado");
       let tooltip;
       if (window.bootstrap) {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
+        button.setAttribute("data-bs-title", "Copiado");
         tooltip = new bootstrap.Tooltip(button, 
           { trigger: "manual", 
             customClass: "code-copy-button-tooltip",

@@ -7,6 +7,9 @@ Preguntas basadas en los apuntes de la asignatura [@Garcia2025PIA].
 ## Preguntas de teoría
 
 - [Glosario](GLOSSARY.qmd)
+- [Preguntas de prácticas](preguntas_practicas.qmd)
+- [Preguntas finales](preguntas_finales.qmd)
+  - Recopilación de preguntas complejas, al estilo "examen final".
 - [Preguntas 1 - Manipulación de Datos en PyTorch](preguntas_1.qmd)
 - [Preguntas 2 - Aprendizaje en PyTorch I](preguntas_2.qmd)
   - **Contiene**: Aprendizaje - Modelo lineal - Ruido gaussiano - Error cuadrático - Error absoluto - Ratio de cambio de error (*learning rate*) - Step
@@ -29,7 +32,3 @@ Preguntas basadas en los apuntes de la asignatura [@Garcia2025PIA].
   - **Contiene**: Sobreajuste (_overfitting_) - Parada Temprana
 - [Preguntas 15 - Aprendizaje Continuo](preguntas_15.qmd)
 - [Preguntas 16 - Ataques Adversarios](preguntas_16.qmd)
-
-## Preguntas de prácticas
-
-_TODO_

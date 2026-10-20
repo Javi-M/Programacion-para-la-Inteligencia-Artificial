@@ -11,3 +11,48 @@ Entrenando un modelo, se observa en algún momento que `loss=nan`, y el entrenam
 -->
 
 :::
+
+---
+
+## Práctica 2
+
+**TODO:**
+- Saber medir y comparar, con código, tiempos en CPU y GPU.
+- Saber manejar _torchvision_ y las imágenes.
+- Saber utilizar la GPU de manera eficiente.
+
+::: {.callout-note icon="false" appearance="simple"}
+
+¿De qué formas se puede entrenar más eficientemente usando GPU? (Eficientemente = menos tiempo).
+
+::: {.callout-tip collapse="true" title="Solución"}
+
+- **Dispositivo**: Utilizando siempre el dispositivo `CUDA`. Evitar que ciertas
+    operaciones ocurran accidentalmente en CPU. (Si un tensor $X$ está en GPU y
+    $Y$ otro en CPU, se mueve $X$ a CPu para operarlos).[^1]
+- **Batch size**: con lotes más grandes se aprovecha más la GPU.[^2]
+
+[^1]: Aunque normalmente ocurrirá un _device mismatch_.
+
+[^2]: Habrá que tener cuidado con otros aspectos, como el *learning rate* o 
+técnicas de regularización para que un `batch size` más grande no juegue en 
+contra por algún motivo.
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+¿Cómo se obtiene $P(A | B)$ a partir de la distribución conjunta y la 
+distribución de $B$?
+
+::: {.callout-tip collapse="true" title="Solución"}
+Probabilidad condicionada:
+$$
+P(A|B) = \cfrac{P(A\cap B)}{P(B)}
+$$
+
+:::
+
+:::

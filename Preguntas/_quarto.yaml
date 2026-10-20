@@ -1,12 +1,15 @@
+lang: es
+
 project:
   type: website
   output-dir: _site
   post-render: ./post-render.sh
   pre-render: ./pre-render.sh
+  
 format:
- html:
-  #  mainfont: "Century Schoolbook"
-   respect-user-color-scheme: true
+  html:
+    #  mainfont: "Century Schoolbook"
+    respect-user-color-scheme: true
 
 website:
   title: "Preguntas"

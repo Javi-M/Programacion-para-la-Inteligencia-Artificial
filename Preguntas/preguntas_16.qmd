@@ -1,1 +1,102 @@
 Preguntas correspondientes al cuaderno: _Ataques Adversarios_.
+
+<!-- COPIAR Y PEGAR PARA CREAR PREGUNTAS
+::: {.callout-note icon="false" appearance="simple"}
+
+::: {.callout-tip collapse="true" title="Solución"}
+
+:::
+
+:::
+-->
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+¿En qué consisten los _ataques adversarios_?
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+¿Qué es el _Fast Gradient Sign Method_? ¿Qué hace falta para poder usarlo?
+¿Cuál es su ecuación?
+
+::: {.callout-tip collapse="true" title="Solución"}
+- Es un tipo de ataque adversarial, que altera los datos usando el gradiente
+    **respecto la entrada**.
+- Hace falta acceso al modelo: a los gradientes.
+
+Ecuación [@Garcia2025PIA]
+$$
+x^{adv} = x + \epsilon \text{sign}(\nabla_{x} L(m_{\theta}(x), y))
+$$
+
+- $\nabla_x L$ es el gradiente de la pérdida respecto al tensor de entrada $x$, en lugar
+    de respecto a los parámetros $\theta$ como estamos acostumbrados. Y es que se quiere modificar la entrada $x$ esta vez, no los parámetros; queremos la _dirección en la que modificar la entrada_ para maximizar el error, en lugar de la _dirección en la que modificar los parámetros_.
+
+En otros casos usa el Jacobiano.
+
+Ejemplo de uso de la función signo: $\text{sign}([-2.5,\; 0,\; 0.07,\; 3.2]) = [-1, 0, +1, +1]$. La función signo es una función _pointwise_, elemento a elemento, o componente a componente.
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+Analiza qué hace el siguiente código:
+
+```python
+x, y = next(iter(train_dataloader))
+x, y = x.to(device), y.to(device)
+
+x.requires_grad = True
+loss = loss_fn(model(x), y)
+model.zero_grad()
+loss.backward()
+
+x_adv = x + epsilon * x.grad.sign()
+x_adv = x_adv.detach()
+```
+
+(OpenAI. (2026). ChatGPT (GPT-6) [Modelo de lenguaje grande]. [https://chatgpt.com/](https://chatgpt.com/?utm_source=chatgpt.com))
+
+::: {.callout-tip collapse="true" title="Solución"}
+En resumen el código genera un lote (_batch_) de _datos adversariales_, `x_adv`.
+
+- Las dos primeras líneas cargan los datos.
+- `x.requires_grad = True` puesto que es el gradiente que tiene que calcularse.
+- `loss.backward()` - Calcula los gradientes de la pérdida respecto a los 
+    tensores implicados, incluido `x`. El gradiente que nos interesa es `x.grad`
+- `x_adv = x + epsilon * x.grad.sign()` - Genera el dato adversarial mediante 
+    FGSM: suma a cada componente de la entrada una perturbación de magnitud epsilon,
+    en el sentido indicado por el signo del gradiente.
+- `x_adv = x_adv.detach()` lo desconecta del grafo de cómputo. Sirve para no
+    hacer cálculos innecesarios. Implícitamente, indica que no hace falta ya
+    el gradiente de `x_adv`.
+
+**Nota sobre `detach()`:** _"Returned Tensor shares the same storage with the original one. In-place modifications on either of them will be seen, and may trigger errors in correctness checks."_
+
+:::
+
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+¿Qué es el _Projected Gradient Descent_?
+
+::: {.callout-tip collapse="true" title="Solución"}
+Artículo: [@Madry2018]
+
+En resumen: 
+
+1. Se ponen unas restricciones a lo que puede valer la perturbación. (De aquí la parte de _proyección_).
+2. Dentro de esas restricciones, se busca qué perturbación incrementa más el 
+    error de forma **iterativa** (no se garantiza una solución óptima global).
+
+:::
+
+:::

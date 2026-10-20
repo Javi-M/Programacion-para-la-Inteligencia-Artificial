@@ -4,6 +4,8 @@ en su documentación, o por lo demás en internet o los apuntes. Esta lista
 es más que nada para tener presentes los términos con los que estar
 familiarizado. -->
 
+**Propuesta de estudio**: empieza a recorrer los términos, o elige un subconjunto, y habla/escribe todo lo que puedas sobre cada uno. (Ecuaciones, relaciones con otros conceptos, etc.)
+
 # Funciones de error
 - Error absoluto - _Absolute Error_ - AE
     - Error absoluto medio - _Mean Absolute Error_ - MAE
@@ -26,6 +28,21 @@ familiarizado. -->
 - LeakyReLU
 - Softmax
 - LogSoftmax
+
+# Técnicas de regularización
+- Parada temprana - _Early Stopping_
+- Aumentado de datos
+  - Condicionante de consistencia
+- _Weight decay_
+- Regularización L2
+- Regularización L1 - <b style="color: red">no confundir con <code>torch.nn.L1Loss</code></b>
+- Max-Norm
+- Normalización de lote - _batch normalization_
+- Dropout
+- _Elastic Weight Consolidation_
+- FGSM
+- PGD
+
 
 # PyTorch
 - `state_dict()`
@@ -51,7 +68,6 @@ familiarizado. -->
 
 # Miscelánea (o _por organizar_)
 - Autoencoder
-- Función de activación
 - Neurona lineal
 - Pasada hacia adelante - _Forward pass_
 - Pasada hacia detrás - _Backwards pass_
@@ -59,8 +75,5 @@ familiarizado. -->
 - Sesgo - _bias_ - $b$
 - Matriz de confusión
 - _One-hot encoding_
-- Normalización de lote - _Batch Normalization_
-- Regularización L1/L2
 - Problema del desvanecimiento del gradiente
 - Zona de saturación
-- Detención temprana - _Early Stopping_
