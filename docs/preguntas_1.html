@@ -407,7 +407,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="callout-body-container">
 <ol type="1">
 <li>¿Cuál es el error de este código?</li>
-<li>¿Cuáles dimensiones tiene <code>torch_tensor</code>? ¿Cuántos elementos hay por dimensión?</li>
+<li>¿Cuántas dimensiones tiene <code>torch_tensor</code>? ¿Cuántos elementos hay por dimensión?</li>
 <li>¿Qué diferencias hay entre <code>torch_tensor.shape</code> y <code>torch_tensor.dim()</code>?</li>
 </ol>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>torch_tensor <span class="op">=</span> torch.rand(<span class="dv">10</span>)</span>
@@ -425,7 +425,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>El objeto <code>torch_tensor</code> no se ha movido a la GPU, hay que hacer una asignación: <code>torch_tensor = torch_tensor.to("cuda")</code>.</li>
+<li>El objeto <code>torch_tensor</code> no se ha movido a la GPU, hay que hacer una asignación: <code>torch_tensor = torch_tensor.to("cuda")</code>. También podría achacarse el no comprobar si CUDA está disponible.</li>
 <li>Tiene una única dimensión con 10 elementos.</li>
 <li><code>torch_tensor.shape</code> devuelve una tupla con el tamaño de cada dimensión (el número de elementos por dimensión).<br>
 <code>torch_tensor.dim()</code> devuelve el número de dimensiones.</li>

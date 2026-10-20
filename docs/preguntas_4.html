@@ -366,8 +366,19 @@ window.Quarto = {
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Es una estrategia para ajustar parámetros para reducir el error, basándose en el gradiente.</p>
-<p>También se puede usar el SGD para <strong>maximizar</strong>, si usáramos una función antagónica al error: <em>reward function</em>. Un caso en el que se desesa la función objetivo sea máxima. <strong>En este caso, la dirección es la del gradiente</strong> y no la negativa.</p>
+<p>También se puede usar el SGD para <strong>maximizar</strong>. En este caso, la dirección y sentido utilizado es la del gradiente sin negar.</p>
 <p><a href="https://docs.pytorch.org/docs/2.13/generated/torch.optim.SGD.html" class="uri">https://docs.pytorch.org/docs/2.13/generated/torch.optim.SGD.html</a></p>
+<p>Regla de actualización por descenso de gradiente (simplificando). Ecuación de PyTorch: <span class="math display">\[
+\theta_t \gets \theta_{t-1} - \gamma \nabla_{\theta}f_t(\theta_{t-1})
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\gamma\)</span> es la tasa de aprendizaje, <em>learning rate</em>.</li>
+<li><span class="math inline">\(\theta_t\)</span> son los parámetros (pesos) después de actualizarlos.</li>
+<li><span class="math inline">\(\theta_{t-1}\)</span> son los parámetros antes de la actualización.</li>
+<li><span class="math inline">\(f_t\)</span> es la función de pérdida. El subíndice <span class="math inline">\(t\)</span> indica que esta función puede depender del <em>batch</em> recibido en el paso <span class="math inline">\(t\)</span> (los valores <span class="math inline">\(x,y\)</span> o, en algunos casos, solo <span class="math inline">\(x\)</span>). <span class="math inline">\(f_t(\theta)\)</span> es la pérdida en función de los parámetros <span class="math inline">\(\theta\)</span>.</li>
+<li><span class="math inline">\(\nabla_{\theta}f_t(\theta_{t-1})\)</span> es el gradiente de la función <span class="math inline">\(f_t\)</span> respecto a los parámetros (<span class="math inline">\(\theta\)</span>) evaluado en <span class="math inline">\(\theta_{t-1}\)</span>.</li>
+</ul>
+<p><strong>Nota:</strong> la función de pérdida, u objetivo, es en nuestro caso mayormente una <strong>función que mide el error</strong> pero no tiene por qué ser siempre así.</p>
 </div>
 </div>
 </div>

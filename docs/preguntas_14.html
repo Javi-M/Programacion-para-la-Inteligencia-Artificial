@@ -23,6 +23,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -75,6 +110,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -295,8 +359,147 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>Preguntas correspondientes al cuaderno: <em>Regularizadores</em></p>
+<!-- COPIAR Y PEGAR PARA CREAR PREGUNTAS
+::: {.callout-note icon="false" appearance="simple"}
+
+::: {.callout-tip collapse="true" title="Solución"}
+
+:::
+
+:::
+-->
+<hr>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>(Repaso) ¿Qué es el sobreajuste u <em>overfitting</em>?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>El nombre lo dice: es un ajuste excesivo a los datos. Es un aprendizaje tan bien ajustado sobre unos datos de entrenamiento que el error del modelo con esos datos es muy bajo, pero con la consecuencia negativa de no generalizar bien: de tener un mal desempeño con datos nuevos (no visitados en entrenamiento).</p>
+<p>Sobreajuste = (excesivamente) bien con datos vistos &amp; mal con datos no visitados.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>¿Qué es la <em>regularización</em>? ¿Qué se busca con las técnicas de regularización?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>La regularización es la práctica de restringir un modelo, o condicionar su aprendizaje, para reducir el riesgo de <em>overfitting</em>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Repaso: ¿para qué sirve…?</p>
+<ol type="1">
+<li><code>torch.optim.Optimizer.zero_grad()</code></li>
+<li><code>torch.Tensor.backward()</code></li>
+<li><code>torch.optim.Optimizer.step()</code></li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Resetea los gradientes (a 0) de todos los tensores <code>torch.Tensor</code> optimizados.</li>
+<li><em>Computes the gradient of current tensor wrt graph leaves.</em></li>
+<li>Actualiza los parámetros del modelo (utilizando los gradientes previamente calculados con <code>loss.backward()</code>).</li>
+</ol>
+<p>En un paso típico de entrenamiento:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x_true, y_true <span class="kw">in</span> train_dataloader:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    y_pred <span class="op">=</span> model(x_true)          <span class="co"># Forward -&gt; calcula salida modelo</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    optimizer.zero_grad()           <span class="co"># Resetea gradientes previos</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> loss_fn(y_pred, y_true)  <span class="co"># Pues... el error...</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    loss.backward()                 <span class="co"># Backward -&gt; calcula gradientes</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    optimizer.step()                <span class="co"># Actualiza los pesos con el gradiente del error</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Nota</strong>: el gradiente del error se utiliza para la <strong>última capa</strong>. Así hacia atrás calculando nuevos gradientes y actualizando pesos en función de esos nuevos gradientes.</p>
+<p>Explicación por <strong>Copilot</strong>:</p>
+<blockquote class="blockquote">
+<p>Durante <code>loss.backward()</code>, el algoritmo de backpropagation comienza en la salida de la red (donde se evalúa la función de pérdida) y propaga los gradientes hacia atrás, calculando el gradiente de la pérdida respecto a los parámetros de cada capa. Estos gradientes quedan almacenados (normalmente en <code>param.grad</code>). Posteriormente, <code>optimizer.step()</code> utiliza dichos gradientes para actualizar todos los parámetros del modelo.</p>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<section id="por-cubrir" class="level1">
+<h1>Por cubrir:</h1>
+<ul>
+<li>Parada temprana</li>
+<li>Divergencia de Kullback-Leibler (para Variational Autoencoder).</li>
+<li>Regularizadores que condicionan el tamaño de los pesos.
+<ul>
+<li>¿Por qué dan problemas los pesos grandes?</li>
+</ul></li>
+<li>Regularización L2
+<ul>
+<li>Ecuación (clase y PyTorch)</li>
+<li><em>Previo: <strong>weight decay</strong></em></li>
+</ul></li>
+<li><em>Previo: optimizador <strong>Adam</strong></em></li>
+<li>Optimizador AdamW.</li>
+<li><strong>Max-Norm</strong> <span class="math inline">\(||w||_2 &lt; r\)</span></li>
+<li>Regularización L1
+<ul>
+<li><em>Sparsity</em></li>
+<li>Umbral suave, <em>soft threshold</em></li>
+</ul></li>
+<li>Manipular pesos vs.&nbsp;manipular función de pérdida</li>
+<li>Condicionante de Consistencia</li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

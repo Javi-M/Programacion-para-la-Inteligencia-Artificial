@@ -377,15 +377,17 @@ window.Quarto = {
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>El problema del gradiente que desaparece, <em>vanishing gradient</em>, ocurre durante la <em>backpropagation</em>: durante la propagación hacia atrás, capa a capa, la “señal” se va desvaneciendo, haciendo que las primeras capas ajusten a un ritmo distinto que las últimas (pues el gradiente tiene menos magnitud).</p>
-<p>Y es que cada capa en realidad <strong>tiene un gradiente distinto</strong>.</p>
+<p>El problema del gradiente que desaparece, <em>vanishing gradient</em>, puede ocurrir durante la <em>backpropagation</em>: durante la propagación hacia atrás, capa a capa, la “señal” se va desvaneciendo, haciendo que las primeras capas ajusten a un ritmo distinto que las últimas (pues el gradiente llega con menos magnitud a las primeras capas). Puede llevar a que las primeras capas aprendan muy lentamente o prácticamente dejen de aprender.</p>
+<p>Y es que cada capa tiene su propio gradiente. Esto se debe al funcionamiento de <code>torch.autograd</code> durante el <em>back propagation</em>.</p>
 <ol type="1">
 <li>Se calcula <span class="math inline">\(M(X)\)</span> y el error con <span class="math inline">\(M(X)\)</span> y <span class="math inline">\(Y\)</span></li>
-<li>Se calcula el gradiente, del error, y se corrigen los pesos de la última capa.</li>
-<li>Se actualiza el gradiente y se corrigen los pesos de la penúltima capa.</li>
-<li>Así sucesivamente hacia atrás</li>
+<li>Se calcula el gradiente del error respecto los parámetros de la última capa.</li>
+<li>Se propagan los gradientes hacia atrás mediante (<em>backpropagation</em>), calculando cuánto contribuyen los pesos de cada capa al error final.</li>
+<li>Ya con los gradientes, se actualizan los pesos según indique el optimizador.</li>
 </ol>
-<p>El problema del <em>exploding gradient</em> es justamente el contrario. La “señal” va aumentando durante la pasada hacia atrás, y las primeras capas tendrán un gradiente de mayor magnitud que las últimas, ajustando a mayor ritmo sus pesos.</p>
+<p>El problema del <em>exploding gradient</em> es justamente el contrario. Los gradientes van aumentando durante la pasada hacia atrás, y las primeras capas tendrán un gradiente de mayor magnitud que las últimas, ajustando a mayor ritmo sus pesos. Esto puede llevar incluso a valores <code>inf</code>, y que el modelo deje de aprender.</p>
+<p><em>Esta respuesta ha sido revisada con ChatGPT, para detectar errores conceptuales.</em></p>
+<p>Leer más: <a href="https://docs.pytorch.org/tutorials/beginner/basics/autogradqs_tutorial.html" class="uri">https://docs.pytorch.org/tutorials/beginner/basics/autogradqs_tutorial.html</a></p>
 </div>
 </div>
 </div>
@@ -522,7 +524,7 @@ y = \cfrac{x - \mathbb{E}[x]}{\sqrt{\text{Var}[x] + \epsilon} \cdot \gamma + \be
 </div>
 </div>
 <hr>
-<p>Según el artículo original <span class="citation" data-cites="ioffe2015batch">(<a href="#ref-ioffe2015batch" role="doc-biblioref">Ioffe and Szegedy 2015</a>)</span>: primero se normaliza cada <em>feature</em> haciendo que tenga media cero y varianza uno. Si la varianza <span class="math inline">\(\sigma^2 = 1\)</span> obviamente también la desviación estándar <span class="math inline">\(\sigma = 1\)</span>. Para una capa de <strong>se normaliza cada dimensión</strong>. <span class="math inline">\(x^{(k)}\)</span> son los valores de la dimensión <span class="math inline">\(k\)</span>-ésima de entrada. Entrada a la capa de <span class="math inline">\(d\)</span> dimensiones: <span class="math inline">\(x = (x^{(1), ..., x^{(d)}})\)</span>. Capa normalizada (mismas dimensiones): <span class="math inline">\(\hat{x} = (\hat{x}^{(1), ..., \hat{x}^{(d)}})\)</span>. Donde:</p>
+<p>Según el artículo original <span class="citation" data-cites="ioffe2015batch">(<a href="#ref-ioffe2015batch" role="doc-biblioref">Ioffe and Szegedy 2015</a>)</span>: primero se normaliza cada <em>feature</em> haciendo que tenga media cero y varianza uno. Si la varianza <span class="math inline">\(\sigma^2 = 1\)</span> obviamente también la desviación estándar <span class="math inline">\(\sigma = 1\)</span>. Para una capa de <strong>se normaliza cada dimensión</strong>. <span class="math inline">\(x^{(k)}\)</span> son los valores de la dimensión <span class="math inline">\(k\)</span>-ésima de entrada. Entrada a la capa de <span class="math inline">\(d\)</span> dimensiones: <span class="math inline">\(x = (x^{(1)}, ..., x^{(d)})\)</span>. Capa normalizada (mismas dimensiones): <span class="math inline">\(\hat{x} = (\hat{x}^{(1)}, ..., \hat{x}^{(d)})\)</span>. Donde:</p>
 <p><span class="math display">\[
 \hat{x}^{(k)} = \cfrac{x^{(k)} - \mathbb{E}[x^{(k)})]}{\sqrt{\text{Var}[x^{(k)}]}}
 \]</span></p>

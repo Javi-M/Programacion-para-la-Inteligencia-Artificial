@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>cuestiones_varias – Preguntas</title>
+<title>preguntas_practicas – Preguntas</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -294,11 +294,23 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<ul>
-<li>¿Cuándo se considera un <em>learning rate</em> pequeño o grande?</li>
-<li>¿Cuándo se considera un <em>batch size</em> pequeño o grande?</li>
-<li>¿Criterios para elegir la función de error?</li>
-</ul>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Entrenando un modelo, se observa en algún momento que <code>loss=nan</code>, y el entrenamiento deja de avanzar correctamente. ¿Por qué razones puede ser?</p>
+<!--
+::: {.callout-tip collapse="true" title="Solución"}
+- Por valores infinitos: ya sea al dividir entre cero, explosión del gradiente...
+  - Por un learning rate demasiado alto.
+- TODO: AMPLIAR LISTA
+:::
+-->
+</div>
+</div>
+</div>
 
 
 
