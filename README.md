@@ -6,6 +6,8 @@ Repositorio para la asignatura Programación para la Inteligencia Artificial, de
 
 Se basa en los apuntes originales (García-González, J. (2025). Programación para la Inteligencia Artificial. Universidad de Málaga), y por tanto no es necesariamente autocontenido. Es más bien una especie de extensión: aclaro o profundizo en lo que me haya generado dudas en algún momento o me parezca por cualquier motivo que quiero desarrollar más.
 
+**Sin embargo**,s dado que hay referencias de sobra a lo largo de las preguntas, es posible guiarse por las preguntas para estudiar consultando materiales externos.
+
 [Playlist de O'Reilly](https://learning.oreilly.com/playlists/7a20950b-7581-4ae1-bcbd-7212fc8d7b01)
 
 ## Contenidos
