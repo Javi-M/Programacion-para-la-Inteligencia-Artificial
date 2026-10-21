@@ -94,6 +94,35 @@ div.csl-indent {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -330,6 +359,7 @@ div.csl-indent {
 
 
 <p>Preguntas basadas en los apuntes de la asignatura <span class="citation" data-cites="Garcia2025PIA">(<a href="#ref-Garcia2025PIA" role="doc-biblioref">García-González 2025</a>)</span>.</p>
+<p>🚧 <span class="math inline">\(\rightarrow\)</span> sin empezar</p>
 <section id="preguntas-de-teoría" class="level2">
 <h2 class="anchored" data-anchor-id="preguntas-de-teoría">Preguntas de teoría</h2>
 <ul>
@@ -371,7 +401,7 @@ div.csl-indent {
 <ul>
 <li><strong>Contiene</strong>: Sobreajuste (<em>overfitting</em>) - Parada Temprana</li>
 </ul></li>
-<li><a href="./preguntas_15.html">Preguntas 15 - Aprendizaje Continuo</a></li>
+<li><a href="./preguntas_15.html">Preguntas 15 - Aprendizaje Continuo</a> 🚧</li>
 <li><a href="./preguntas_16.html">Preguntas 16 - Ataques Adversarios</a></li>
 </ul>
 

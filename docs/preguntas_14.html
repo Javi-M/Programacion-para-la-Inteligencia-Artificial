@@ -58,7 +58,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -358,6 +377,8 @@ window.Quarto = {
 
 
 
+<section id="preguntas-14---regularizadores" class="level1">
+<h1>Preguntas 14 - Regularizadores</h1>
 <p>Preguntas correspondientes al cuaderno: <em>Regularizadores</em></p>
 <!-- COPIAR Y PEGAR PARA CREAR PREGUNTAS
 ::: {.callout-note icon="false" appearance="simple"}
@@ -472,6 +493,90 @@ window.Quarto = {
 </div>
 </div>
 <hr>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Di todo lo que puedas sobre la regularización L2.</p>
+</div>
+</div>
+</div>
+<hr>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Dado un modelo <code>model</code>, ¿cómo se puede calcular la suma <span class="math inline">\(\sum_i |w_i|\)</span> de sus pesos y sesgos?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Para iterar sobre los parámetros de un modelo:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span> <span class="op">=</span> torch.tensor(<span class="fl">0.</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> p <span class="kw">in</span> model.parameters():</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">sum</span> <span class="op">+=</span> torch.<span class="bu">sum</span>(torch.<span class="bu">abs</span>(param))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p><span class="citation" data-cites="Garcia2025PIA">(<a href="#ref-Garcia2025PIA" role="doc-biblioref">García-González 2025</a>)</span></p>
+<p><strong>Nota:</strong> El método devuelve un iterador: <code>parameters(self, recurse: bool = True) -&gt; Iterator[Parameter]</code> de los parámetros.</p>
+<p><strong>Nota:</strong> Los parámetros son tensores, que pueden tener más de un componente obviamente. Por eso se hace <code>torch.sum</code>. Es decir <code>parameters()</code> no itera sobre los pesos directamente.</p>
+<p>Más sobre los parámetros (tensores que son parámetros de un módulo): <a href="https://docs.pytorch.org/docs/2.14/generated/torch.nn.parameter.Parameter.html#torch.nn.parameter.Parameter" class="uri">https://docs.pytorch.org/docs/2.14/generated/torch.nn.parameter.Parameter.html#torch.nn.parameter.Parameter</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="preguntas-extra" class="level1">
+<h1>Preguntas <em>extra</em></h1>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Menciona todas las técnicas de regularización que puedas recordar. Intenta dar las ecuaciones (si hay).</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><em>Dropout</em></li>
+<li>Parada temprana</li>
+<li>Aumentado de datos (<em>data augmentation</em>)</li>
+<li><em>Weight decay</em></li>
+<li>Divergencia de Kullback-Leibler</li>
+<li>Regularización L2</li>
+<li>Max-Norm</li>
+<li>Regularización L1</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
 <section id="por-cubrir" class="level1">
 <h1>Por cubrir:</h1>
 <ul>
@@ -499,9 +604,14 @@ window.Quarto = {
 </ul>
 
 
+
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Referencias</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-Garcia2025PIA" class="csl-entry" role="listitem">
+García-González, J. 2025. <em>Programación para la Inteligencia Artificial</em>. Universidad de Málaga.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
