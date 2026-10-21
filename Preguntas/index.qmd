@@ -1,15 +1,18 @@
 ---
-title: "Preguntas"
+title: "Índice"
 ---
 
 Preguntas basadas en los apuntes de la asignatura [@Garcia2025PIA].
 
 🚧 $\rightarrow$ sin empezar
 
-## Preguntas de teoría
+---
 
 - [Glosario](GLOSSARY.qmd)
 - [Preguntas de prácticas](preguntas_practicas.qmd)
+
+## Preguntas de teoría
+
 - [Preguntas finales](preguntas_finales.qmd)
   - Recopilación de preguntas complejas, al estilo "examen final".
 - [Preguntas 1 - Manipulación de Datos en PyTorch](preguntas_1.qmd)

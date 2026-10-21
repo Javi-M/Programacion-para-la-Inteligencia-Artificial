@@ -12,14 +12,15 @@ format:
     respect-user-color-scheme: true
 
 website:
-  title: "Preguntas"
+  title: "Inicio"
   navbar:
     left:
-      - href: index.qmd
-        text: Inicio
       - href: bibliografia.qmd
         text: Bibliografía
-
+  sidebar:
+    style: docked
+    search: true
+    contents: auto
 theme:
   light: flatly
   dark: darkly
