@@ -1,3 +1,5 @@
+# Preguntas 14 - Regularizadores
+
 Preguntas correspondientes al cuaderno: _Regularizadores_
 
 <!-- COPIAR Y PEGAR PARA CREAR PREGUNTAS
@@ -41,7 +43,7 @@ La regularización es la práctica de restringir un modelo, o condicionar su apr
 Repaso: ¿para qué sirve...?
 
 1. `torch.optim.Optimizer.zero_grad()`
-2.  `torch.Tensor.backward()`
+2. `torch.Tensor.backward()`
 3. `torch.optim.Optimizer.step()`
 
 ::: {.callout-tip collapse="true" title="Solución"}
@@ -77,6 +79,55 @@ Explicación por **Copilot**:
 
 ---
 
+::: {.callout-note icon="false" appearance="simple"}
+Di todo lo que puedas sobre la regularización L2.
+:::
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+Dado un modelo `model`, ¿cómo se puede calcular la suma $\sum_i |w_i|$ de sus pesos y sesgos?
+
+::: {.callout-tip collapse="true" title="Solución"}
+Para iterar sobre los parámetros de un modelo:
+
+```python
+sum = torch.tensor(0.)
+for p in model.parameters():
+  sum += torch.sum(torch.abs(param))
+```
+[@Garcia2025PIA]
+
+**Nota:** El método devuelve un iterador: `parameters(self, recurse: bool = True) -> Iterator[Parameter]` de los parámetros.
+
+**Nota:** Los parámetros son tensores, que pueden tener más de un componente obviamente. Por eso se hace `torch.sum`. Es decir `parameters()` no itera sobre los pesos directamente.
+
+Más sobre los parámetros (tensores que son parámetros de un módulo): <https://docs.pytorch.org/docs/2.14/generated/torch.nn.parameter.Parameter.html#torch.nn.parameter.Parameter>
+:::
+
+:::
+
+
+---
+
+# Preguntas _extra_
+
+::: {.callout-note icon="false" appearance="simple"}
+Menciona todas las técnicas de regularización que puedas recordar. Intenta dar las ecuaciones (si hay).
+
+::: {.callout-tip collapse="true" title="Solución"}
+- _Dropout_
+- Parada temprana
+- Aumentado de datos (_data augmentation_)
+- _Weight decay_
+- Divergencia de Kullback-Leibler
+- Regularización L2
+- Max-Norm
+- Regularización L1
+
+:::
+
+:::
 
 
 

@@ -1,3 +1,5 @@
+# Preguntas 16 - Ataques Adversarios
+
 Preguntas correspondientes al cuaderno: _Ataques Adversarios_.
 
 <!-- COPIAR Y PEGAR PARA CREAR PREGUNTAS
@@ -97,6 +99,8 @@ En resumen:
 2. Dentro de esas restricciones, se busca qué perturbación incrementa más el 
     error de forma **iterativa** (no se garantiza una solución óptima global).
 
+PGD busca una perturbación de magnitud limitada que aumente significativamente la pérdida del modelo
+    
 :::
 
 :::
