@@ -1,4 +1,6 @@
-# Preguntas 5 - Modelos Neuronales II
+---
+title: "Preguntas 5 - Modelos Neuronales II"
+---
 
 Preguntas correspondientes al cuaderno: _Modelos Nueronales II_
 

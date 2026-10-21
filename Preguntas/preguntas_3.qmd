@@ -1,4 +1,6 @@
-# Preguntas 3 - Aprendizaje en PyTorch II
+---
+title: "Preguntas 3 - Aprendizaje en PyTorch II"
+---
 
 Preguntas correspondientes al cuaderno: _Aprendizaje en PyTorch II_
 
@@ -11,6 +13,29 @@ Preguntas correspondientes al cuaderno: _Aprendizaje en PyTorch II_
 
 :::
 -->
+
+---
+
+::: {.callout-note icon="false" appearance="simple"}
+Enunciar la regla de la cadena (derivadas).
+
+::: {.callout-tip collapse="true" title="Solución"}
+Varias formas de escribirla.
+
+$$
+\frac{d}{dx}f(g(x)) = f'(g(x)) \cdot g'(x)
+$$
+
+Otra forma (con un cambio de variable):
+$$
+\frac{d}{dx}f(g(x)) = \frac{d}{du}f(u)\bigg|_{u=g(x)} \cdot \frac{d}{dx}g(x)
+$$
+
+Y muchas más.
+
+:::
+
+:::
 
 ---
 
@@ -59,9 +84,10 @@ Recordar que se deriva **respecto los parámetros**, no sobre los valores de ent
 (pasada hacia detrás)? (De forma general).
 
 ::: {.callout-tip collapse="true" title="Solución"}
-_Forward pass_: el modelo hace una predicción.
+_Forward pass_: el modelo "hace una predicción". En PyTorch, realiza los cálculos especificados en el método `forward()` del modelo.
 
-_Backwards pass_: cálculo del gradiente del modelo.
+_Backwards pass_: cálculo de los gradientes del modelo.
+
 :::
 
 :::
@@ -190,8 +216,9 @@ Por lo general no. Si no podemos ajustar esos valores (a diferencia de los pesos
 una red), ¿para qué queremos su gradiente?
 
 Para ataques adversarios (se verá más adelante) puede ser interesante, puesto que
-_podemos saber las entradas más puñeteras_. (Gradiente de la función de
-error en función de $X \rightarrow$ qué $X$ aumenta el error).
+_podemos saber las entradas más "puñeteras_". (Gradiente de la función de
+error respecto a la entrada $X \implies $ usarlo para saber en qué dirección
+modificar $X$ para aumentar el error del modelo).
 :::
 
 :::

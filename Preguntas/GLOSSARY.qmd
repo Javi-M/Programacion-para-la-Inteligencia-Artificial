@@ -1,3 +1,5 @@
+# Glosario
+
 En realidad (de momento) no es un glosario, sino una **lista de términos** utilizados. 
 <!-- En cualquier caso, si es una cuestión de PyTorch se puede buscar
 en su documentación, o por lo demás en internet o los apuntes. Esta lista
@@ -6,7 +8,7 @@ familiarizado. -->
 
 **Propuesta de estudio**: empieza a recorrer los términos, o elige un subconjunto, y habla/escribe todo lo que puedas sobre cada uno. (Ecuaciones, relaciones con otros conceptos, etc.)
 
-# Funciones de error
+## Funciones de error
 - Error absoluto - _Absolute Error_ - AE
     - Error absoluto medio - _Mean Absolute Error_ - MAE
     - `L1Loss()`
@@ -16,12 +18,12 @@ familiarizado. -->
 - Entropía Cruzada - _Cross Entropy_ - CE
 - Entropía Binaria Crucada - _Binary Cross-Entropy_ - BCE
 
-## Otras métricas
+### Otras métricas
 - _Accuracy_
 - _Precision_
 - _Recall_
 
-# Funciones de activación
+## Funciones de activación
 - Sigmoide
 - Tangente hiperbólica - `torch.tanh()`
 - ReLU
@@ -29,7 +31,7 @@ familiarizado. -->
 - Softmax
 - LogSoftmax
 
-# Técnicas de regularización
+## Técnicas de regularización
 - Parada temprana - _Early Stopping_
 - Aumentado de datos
   - Condicionante de consistencia
@@ -44,7 +46,7 @@ familiarizado. -->
 - PGD
 
 
-# PyTorch
+## PyTorch
 - `state_dict()`
 - `torch.cat()`
 - `torch.linspace()`
@@ -66,7 +68,7 @@ familiarizado. -->
 - `torch.nn.CrossEntropyLoss()`
 - `torch.nn.LogSoftmax()`
 
-# Miscelánea (o _por organizar_)
+## Miscelánea (o _por organizar_)
 - Autoencoder
 - Neurona lineal
 - Pasada hacia adelante - _Forward pass_

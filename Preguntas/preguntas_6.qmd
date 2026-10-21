@@ -1,4 +1,6 @@
-# Preguntas 6 - Manipulación de Datos en PyTorch II
+---
+title: "Preguntas 6 - Manipulación de Datos en PyTorch II"
+---
 
 Preguntas correspondientes al cuaderno: _Manipulación de Datos en PyTorch II_
 

@@ -1,4 +1,6 @@
-# Preguntas 2 - Aprendizaje en PyTorch I
+---
+title: "Preguntas 2 - Aprendizaje en PyTorch I"
+---
 
 Preguntas correspondientes al cuaderno: _Aprendizaje en PyTorch I_
 
@@ -142,7 +144,7 @@ calcula la salida y el error $\rightarrow$ actualiza los parámetros.
 
 ---
 
-# Preguntas más complejas
+## Preguntas más complejas
 
 ::: {.callout-note icon="false" appearance="simple"}
 

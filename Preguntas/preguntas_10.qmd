@@ -1,4 +1,6 @@
-# Preguntas 10 - Clasificación II
+---
+title: "Preguntas 10 - Clasificación II"
+---
 
 Preguntas correspondientes al cuaderno: _Clasificación II_
 

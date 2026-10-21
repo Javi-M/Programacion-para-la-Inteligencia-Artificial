@@ -13,15 +13,15 @@ Preguntas basadas en los apuntes de la asignatura [@Garcia2025PIA].
 
 ## Preguntas de teoría
 
-- [Preguntas finales](preguntas_finales.qmd)
-  - Recopilación de preguntas complejas, al estilo "examen final".
+- [Preguntas finales](preguntas_finales.qmd) - Recopilación de preguntas complejas, al estilo "examen final".
 - [Preguntas 1 - Manipulación de Datos en PyTorch](preguntas_1.qmd)
+  - **Contiene**: Tensores
 - [Preguntas 2 - Aprendizaje en PyTorch I](preguntas_2.qmd)
   - **Contiene**: Aprendizaje - Modelo lineal - Ruido gaussiano - Error cuadrático - Error absoluto - Ratio de cambio de error (*learning rate*) - Step
 - [Preguntas 3 - Aprendizaje en PyTorch II](preguntas_3.qmd)
   - **Contiene**: Parámetro - Hiperparámetro - Gradiente - `requires_grad` - `detach`
 - [Preguntas 4 - Modelos Neuronales I](preguntas_4.qmd)
-  - **Contiene**: 
+  - **Contiene**: SGD
 - [Preguntas 5 - Modelos Neuronales II](preguntas_5.qmd)
 - [Preguntas 6 - Manipulación de Datos en PyTorch II](preguntas_6.qmd)
 - [Preguntas 7 - Modelos Neuronales III](preguntas_7.qmd)

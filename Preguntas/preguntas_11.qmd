@@ -1,4 +1,6 @@
-# Preguntas 11 - Aumentado de Datos
+---
+title: "Preguntas 11 - Aumentado de Datos"
+---
 
 Preguntas correspondientes al cuaderno: _Aumentado de Datos_.
 

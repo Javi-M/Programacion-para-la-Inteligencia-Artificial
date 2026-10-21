@@ -8,7 +8,7 @@ project:
   
 format:
   html:
-    #  mainfont: "Century Schoolbook"
+    mainfont: "Source Serif 4"
     respect-user-color-scheme: true
 
 website:
@@ -17,10 +17,8 @@ website:
     left:
       - href: bibliografia.qmd
         text: Bibliografía
-  sidebar:
-    style: docked
-    search: true
-    contents: auto
+      - href: https://github.com/Javi-M/Programacion-para-la-Inteligencia-Artificial
+        text: Repositorio GitHub
 theme:
   light: flatly
   dark: darkly

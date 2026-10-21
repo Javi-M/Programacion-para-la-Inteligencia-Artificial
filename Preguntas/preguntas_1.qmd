@@ -1,4 +1,6 @@
-# Preguntas 1 - Manipulación de Datos en PyTorch
+---
+title: "Preguntas 1 - Manipulación de Datos en PyTorch"
+---
 
 Preguntas correspondientes al cuaderno: _Manipulación de Datos en PyTorch_
 
@@ -13,13 +15,21 @@ Preguntas correspondientes al cuaderno: _Manipulación de Datos en PyTorch_
 -->
 
 ::: {.callout-note icon="false" appearance="simple"}
-**TODO** ¿Qué similitudes y diferencias hay entre los array de Numpy y los tensores de PyTorch?
+¿Qué similitudes y diferencias hay entre los array de Numpy y los tensores de PyTorch?
 
 ::: {.callout-tip collapse="true" title="Solución"}
 
-Diferencias:
+(Algunas) similitudes:
+
+- Multidimensionalidad
+- Se puede realizar operaciones con _broadcasting_.
+- Misma indexación (o en gran medida).
+
+(Algunas) diferencias:
 
 - Los tensores de PyTorch pueden "residir" y operarse en la GPU.
+- Los arrays de Numpy no están pensados para calcular gradientes.
+  
 :::
 
 :::
@@ -59,5 +69,25 @@ torch_tensor.to("cuda")
 :::
 
 **Nota:** `torch_tensor.shape` es un alias para `torch_tensor.size()`.
+
+:::
+
+---- 
+
+::: {.callout-note icon="false" appearance="simple"}
+¿Cuántas dimensiones tendrá `tensor_1`? ¿y `tensor_2`? ¿y `tensor_3`?
+
+```python
+tensor_1 = torch.tensor(1.)
+tensor_2 = torch.tensor([1.])
+tensor_3 = torch.tensor([1., 2., 3.])
+```
+
+::: {.callout-tip collapse="true" title="Solución"}
+- `tensor_1`: 0 dimensiones. ¿Cómo va a ser eso? Porque es **un escalar**. No hay eje (_axis_). No hay ninguna fila, ni ninguna columna.
+- `tensor_2`: una dimensión con un elemento.
+- `tensor_3`: una dimensión con tres elementos.
+
+:::
 
 :::

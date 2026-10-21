@@ -1,4 +1,6 @@
-# Preguntas 14 - Regularizadores
+---
+title: "Preguntas 14 - Regularizadores"
+---
 
 Preguntas correspondientes al cuaderno: _Regularizadores_
 
@@ -107,8 +109,11 @@ Más sobre los parámetros (tensores que son parámetros de un módulo): <https:
 
 :::
 
-
 ---
+
+::: {.callout-note icon="false" appearance="simple"}
+¿Por qué pueden dar problemas los pesos grandes/demasiado grandes?
+:::
 
 # Preguntas _extra_
 
@@ -128,23 +133,3 @@ Menciona todas las técnicas de regularización que puedas recordar. Intenta dar
 :::
 
 :::
-
-
-
-# Por cubrir:
-
-- Parada temprana
-- Divergencia de Kullback-Leibler (para Variational Autoencoder).
-- Regularizadores que condicionan el tamaño de los pesos.
-  - ¿Por qué dan problemas los pesos grandes?
-- Regularización L2
-  - Ecuación (clase y PyTorch)
-  - _Previo: **weight decay**_
-- _Previo: optimizador **Adam**_
-- Optimizador AdamW.
-- **Max-Norm** $||w||_2 < r$
-- Regularización L1
-  - _Sparsity_
-  - Umbral suave, _soft threshold_
-- Manipular pesos vs. manipular función de pérdida
-- Condicionante de Consistencia

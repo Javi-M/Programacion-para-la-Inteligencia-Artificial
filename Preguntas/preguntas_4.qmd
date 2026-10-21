@@ -1,4 +1,6 @@
-# Preguntas 4 - Modelos Neuronales I
+---
+title: "Preguntas 4 - Modelos Neuronales I"
+---
 
 Preguntas correspondientes al cuaderno: _Modelos Nueronales I_
 
@@ -158,14 +160,6 @@ $$
 :::
 
 ---
-
-::: {.callout-note icon="false" appearance="simple"}
-
-::: {.callout-tip collapse="true" title="Solución"}
-
-:::
-
-:::
 
 # Preguntas más complejas
 
