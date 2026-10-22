@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>preguntas_1 – Preguntas</title>
+<title>Preguntas 1 - Manipulación de Datos en PyTorch – Inicio</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -292,7 +292,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Preguntas</span>
+    <span class="navbar-title">Inicio</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Buscar"></div>
@@ -302,12 +302,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
-<span class="menu-text">Inicio</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="./bibliografia.html"> 
 <span class="menu-text">Bibliografía</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://github.com/Javi-M/Programacion-para-la-Inteligencia-Artificial"> 
+<span class="menu-text">Repositorio GitHub</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -323,14 +323,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Preguntas 1 - Manipulación de Datos en PyTorch</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
 
 
-<section id="preguntas-1---manipulación-de-datos-en-pytorch" class="level1">
-<h1>Preguntas 1 - Manipulación de Datos en PyTorch</h1>
+</header>
+
+
 <p>Preguntas correspondientes al cuaderno: <em>Manipulación de Datos en PyTorch</em></p>
 <!-- COPIAR Y PEGAR PARA CREAR PREGUNTAS
 ::: {.callout-note icon="false" appearance="simple"}
@@ -347,7 +361,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p><strong>TODO</strong> ¿Qué similitudes y diferencias hay entre los array de Numpy y los tensores de PyTorch?</p>
+<p>¿Qué similitudes y diferencias hay entre los array de Numpy y los tensores de PyTorch?</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solución">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -360,9 +374,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Diferencias:</p>
+<p>(Algunas) similitudes:</p>
+<ul>
+<li>Multidimensionalidad</li>
+<li>Se puede realizar operaciones con <em>broadcasting</em>.</li>
+<li>Misma indexación (o en gran medida).</li>
+</ul>
+<p>(Algunas) diferencias:</p>
 <ul>
 <li>Los tensores de PyTorch pueden “residir” y operarse en la GPU.</li>
+<li>Los arrays de Numpy no están pensados para calcular gradientes.</li>
 </ul>
 </div>
 </div>
@@ -437,9 +458,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<hr>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>¿Cuántas dimensiones tendrá <code>tensor_1</code>? ¿y <code>tensor_2</code>? ¿y <code>tensor_3</code>?</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>tensor_1 <span class="op">=</span> torch.tensor(<span class="fl">1.</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>tensor_2 <span class="op">=</span> torch.tensor([<span class="fl">1.</span>])</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>tensor_3 <span class="op">=</span> torch.tensor([<span class="fl">1.</span>, <span class="fl">2.</span>, <span class="fl">3.</span>])</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><code>tensor_1</code>: 0 dimensiones. ¿Cómo va a ser eso? Porque es <strong>un escalar</strong>. No hay eje (<em>axis</em>). No hay ninguna fila, ni ninguna columna.</li>
+<li><code>tensor_2</code>: una dimensión con un elemento.</li>
+<li><code>tensor_3</code>: una dimensión con tres elementos.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
